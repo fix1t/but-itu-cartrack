@@ -1,15 +1,13 @@
-# Zpráva návrhu - ITU
-
-Rozsah: 10-12 normostran 
+# Zpráva návrhu - ITU 
 
 Členové týmů:
 - Gabriel Biel (xbielg00)
 - Adam Gabrys (xgabry01)
-- Jakub Mikyšek (xmikys03)
+- **Jakub Mikyšek (xmikys03)**
 
 TO-DO
 - [ ] 1. Navržené téma
-- [ ] 2. Vybrané téma
+- [x] 2. Vybrané téma
 - [ ] 3. Analýza uživatelských potřeb a klíčových problémů
 - [ ] 4. Analýza existující aplikace
 - [ ] 5. Uživatelské potřeby a klíčové problémy
@@ -17,18 +15,19 @@ TO-DO
 - [ ] 7. Návrh aplikace - Návrh makety
 - [ ] 8. Návrh aplikace - Testování
 - [ ] 9. Technické řešení + technologie
+- [ ] A. Odebrat SOLO/TEAM, poznámky a TO-DO
+- [ ] B. Rozsah: 10-12 normostran
 
 ## 1. Navržené téma
  
 <span style="color:orange">SOLO</span>
 
-- každá zde popíše svůj návrh
+### Duosomethingo - Aplikace pro sebevzdělání
+Můj nápad byl vytvořit aplikaci rozšiřující a spojující vzdělávací aplikace jako Duolingo (pro cizí jazyky) a Flashcards (pro zapamatování pojmů). Celá aplikace by měla pojmout témata primárně v oblastech IT světa, například - Řecká abeceda, rozpoznání elektrotechnických součástek, procvičování návrhových vzorů. Způsob procvičování by byl od formy vybírání z 4 možností, přes spojování pojmů až po doplňování názvů uživatelem. 
 
 ## 2. Vybrané téma
- 
-<span style="color: #31c3d4">TEAM</span>
 
-- společně úvest téma a zdůvodnit, proč zrovna tohle
+Po zhodnocení jsme zvolili variantu firemní aplikace pro efektivní správu jízd aut na způsob Knihy jízd. Varianta se nám zdála být nejpraktičtější a zároveň nejzajímavější pro implementaci a návrh. Při výběru jsme brali v úvahu osobní zkušenosti s tímto tématem.
 
 ## 3. Analýza uživatelských potřeb a klíčových problémů
  
@@ -45,6 +44,8 @@ Přesněji:
 ## 4. Analýza existující aplikace
 
 <span style="color:orange">SOLO</span>
+
+- car sharing apps..
 
 - Duolingo / Flashcards
     - popsat
