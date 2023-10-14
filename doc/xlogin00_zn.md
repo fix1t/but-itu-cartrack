@@ -1,5 +1,7 @@
 # Zpráva návrhu - ITU
 
+Rozsah: 10-12 normostran 
+
 Členové týmů:
 - Gabriel Biel (xbielg00)
 - Adam Gabrys (xgabry01)
@@ -14,7 +16,7 @@ TO-DO
 - [ ] 6. Návrh aplikace - Rozdělení práce
 - [ ] 7. Návrh aplikace - Návrh makety
 - [ ] 8. Návrh aplikace - Testování
-- [ ] 3. Analýza uživatelských potřeb a klíčových problémů
+- [ ] 9. Technické řešení + technologie
 
 ## 1. Navržené téma
  
