@@ -7,13 +7,28 @@
 
 TO-DO
 - [ ] 1. Navržené téma
+    - [x] xmikys
+    - [ ] xbielg
+    - [ ] xgabry
 - [x] 2. Vybrané téma
 - [ ] 3. Analýza uživatelských potřeb a klíčových problémů
+    - [ ] xmikys
+    - [ ] xbielg
+    - [ ] xgabry
 - [ ] 4. Analýza existující aplikace
+    - [x] xmikys
+    - [ ] xbielg
+    - [ ] xgabry
 - [ ] 5. Uživatelské potřeby a klíčové problémy
 - [ ] 6. Návrh aplikace - Rozdělení práce
 - [ ] 7. Návrh aplikace - Návrh makety
+    - [ ] xmikys
+    - [ ] xbielg
+    - [ ] xgabry
 - [ ] 8. Návrh aplikace - Testování
+    - [ ] xmikys
+    - [ ] xbielg
+    - [ ] xgabry
 - [ ] 9. Technické řešení + technologie
 - [ ] A. Odebrat SOLO/TEAM, poznámky a TO-DO
 - [ ] B. Rozsah: 10-12 normostran
@@ -22,7 +37,7 @@ TO-DO
  
 <span style="color:orange">SOLO</span>
 
-### Duosomethingo - Aplikace pro sebevzdělání
+#### Duosomethingo - Aplikace pro sebevzdělání (xmikys03)
 Můj nápad byl vytvořit aplikaci rozšiřující a spojující vzdělávací aplikace jako Duolingo (pro cizí jazyky) a Flashcards (pro zapamatování pojmů). Celá aplikace by měla pojmout témata primárně v oblastech IT světa, například - Řecká abeceda, rozpoznání elektrotechnických součástek, procvičování návrhových vzorů. Způsob procvičování by byl od formy vybírání z 4 možností, přes spojování pojmů až po doplňování názvů uživatelem. 
 
 ## 2. Vybrané téma
@@ -38,20 +53,28 @@ Po zhodnocení jsme zvolili variantu firemní aplikace pro efektivní správu j�
 
 Přesněji:
 - průzkum mezi uživateli (rozhovory + dotazník)
-- **minimálně 2** dotazování!
+- každý **minimálně 2** dotazování!
     - nejlépe, někdo kdo to používá
 
 ## 4. Analýza existující aplikace
 
 <span style="color:orange">SOLO</span>
 
-- car sharing apps..
+- popsat
+    - přednosti a nedostatky
+- jak se budeme inspirovat a jak řešit nedostatky?
+- lze se zeptat i uživatelů
 
-- Duolingo / Flashcards
-    - popsat
-        - přednosti a nedostatky
-    - jak se budeme inspirovat a jak řešit nedostatky?
-    - lze se zeptat i uživatelů
+#### Papírová podoba
+
+#### Excel Tabulka (xmikys03)
+Implementací tohoto problémů není opravdu mnoho, jedno z řešením může být sdílená excelová tabulka.
+Mezi přednosti bych uvedl snadnou přenositelnost a přístupnost napříč všemi chytrými zařízeními bez nutnosti instalace. Oproti papírové podobě ještě můžeme vypíchnout již nějakou formu digitalizace.
+Mimo to se ale jedná o variantu, která nemusí být vždy intuitivní a jednoduše může dojít k poškození či **ztrátě/smazání dat, při špatné manipulaci uživatelem**.
+Řešení naší aplikace: Uživatel přidává data a nemůže editovat nebo mazat data, která již byla napsána jinými uživateli. 
+
+#### Elektronická kniha jízd
+- https://satelitnisledovani.cz/funkce/elektronicka-kniha-jizd?gad=1&gclid=CjwKCAjwp8OpBhAFEiwAG7NaEtv_5M5m_w0kIFcoJ2FhajByzBRqAQhAaMwz79j_jqRGMVX71QCXCRoCLtIQAvD_BwE
 
 ## 5. Uživatelské potřeby a klíčové problémy
  
