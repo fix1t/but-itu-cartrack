@@ -54,6 +54,23 @@ Po zhodnocení jsme zvolili variantu firemní aplikace pro efektivní správu j�
 - dotazník + odpovědi
 - analýza odpovědí
 
+### Otázky použité v dotazníku:
+- Používali jste někdy knihu jízd nebo něco tomu podobného?
+- Používáte pro zápis služebních cest něco jiného než papírovou knihu jízd?
+- Pokud něco jiného, co?
+- Jste spokojení se zapisováním do papírové knihy jízd (pokud ji používáte)?
+- Líbí se vám myšlenka jednoduchého zápisu koncového stavu kilometrů do aplikace?
+- Vnímáte jako výhodu mít v aplikaci všechna firemní auta pohromadě a jednoduše si z nabídky pouze vybrat auto, které jste použili?
+- Prováděli byste raději výběr auta z nabídky pomocí firmou zvoleného názvu nebo pomocí SPZ?
+- Vnímáte jako výhodu si pouze vybrat vašeho uživatele z nabídky aplikace místo repetitivního zapisování vašeho jména do knihy jízd?
+- Ocenili byste mít v aplikaci číslo na asistenční službu, kterou máte placenou z vašeho povinného ručení a tím předejít placení navíc/hledání jakou službu firma používá?
+- Ocenili byste kdyby aplikace umožňovala také uvádět záznamy o tankování jednotlivých aut?
+- Ocenili byste možnost přidání poznámek k jednotlivým autům? (např. zanechání vzkazu pro ostatní řidiče, kde jste uložili technický průkaz či přidání záznamu o poruše/nehodě)
+- Ocenili byste tlačítko "Potřebuji pomoct", kdy by se vám po stisknutí zobrazilo info, jak postupovat v případě nehody/poruchy i např. s číslem na asistenční službu či ZS.
+- Líbilo by se vám, kdyby si aplikace uchovávala stav tachometru z předchozích jízd a při zadání konečného stavu kilometrů po vaší jízdě vám zobrazila počet nově najetých kilometrů?
+- Ocenili byste mít možnost zobrazit si detail auta? Jednalo by se např. o typ paliva (DIESEL/BENZÍN).
+- Uvítali byste ještě nějakou další funkcionalitu aplikace kromě výše popsaných?  
+
 Přesněji:
 - průzkum mezi uživateli (rozhovory + dotazník)
 - každý **minimálně 2** dotazování!
