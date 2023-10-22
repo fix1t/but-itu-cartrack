@@ -8,7 +8,7 @@
 TO-DO
 - [ ] 1. Navržené téma
     - [x] xmikys
-    - [ ] xbielg
+    - [X] xbielg
     - [x] xgabry
 - [x] 2. Vybrané téma
 - [ ] 3. Analýza uživatelských potřeb a klíčových problémů
@@ -42,6 +42,19 @@ Můj nápad byl vytvořit aplikaci rozšiřující a spojující vzdělávací a
 
 ### CarTrack - Elektronická kniha jízd
 Nápad vznikl se zaměřením na profesionální řidiče, kdy jsem je nejednoul slyšel stěžovat si na zápis do papírové knihy jízd. S tímto přišel nápad na vytvoření elektronické knihy jízd pro firmy/profesionální řidiče. V aplikaci by bylo možné si vybrat z nabídky aut vlastněné firmou konkrétní vozidlo použité při jízdě a pouze zadat konečný stav tachometru. V aplikaci by se zobrazil počet ujetých kilometrů za jízdu, jelikož by si aplikace uchovávala všechny záznamy a odečetla by nejnovější záznam tachometru od záznamu minulé jízdy. V úvahu padla i možnost rozšířit aplikaci o informaci o konkrétních autech či tlačítko 'Potřebuji pomoc', kdy by se uživateli zobrazilo číslo na asistenční službu/ZS či jak postupovat v případě nehody. 
+
+#### Restauranto - Aplikace pro číšníky (xbielg00)
+Mým nápadem je vytvořit aplikaci "Restauranto" pro číšníky, která zjednoduší jejich práci a zlepší zážitek hostů v restauracích. Klíčové funkce zahrnují:
+
+**Rozložení stolů**: Možnost rychlé úpravy uspořádání stolů v restauraci.
+**Jednoduché objednávání**: Hosté mohou snadno objednávat jídlo a nápoje přes aplikaci.
+**Přidávání poznámek**: Možnost specifikace individuálních požadavků hostů.
+**Dělení účtů**: Snadné dělení účtů mezi různými osobami.
+**Přesun stolů**: Možnost rychlého přesunu stolů podle potřeby.
+**Tisk účtů**: Rychlý tisk účtů pro zrychlení procesu odchodu hostů.
+
+Tímto by se vytvořila aplikace, která by zefektivnila práci číšníků a zlepšila celkový zážitek hostů v restauracích.
+
 
 ## 2. Vybrané téma
 
@@ -94,7 +107,7 @@ Mimo to se ale jedná o variantu, která nemusí být vždy intuitivní a jednod
 Řešení naší aplikace: Uživatel přidává data a nemůže editovat nebo mazat data, která již byla napsána jinými uživateli. 
 
 #### Elektronická kniha jízd
-- https://satelitnisledovani.cz/funkce/elektronicka-kniha-jizd?gad=1&gclid=CjwKCAjwp8OpBhAFEiwAG7NaEtv_5M5m_w0kIFcoJ2FhajByzBRqAQhAaMwz79j_jqRGMVX71QCXCRoCLtIQAvD_BwE
+ [Satelitni Sledovani Cz - Elektronická kniha jízd](https://satelitnisledovani.cz/funkce/elektronicka-kniha-jizd?gad=1&gclid=CjwKCAjwp8OpBhAFEiwAG7NaEtv_5M5m_w0kIFcoJ2FhajByzBRqAQhAaMwz79j_jqRGMVX71QCXCRoCLtIQAvD_BwE)
 
 ## 5. Uživatelské potřeby a klíčové problémy
  
