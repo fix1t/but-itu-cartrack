@@ -11,9 +11,9 @@ TO-DO
 - [x] 3. Analýza uživatelských potřeb a klíčových problémů
 - [ ] 4. Analýza existující aplikace
     - [x] xmikys
-    - [ ] xbielg
+    - [x] xbielg
     - [ ] xgabry
-- [ ] 5. Uživatelské potřeby a klíčové problémy
+- [x] 5. Uživatelské potřeby a klíčové problémy
 - [ ] 6. Návrh aplikace - Rozdělení práce
 - [ ] 7. Návrh aplikace - Návrh makety
     - [ ] xmikys
@@ -160,8 +160,25 @@ Produkt má různé ceny podle typu a funkčnosti GPS lokátorů, které se pohy
  
 <span style="color: #31c3d4">TEAM</span>
 
-- uvést klíčové potřeby uživatele, klíčové vlastnosti
-- přímo odráží bod 3 a 4
+Na základě provedené analýzy uživatelských potřeb a existujících řešení jsme identifikovali několik klíčových potřeb a problémů, které naše aplikace bude řešit:
+
+1. **Snadný a efektivní zápis jízd**: Uživatelé vyjádřili potřebu snadného a rychlého zaznamenání jízd, což zahrnuje jednoduché zadání koncového stavu tachometru.
+
+2. **Sledování ujetých kilometrů**: Uživatelé chtějí mít přehled o tom, kolik kilometrů ujeli při každé jízdě, a to bez složitého ručního výpočtu.
+
+3. **Centrální evidenci vozidel**: Profesionální řidiči ocenili možnost mít veškerá firemní vozidla pohromadě v jedné aplikaci a snadno vybírat konkrétní vozidlo pro každou jízdu.
+
+4. **Asistenční služba a informace v případě potřeby**: Umožnění rychlého přístupu k asistenčním službám nebo informacím o postupu v případě nehody nebo poruchy vozidla bylo vnímáno jako užitečná funkce.
+
+5. **Historie jízd a rychlé vyhledávání**: Uživatelé chtějí mít možnost sledovat historii svých jízd a rychle vyhledávat konkrétní záznamy.
+
+6. **Uchování a výpočet tachometru**: Aplikace by měla uchovávat stav tachometru z předchozích jízd a umožnit uživatelům snadno spočítat nově ujeté kilometry.
+
+7. **Detaily o vozidle**: Možnost zobrazit informace o jednotlivých vozidlech, včetně typu paliva, je pro uživatele důležitá.
+
+8. **Poznámky a komunikace mezi uživateli**: Někteří uživatelé chtějí možnost přidávání poznámek nebo komunikace ohledně vozidel a jízd.
+
+Tyto klíčové potřeby a problémy budou zohledněny při návrhu a vývoji naší aplikace, abychom poskytli uživatelům efektivní a uživatelsky přívětivé řešení pro správu knihy jízd a souvisejících úkolů.
 
 ## 6. Návrh aplikace - Rozdělení práce
  
