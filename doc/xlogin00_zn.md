@@ -6,10 +6,7 @@
 - **Jakub Mikyšek (xmikys03)**
 
 TO-DO
-- [ ] 1. Navržené téma
-    - [x] xmikys
-    - [X] xbielg
-    - [x] xgabry
+- [x] 1. Navržené téma
 - [x] 2. Vybrané téma
 - [ ] 3. Analýza uživatelských potřeb a klíčových problémů
     - [ ] xmikys
@@ -34,13 +31,11 @@ TO-DO
 - [ ] B. Rozsah: 10-12 normostran
 
 ## 1. Navržené téma
- 
-<span style="color:orange">SOLO</span>
 
 #### Duosomethingo - Aplikace pro sebevzdělání (xmikys03)
 Můj nápad byl vytvořit aplikaci rozšiřující a spojující vzdělávací aplikace jako Duolingo (pro cizí jazyky) a Flashcards (pro zapamatování pojmů). Celá aplikace by měla pojmout témata primárně v oblastech IT světa, například - Řecká abeceda, rozpoznání elektrotechnických součástek, procvičování návrhových vzorů. Způsob procvičování by byl od formy vybírání z 4 možností, přes spojování pojmů až po doplňování názvů uživatelem. 
 
-### CarTrack - Elektronická kniha jízd
+#### CarTrack - Elektronická kniha jízd (xgabry01)
 Nápad vznikl se zaměřením na profesionální řidiče, kdy jsem je nejednoul slyšel stěžovat si na zápis do papírové knihy jízd. S tímto přišel nápad na vytvoření elektronické knihy jízd pro firmy/profesionální řidiče. V aplikaci by bylo možné si vybrat z nabídky aut vlastněné firmou konkrétní vozidlo použité při jízdě a pouze zadat konečný stav tachometru. V aplikaci by se zobrazil počet ujetých kilometrů za jízdu, jelikož by si aplikace uchovávala všechny záznamy a odečetla by nejnovější záznam tachometru od záznamu minulé jízdy. V úvahu padla i možnost rozšířit aplikaci o informaci o konkrétních autech či tlačítko 'Potřebuji pomoc', kdy by se uživateli zobrazilo číslo na asistenční službu/ZS či jak postupovat v případě nehody. 
 
 #### Restauranto - Aplikace pro číšníky (xbielg00)
@@ -120,9 +115,12 @@ Mimo to se ale jedná o variantu, která nemusí být vždy intuitivní a jednod
  
 <span style="color: #31c3d4">TEAM</span>
 
-- rozdělění práce
-- rozhodnutí jakým způsob byl zvolen
-    - pravděpodobně **2** -> každý má svoji část ve FIGMA
+Rozhodli jsme se pro 2. způsob - rozdělení částí aplikace.
+
+Rozdělení práce:
+- xmikys03:
+- xgabry01:
+- xbielg00:
 
 ## 7. Návrh aplikace - Návrh makety
  
