@@ -208,8 +208,32 @@ Rozdělení práce:
 - jaké odhalilo nedostatky
     - řešení nedostatků
 
+odkládám zde, jelikož GitHub is down
+
+
 ## 9. Technické řešení + technologie
  
 <span style="color: #31c3d4">TEAM</span>
 
-- Flutter, ...
+- Způsob spolupráce: 
+    - Použití platformy pro správu verzí aplikaci **GitHub** a založení společného repozitáře.
+    - Pro týmovou komunikaci jsme použili aplikaci **Discord** a na něm založili vlastní server s místnostmi týkajících se jednotlivých částí aplikace a návrhu.
+    - Aplikaci jsme vyvíjeli pomocí frameworku Flutter.
+    - **použitý jazyk** :
+    - **simulace databáze** :
+      
+**tasks**:
+
+<span style="color: #31c3d4">TEAM</span>  
+
+- [ ] kostra aplikace
+- [ ] základní datový model (stačí jednoduchá datová struktura) -- tedy napojení na ezpez databázi
+- [ ] minimální funkčnost BackEndu - Operace Create a Read
+
+<span style="color:orange">SOLO</span>
+
+- [ ] nainstalované vývojové prostředí
+- [ ] doplnění kostry o svůj GUI prvek a napojení na BE, stačí **jedno tlačítko** k odeslání požadavku/zavolání funkce a textový GUI element k zobrazení výsledku.
+    - [ ] třeba si jen zavolat soubor s databází aut
+    - [ ] další z nás s databází uživatelů a ty listy zobrazit
+    - [ ] třeba zobrazit detail 1 uživatele.
