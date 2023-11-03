@@ -128,7 +128,7 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
 Respondenti:
 - xmikys03: Michal B. (bývalý řidič rozvozu KFC), David Š. (COO v ARBO, jízda firemním autem s kameramami pro skenování stromů), Samuel Č. (Wolt řidič), Patrik K. (bezpečností specialista v Red Hat), Michal H. (PHP developer)
 - xgabry01: Jan K. (profesionální řidič nákladních vozidel), Veronika K. (řidička pro nemocniční zásobování)
-- xbielg00:
+- xbielg00: Ludmila M. (zdrvotní sestra v terénu), Patrik Š. (podnikatel)
 
 ## 4. Analýza existující aplikace
 
