@@ -6,15 +6,12 @@
 - **Jakub Mikyšek (xmikys03) - vedoucí**
 
 TO-DO
-- [x] 1. Navržené téma
-- [x] 2. Vybrané téma
-- [x] 3. Analýza uživatelských potřeb a klíčových problémů
 - [ ] 4. Analýza existující aplikace
     - [x] xmikys
     - [x] xbielg
     - [ ] xgabry
 - [x] 5. Uživatelské potřeby a klíčové problémy
-- [ ] 6. Návrh aplikace - Rozdělení práce
+- [x] 6. Návrh aplikace - Rozdělení práce
 - [ ] 7. Návrh aplikace - Návrh makety
     - [ ] xmikys
     - [ ] xbielg
@@ -132,14 +129,12 @@ Respondenti:
 
 ## 4. Analýza existující aplikace
 
-<span style="color:orange">SOLO</span>
-
 - popsat
     - přednosti a nedostatky
 - jak se budeme inspirovat a jak řešit nedostatky?
 - lze se zeptat i uživatelů
 
-#### Papírová podoba
+#### Papírová podoba (xgabry01)
 
 #### Excel Tabulka (xmikys03)
 Implementací tohoto problémů není opravdu mnoho, jedno z řešením může být sdílená excelová tabulka.
@@ -147,7 +142,7 @@ Mezi přednosti bych uvedl snadnou přenositelnost a přístupnost napříč vš
 Mimo to se ale jedná o variantu, která nemusí být vždy intuitivní a jednoduše může dojít k poškození či **ztrátě/smazání dat, při špatné manipulaci uživatelem**.
 Řešení naší aplikace: Uživatel přidává data a nemůže editovat nebo mazat data, která již byla napsána jinými uživateli. 
 
-#### Elektronická kniha jízd
+#### Elektronická kniha jízd (xbielg00)
  [Satelitni Sledovani Cz - Elektronická kniha jízd](https://satelitnisledovani.cz/funkce/elektronicka-kniha-jizd?gad=1&gclid=CjwKCAjwp8OpBhAFEiwAG7NaEtv_5M5m_w0kIFcoJ2FhajByzBRqAQhAaMwz79j_jqRGMVX71QCXCRoCLtIQAvD_BwE)  
 
 Elektronická kniha jízd je produkt, který umožňuje monitorovat a evidovat jízdy vozidel pomocí GPS lokátorů. Produkt má některé funkce, které se zdají být užitečné jako je automatické zpracování dat, rozlišení typu a účelu jízdy, zobrazení jízd na mapě, pravidelné odesílání dat do účtárny, mobilní aplikace a připomínky a upozornění na servis a pojištění. 
@@ -157,8 +152,6 @@ Nicméně, produkt má také mnoho nedostatků. Mezi jeho nedostatky patří nut
 Produkt má různé ceny podle typu a funkčnosti GPS lokátorů, které se pohybují od 150 Kč do 200 Kč za měsíc za každý lokátor, plus jednorázová cena za koupi lokátoru, která se pohybují od 2 390 Kč do 5 590 Kč.
 
 ## 5. Uživatelské potřeby a klíčové problémy
- 
-<span style="color: #31c3d4">TEAM</span>
 
 Na základě provedené analýzy uživatelských potřeb a existujících řešení jsme identifikovali několik klíčových potřeb a problémů, které naše aplikace bude řešit:
 
@@ -178,18 +171,18 @@ Na základě provedené analýzy uživatelských potřeb a existujících řeše
 
 8. **Poznámky a komunikace mezi uživateli**: Někteří uživatelé chtějí možnost přidávání poznámek nebo komunikace ohledně vozidel a jízd.
 
+9. **Zaznamenání účelu jízdy**: Dle požadavků jsme vyhodnotili přidání účelu jízdy (typ) jako vhodné rozšíření našich nápadů.
+
 Tyto klíčové potřeby a problémy budou zohledněny při návrhu a vývoji naší aplikace, abychom poskytli uživatelům efektivní a uživatelsky přívětivé řešení pro správu knihy jízd a souvisejících úkolů.
 
 ## 6. Návrh aplikace - Rozdělení práce
- 
-<span style="color: #31c3d4">TEAM</span>
 
-Rozhodli jsme se pro 2. způsob - rozdělení částí aplikace.
+Rozhodli jsme se pro 2. způsob - rozdělení částí aplikace do jednoho společného celku.
 
 Rozdělení práce:
-- xmikys03:
-- xgabry01:
-- xbielg00:
+- xmikys03: menu pro výběr aut, editace a přidání aut
+- xgabry01: základní komponenty, uživatel - registrace a výběr
+- xbielg00: zapisování kilometrů a detaily s tím spojené
 
 ## 7. Návrh aplikace - Návrh makety
  
