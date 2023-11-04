@@ -9,7 +9,7 @@ TO-DO
 - [ ] 4. Analýza existující aplikace
     - [x] xmikys
     - [x] xbielg
-    - [ ] xgabry
+    - [x] xgabry
 - [x] 5. Uživatelské potřeby a klíčové problémy
 - [x] 6. Návrh aplikace - Rozdělení práce
 - [ ] 7. Návrh aplikace - Návrh makety
