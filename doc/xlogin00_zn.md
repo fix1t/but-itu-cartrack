@@ -78,11 +78,12 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
 
 6. _Prováděli byste raději výběr auta z nabídky pomocí firmou zvoleného názvu nebo pomocí SPZ?_
 
-    <figure>
-        <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/278081132-42150c51-b4e6-4418-a4c7-ce4b45631f9f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231025%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231025T162726Z&X-Amz-Expires=300&X-Amz-Signature=c8d7a676099210dc66b6f1903ca1286366096b47441700fddea2d3e3319889b6&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
-            alt="Graf volba SPZ/jméno auta">
-        <figcaption>Nejlepší volbou z pohledu uživatelů je vyhledávání pomocí SPZ i názvu auta.</figcaption>
-    </figure>
+<figure style="margin: 0 auto;
+    text-align: center;">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/278081132-42150c51-b4e6-4418-a4c7-ce4b45631f9f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231025%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231025T162726Z&X-Amz-Expires=300&X-Amz-Signature=c8d7a676099210dc66b6f1903ca1286366096b47441700fddea2d3e3319889b6&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+        alt="Graf volba SPZ/jméno auta">
+    <figcaption>Nejlepší volbou z pohledu uživatelů je vyhledávání pomocí SPZ i názvu auta.</figcaption>
+</figure>
 
 7. _Vnímáte jako výhodu si pouze vybrat vašeho uživatele z nabídky aplikace místo repetitivního zapisování vašeho jména do knihy jízd?_
 
@@ -90,11 +91,12 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
 
 8. _Ocenili byste mít v aplikaci číslo na asistenční službu, kterou máte placenou z vašeho povinného ručení a tím předejít placení navíc/hledání jakou službu firma používá?_
 
-    <figure>
-        <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/278084580-1988b5f7-df64-49a0-a82a-639aeb490dac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231025%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231025T163827Z&X-Amz-Expires=300&X-Amz-Signature=18eabe0051aded391bf26169169317eb3618922adf5ad87294821ae28e6f99f9&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
-            alt="Graf volba SPZ/jméno auta">
-        <figcaption style="text-align: center;">Zde už popularita klesala, i přesto by o to někteří měli zájem.</figcaption>
-    </figure>
+<figure style="margin: 0 auto;
+    text-align: center;">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/278084580-1988b5f7-df64-49a0-a82a-639aeb490dac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231025%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231025T163827Z&X-Amz-Expires=300&X-Amz-Signature=18eabe0051aded391bf26169169317eb3618922adf5ad87294821ae28e6f99f9&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+        alt="Graf volba SPZ/jméno auta">
+    <figcaption>Zde už popularita klesala, i přesto by o to někteří měli zájem.</figcaption>
+</figure>
     
 9. _Ocenili byste kdyby aplikace umožňovala také uvádět záznamy o tankování jednotlivých aut?_
 
@@ -168,13 +170,9 @@ Na základě provedené analýzy uživatelských potřeb a existujících řeše
 
 5. **Historie jízd a rychlé vyhledávání**: Uživatelé chtějí mít možnost sledovat historii svých jízd a rychle vyhledávat konkrétní záznamy.
 
-6. **Uchování a výpočet tachometru**: Aplikace by měla uchovávat stav tachometru z předchozích jízd a umožnit uživatelům snadno spočítat nově ujeté kilometry.
+6. **Detaily o vozidle**: Možnost zobrazit informace o jednotlivých vozidlech, včetně typu paliva, je pro uživatele důležitá.
 
-7. **Detaily o vozidle**: Možnost zobrazit informace o jednotlivých vozidlech, včetně typu paliva, je pro uživatele důležitá.
-
-8. **Poznámky a komunikace mezi uživateli**: Někteří uživatelé chtějí možnost přidávání poznámek nebo komunikace ohledně vozidel a jízd.
-
-9. **Zaznamenání účelu jízdy**: Dle požadavků jsme vyhodnotili přidání účelu jízdy (typ) jako vhodné rozšíření našich nápadů.
+7. **Poznámky a komunikace mezi uživateli**: Někteří uživatelé chtějí možnost přidávání poznámek nebo komunikace ohledně vozidel a jízd.
 
 Tyto klíčové potřeby a problémy budou zohledněny při návrhu a vývoji naší aplikace, abychom poskytli uživatelům efektivní a uživatelsky přívětivé řešení pro správu knihy jízd a souvisejících úkolů.
 
@@ -188,6 +186,21 @@ Rozdělení práce:
 - xbielg00: zapisování kilometrů a detaily s tím spojené
 
 ## 7. Návrh aplikace - Návrh makety
+
+<figure style="margin: 0 auto;
+        text-align: center;">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/280484790-bb3d7df2-34ce-413a-9560-b884800879df.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231104T180604Z&X-Amz-Expires=300&X-Amz-Signature=0c9abff73d190c7227748726a3c46ac77f8f2086b5b51893e34899cebbd351cf&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+        alt="Figma Mockup Overview">
+    <figcaption>Přehled celkové namodelované makety</figcaption>
+</figure>
+
+<figure style="margin: 0 auto;
+        text-align: center;">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/280485369-ec35d1ca-f519-4240-a797-ccc4cea133c3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231104T181836Z&X-Amz-Expires=300&X-Amz-Signature=ee5c795e5ae2c73eb25d9edaebe612438a3c1292fe36cb96425fd4f0f59d00e2&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+        alt="Figma Mockup Overview">
+    <figcaption>Centrální evidenci vozidel</figcaption>
+</figure>
+Uživatelé si přáli jednoduše vybrat jedno z firemních vozidel, k tomu jsme vytvořili i možnost přidat nová firemní auta.
  
 <span style="color:orange">SOLO</span>
 
