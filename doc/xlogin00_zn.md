@@ -23,6 +23,8 @@ TO-DO
 - [ ] 9. Technické řešení + technologie
 - [ ] A. Odebrat SOLO/TEAM, poznámky a TO-DO
 - [ ] B. Rozsah: 10-12 normostran
+- [ ] C. Titulní strana
+
 
 ## 1. Navržené téma
 
@@ -201,8 +203,15 @@ Rozdělení práce:
 - jaké odhalilo nedostatky
     - řešení nedostatků
 
-odkládám zde, jelikož GitHub is down
+Uživatelům, kterým bylo umožněněno testovat náš návrh aplikace byla zpřístupněna funkční maketa ve webové aplikaci Figma.
 
+Nedostatky odhalené při používání se vyskytly v následujícíh scénářích:
+- **Nemožnost se vrátit o krok zpět**
+    - Častá nespokojenost směřovala k nemožnosti vrátit se zpátky, uživatelé se zaseknuli a nevěděli, jak v programu pokračovat, v tomto ohledu budeme muset doimplementovat možnost nějaké zpětné šipky pro vrácení se o krok dozadu, je možné implementovat i z hlediska gesta (potáhnutí doprava, jak jsou standartně novodové OS telefonů tvořeny)
+- **Hláška o provedení akce**
+    - Připomínka od uživatele David Š. směřovala na nedostatek/až absenci chybových a úspěšných hlášek, podle testera bylo dobře zvolené červené podbarvení tlačítka v chybovém stavu, ale navíc by si přál získat i text s konkrétní chybou, to stejné pro úspěch např. vytvoření/smazaní uživatele nám bude doprovázet hláška o úspěchu
+    
+Testeři: Michal B., David Š. (bližší informace o uživatelech poskytnuty v sekci pro dotazníky)
 
 ## 9. Technické řešení + technologie
  
