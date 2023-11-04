@@ -217,13 +217,59 @@ Testeři: Michal B., David Š. (bližší informace o uživatelech poskytnuty v 
  
 <span style="color: #31c3d4">TEAM</span>
 
-- Způsob spolupráce: 
-    - Použití platformy pro správu verzí aplikaci **GitHub** a založení společného repozitáře.
-    - Pro týmovou komunikaci jsme použili aplikaci **Discord** a na něm založili vlastní server s místnostmi týkajících se jednotlivých částí aplikace a návrhu.
-    - Aplikaci jsme vyvíjeli pomocí frameworku Flutter.
-    - **použitý jazyk** :
-    - **simulace databáze** :
-      
+Pro náš projekt jsme jednoznačně zvolili technologii **Flutter** pro vývoj mobilní aplikace. Flutter je známý svou výkonností, rychlostí vývoje a schopností poskytnout křížovou kompatibilitu mezi *iOS* a *Android* platformami.
+
+Architektura naší aplikace bude postavena na návrhovém vzoru **MVC** (Model-View-Controller). **Model** bude obsahovat *datové struktury* pro ukládání informací o jízdách, vozidlech a uživatelích, a bude propojen s **Firebase databází**. Bude také zahrnovat funkce pro zpracování dat, výpočet kilometrů a uchovávání historie jízd. **View** bude zodpovědné za vizuální reprezentaci aplikace a uživatelské rozhraní, zatímco **Controller** bude obsahovat aplikační logiku, která řídí interakci mezi modelem a view.
+
+**Architektura FE**:
+- **Model (Data)**: V FE budeme používat datový model pro uchovávání informací o uživatelích, firmách, autech, jízdách, poznámkách a výdavcích. Firma má uživatele, kteří přidávají jízdy jednotlivým autům. Uživatelé mohou také přidávat poznámky a záznamy o výdajích za auto. Auta, která existují v rámci firmy, mají několik důležitých atributů, jako je počet ujetých kilometrů a další relevantní údaje.
+
+- **View (Uživatelské rozhraní)**:
+    - **Login (Přihlášení do firmy)**: První obrazovka, kde uživatel zadá přihlašovací údaje pro přístup do firmy.
+    - **User List (Seznam uživatelů)**: Seznam všech uživatelů v rámci firmy s možností výběru jednoho uživatele pro zobrazení detailů.
+    - **User Edit (Úprava uživatele)**: Umožní uživateli upravit svůj profil (např. jméno, kontakt).
+    - **Car List (Seznam vozidel)**: **Hlavní obrazovka**  s výpisem všech vozidel v rámci firmy.
+    - **Car Detail (Detail vozidla)**: Zobrazí informace o konkrétním vozidle, včetně jeho technických údajů a historie jízd.
+    - **Car Edit (Úprava vozidla)**: Umožní úpravu informací o vozidle (např. SPZ, typ paliva).
+    - **Add Ride (Přidání jízdy)**: Obrazovka **akce**, kde uživatel, pro vybrané vozidlo, zadáva údaje o jízdě.
+    - **Add Expense (Přidání výdaje)**: Přidání nového výdaje k vozidlu.
+    - **Add Note (Přidání poznámky)**: Přidání poznámky k vozidlu.
+    - **List Rides (Seznam jízd)**: Zobrazí seznam všech jízd auta.
+- **Controller (Řídící logika)**: Řídící část aplikace, která bude zprostředkovávat interakci mezi Modelem a View. Bude obsahovat funkce pro zpracování uživatelských akcí, validaci dat a komunikaci s backendem.
+
+**Architektura BE (Firebase)**:
+   - **Firebase Realtime Database (Databáze)**: Použijeme Firestore jako databázi pro ukládání uživatelských dat, jízd, výdajů a poznámek. Firestore poskytuje snadnou synchronizaci dat mezi FE a BE.
+   - **Firebase Authentication (Autentizace)**: Pro případnou autentizaci uživatelů by jsme využívali Firebase Authentication.
+
+
+**Použití Firebase Realtime Database a API**:
+
+V rámci naší aplikace jsme se rozhodli využít *Firebase Realtime Database* pro ukládání a správu dat. Firebase Realtime Database poskytuje cloudové úložiště s reálným časem, které je vhodné pro naše potřeby. Díky této volbě **nemusíme implementovat tradiční backend server s explicitními API endpointy**, protože Firebase nám umožňuje přistupovat k datům **přímo z frontendu**.
+
+Pro komunikaci s Firebase Realtime Database v naší aplikaci budeme používat balíček `firebase_database` pro Flutter.
+
+Při získávání dat z databáze v naší aplikaci budeme vytvářet reference na konkrétní cesty (kolekce a dokumenty) v databázi a následně provádět operace nad těmito daty. Například pro získání dat konkrétního uživatele budeme používat následující kód:
+
+```dart
+import 'package:firebase_database/firebase_database.dart';
+
+final DatabaseReference usersRef = FirebaseDatabase.instance.reference().child('users');
+
+void fetchUserData(String userID) {
+  usersRef.child(userID).once().then((DataSnapshot snapshot) {
+    if (snapshot.value != null) {
+      Map<dynamic, dynamic> data = snapshot.value;
+      // Zde můžeme provádět operace s daty
+      print('Jméno uživatele: ${data['name']}');
+    }
+  });
+}
+```
+
+V tomto příkladu vytváříme referenci na cestu users v databázi a následně získáváme data konkrétního uživatele na základě jeho ID. Získaná data můžeme dále zpracovat v naší aplikaci.
+
+Tímto způsobem budeme komunikovat s Firebase Realtime Database, a to včetně operací pro **získání, aktualizaci, přidání** a **mazání** dat podle potřeby v naší aplikaci.
+
 **tasks**:
 
 <span style="color: #31c3d4">TEAM</span>  
