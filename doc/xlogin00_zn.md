@@ -80,45 +80,45 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
 
 <figure style="margin: 0 auto;
     text-align: center;">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/278081132-42150c51-b4e6-4418-a4c7-ce4b45631f9f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231025%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231025T162726Z&X-Amz-Expires=300&X-Amz-Signature=c8d7a676099210dc66b6f1903ca1286366096b47441700fddea2d3e3319889b6&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+    <img src="https://private-user-images.githubusercontent.com/94748640/280488158-b722133f-4ba5-402f-b143-7627f868b083.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU5NDcsIm5iZiI6MTY5OTEyNTY0NywicGF0aCI6Ii85NDc0ODY0MC8yODA0ODgxNTgtYjcyMjEzM2YtNGJhNS00MDJmLWIxNDMtNzYyN2Y4NjhiMDgzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MjA0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWMyYjI4YTllNzMyMDAwOTcyODgyYTNlZDI1OGMwYzYxNGE0MjQ4ODg0MDhiMTI0MjBhZTYwYjYwMDRlODhkNTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.lYOK1MIX2e2MuTBDLAFu-jiIvKDLHWQ3TNGFgkDVb1M"
         alt="Graf volba SPZ/jméno auta">
     <figcaption>Nejlepší volbou z pohledu uživatelů je vyhledávání pomocí SPZ i názvu auta.</figcaption>
 </figure>
 
-7. _Vnímáte jako výhodu si pouze vybrat vašeho uživatele z nabídky aplikace místo repetitivního zapisování vašeho jména do knihy jízd?_
+1. _Vnímáte jako výhodu si pouze vybrat vašeho uživatele z nabídky aplikace místo repetitivního zapisování vašeho jména do knihy jízd?_
 
     Opětovně se **90%** dotazovaných vyjádřilo **velmi pozitivně**, jen 1 zůstal neutrální. Výběr uživatele v aplikaci je důležitá funkce pro pohodlné používání.
 
-8. _Ocenili byste mít v aplikaci číslo na asistenční službu, kterou máte placenou z vašeho povinného ručení a tím předejít placení navíc/hledání jakou službu firma používá?_
+2. _Ocenili byste mít v aplikaci číslo na asistenční službu, kterou máte placenou z vašeho povinného ručení a tím předejít placení navíc/hledání jakou službu firma používá?_
 
 <figure style="margin: 0 auto;
     text-align: center;">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/278084580-1988b5f7-df64-49a0-a82a-639aeb490dac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231025%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231025T163827Z&X-Amz-Expires=300&X-Amz-Signature=18eabe0051aded391bf26169169317eb3618922adf5ad87294821ae28e6f99f9&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+    <img src="https://private-user-images.githubusercontent.com/94748640/280488105-2d581c91-6412-455d-ab8e-5a7fedc93293.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU4NzksIm5iZiI6MTY5OTEyNTU3OSwicGF0aCI6Ii85NDc0ODY0MC8yODA0ODgxMDUtMmQ1ODFjOTEtNjQxMi00NTVkLWFiOGUtNWE3ZmVkYzkzMjkzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTkzOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4MjZlMTRlYzFlZGQxNDQzZmE1ODM4ZmQwMGJkMGI1MmQ5ZGMwYWY1ZDhlYTc3MWZkZDc2YmI3YTQ2ZTE1NWYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.kY5xejmJcw6TxgxDzdUSXH_1JaPPgZFj-1jGRxMLIV0"
         alt="Graf volba SPZ/jméno auta">
     <figcaption>Zde už popularita klesala, i přesto by o to někteří měli zájem.</figcaption>
 </figure>
     
-9. _Ocenili byste kdyby aplikace umožňovala také uvádět záznamy o tankování jednotlivých aut?_
+1. _Ocenili byste kdyby aplikace umožňovala také uvádět záznamy o tankování jednotlivých aut?_
 
     Tady již se vyjádřilo pozitivně trochu více lidí (přes 80% hlasovalo pro hodnocení 4 nebo lepší). V otevřené reakci na konci dotazníku jsme získali dobrý podnět, že by bylo žádoucí vidět i momentální stav nádrže - ne jenom to, kdy bylo naposledy natankováno.
 
-10. _Ocenili byste možnost přidání poznámek k jednotlivým autům? (např. zanechání vzkazu pro ostatní řidiče, kde jste uložili technický průkaz či přidání záznamu o poruše/nehodě)_
+2.  _Ocenili byste možnost přidání poznámek k jednotlivým autům? (např. zanechání vzkazu pro ostatní řidiče, kde jste uložili technický průkaz či přidání záznamu o poruše/nehodě)_
 
     Pozitivně byla hodnocena i tato funkčnost, pro hodnocení 5 hlasovalo 65% respondentů (pozitivní přes 80%).
 
-11. _Ocenili byste tlačítko "Potřebuji pomoct", kdy by se vám po stisknutí zobrazilo info, jak postupovat v případě nehody/poruchy i např. s číslem na asistenční službu či ZS._
+3.  _Ocenili byste tlačítko "Potřebuji pomoct", kdy by se vám po stisknutí zobrazilo info, jak postupovat v případě nehody/poruchy i např. s číslem na asistenční službu či ZS._
 
     U této otázky se naopak vyjádřilo pozitivně **jen 50% respondentů**, zbytek u tuto funkci nemá zájem.
 
-12. _Líbilo by se vám, kdyby si aplikace uchovávala stav tachometru z předchozích jízd a při zadání konečného stavu kilometrů po vaší jízdě vám zobrazila počet nově najetých kilometrů?_
+4.  _Líbilo by se vám, kdyby si aplikace uchovávala stav tachometru z předchozích jízd a při zadání konečného stavu kilometrů po vaší jízdě vám zobrazila počet nově najetých kilometrů?_
 
     Naopak tato otázka sklidila **90% pozitivních reakcí** (80% pro hodnocení 5). Případní uživatelé by o tuto funkci, která by eliminovala potřebu něco dopočítávat "z hlavy" nebo na kalkulačce, měli opravdu zájem.
 
-13. _Ocenili byste mít možnost zobrazit si detail auta? Jednalo by se např. o typ paliva (DIESEL/BENZÍN)._
+5.  _Ocenili byste mít možnost zobrazit si detail auta? Jednalo by se např. o typ paliva (DIESEL/BENZÍN)._
 
     Detail vozidla se zdá být také důležitý (5 - 72%, 4 - 18%), s čísel jde vidět, že by funkce mohla být žádaná.
 
-14. _Uvítali byste ještě nějakou další funkcionalitu aplikace kromě výše popsaných?_ 
+6.  _Uvítali byste ještě nějakou další funkcionalitu aplikace kromě výše popsaných?_ 
 
     Respondenti zvažovali následující rozšiřující funkcionality:
     - Zapsání účelu jízdy
@@ -189,18 +189,38 @@ Rozdělení práce:
 
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/280484790-bb3d7df2-34ce-413a-9560-b884800879df.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231104T180604Z&X-Amz-Expires=300&X-Amz-Signature=0c9abff73d190c7227748726a3c46ac77f8f2086b5b51893e34899cebbd351cf&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+    <img src="https://private-user-images.githubusercontent.com/94748640/280487696-d4a91d17-5c78-4b91-a7a6-0b39ac971591.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjUzNjQsIm5iZiI6MTY5OTEyNTA2NCwicGF0aCI6Ii85NDc0ODY0MC8yODA0ODc2OTYtZDRhOTFkMTctNWM3OC00YjkxLWE3YTYtMGIzOWFjOTcxNTkxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWRhMWU1OWM2MDIzYmRkNjJlZGI2NjY0YzEzYWE3MGM5YTc2MWMzODEyNDM3OTY5YjY5NDAyM2RkNTI2YTQ1NTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.xhXFg6PW-QWTL_L4YDXj2cicHHYxANClEdMvn13CQCo"
         alt="Figma Mockup Overview">
     <figcaption>Přehled celkové namodelované makety</figcaption>
 </figure>
 
+
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94748640/280485369-ec35d1ca-f519-4240-a797-ccc4cea133c3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231104T181836Z&X-Amz-Expires=300&X-Amz-Signature=ee5c795e5ae2c73eb25d9edaebe612438a3c1292fe36cb96425fd4f0f59d00e2&X-Amz-SignedHeaders=host&actor_id=94748640&key_id=0&repo_id=701465030"
+    <img src="https://private-user-images.githubusercontent.com/94748640/280487780-c99df187-fb14-4d75-ab9f-f0053a83cbc7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU0NzEsIm5iZiI6MTY5OTEyNTE3MSwicGF0aCI6Ii85NDc0ODY0MC8yODA0ODc3ODAtYzk5ZGYxODctZmIxNC00ZDc1LWFiOWYtZjAwNTNhODNjYmM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTI1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWUwYjEzN2IxNGU4Nzk5MGUwZDFmYjZiOTUyOGI1Yjc4NjRiNzcxZTc3YzQwYjdlMmM3YmU5NmIxYzQ2N2IwNTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.Y9OM6SThSWEhzjVEc-07uKdMkGSc_58KNo4jYpEJfqI"
         alt="Figma Mockup Overview">
-    <figcaption>Centrální evidenci vozidel</figcaption>
-</figure>
+    <figcaption>Centrální evidence vozidel</figcaption>
+</figure>  
 Uživatelé si přáli jednoduše vybrat jedno z firemních vozidel, k tomu jsme vytvořili i možnost přidat nová firemní auta.
+
+<figure style="margin: 0 auto;
+        text-align: center;">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94356069/280487460-40673fd6-4c79-4565-8253-67d32871b160.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231104T190911Z&X-Amz-Expires=300&X-Amz-Signature=16c2e5d92d9816e706a6247aee72c3e22e5396391abcf8aff8b0e3549997dc68&X-Amz-SignedHeaders=host&actor_id=94356069&key_id=0&repo_id=701465030"
+        alt="Figma Finished Ride with shown end state of kms">
+    <figcaption>Zobrazení počtu ujetých kilometrů společně se záměrem a destinací jízdy + zobrazení tlačítka s informacemi o asistenční službě </figcaption>
+</figure>
+
+<figure style="margin: 0 auto;
+        text-align: center;">
+    <img src="https://private-user-images.githubusercontent.com/94356069/280488176-c69431d5-52d7-49ce-9110-d7b126c9621b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU5NjQsIm5iZiI6MTY5OTEyNTY2NCwicGF0aCI6Ii85NDM1NjA2OS8yODA0ODgxNzYtYzY5NDMxZDUtNTJkNy00OWNlLTkxMTAtZDdiMTI2Yzk2MjFiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MjEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRjN2YzZDZhM2I5MDQ1MzI4OWM3NDBjMDhmOWMyZDlmZTg4ZmZlZGY4NmM1MjU3YzZmYjk5ODlmMzk3Njk1OWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.4JFQ4gO6KJzmi0A4Et3_8LXTOwGHbMRzCwiQVOZy9Z4">
+    <figcaption>Náhledová stránka s přehledem stavu tachometru, detailu vozidla i možnost přidání poznámek/záznamů tankování </figcaption>
+</figure>
+ 
+<figure style="margin: 0 auto;
+        text-align: center;">
+    <img src="https://private-user-images.githubusercontent.com/94356069/280488086-6b0c6f2e-12de-44d7-8567-0e8382999f96.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU4NTAsIm5iZiI6MTY5OTEyNTU1MCwicGF0aCI6Ii85NDM1NjA2OS8yODA0ODgwODYtNmIwYzZmMmUtMTJkZS00NGQ3LTg1NjctMGU4MzgyOTk5Zjk2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTkxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEzMzJhYjliNGZjNTdhMzQ3Y2RkYzA0ZmE4ZGQ1N2JiZjllMzYzNDY4MzZlY2NjMDAyNjNiZTkyMTNjNTM0MDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ChtdwzIxJ_P_elHbezmvzWsEZJB14fW36W2RAGOCHLQ">
+    <figcaption>Zobrazení interaktivní změny tlačítka započaté jízdy</figcaption>
+</figure>
  
 <span style="color:orange">SOLO</span>
 
