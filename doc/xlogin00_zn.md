@@ -238,7 +238,7 @@ Architektura naší aplikace bude postavena na návrhovém vzoru **MVC** (Model-
 - **Controller (Řídící logika)**: Řídící část aplikace, která bude zprostředkovávat interakci mezi Modelem a View. Bude obsahovat funkce pro zpracování uživatelských akcí, validaci dat a komunikaci s backendem.
 
 **Architektura BE (Firebase)**:
-   - **Firebase Realtime Database (Databáze)**: Použijeme Firestore jako databázi pro ukládání uživatelských dat, jízd, výdajů a poznámek. Firestore poskytuje snadnou synchronizaci dat mezi FE a BE.
+   - **Firebase Realtime Database (Databáze)**: Použijeme Firebase Realtime Database jako databázi pro ukládání uživatelských dat, jízd, výdajů a poznámek. Ta nám poskytuje snadnou synchronizaci dat mezi FE a BE.
    - **Firebase Authentication (Autentizace)**: Pro případnou autentizaci uživatelů by jsme využívali Firebase Authentication.
 
 
