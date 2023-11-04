@@ -196,13 +196,6 @@ Rozdělení práce:
 
 ## 8. Návrh aplikace - Testování
 
-<span style="color:orange">SOLO</span>
-
-- metriky + vyhodnocení
-- jak probíhalo testování
-- jaké odhalilo nedostatky
-    - řešení nedostatků
-
 Uživatelům, kterým bylo umožněněno testovat náš návrh aplikace byla zpřístupněna funkční maketa ve webové aplikaci Figma.
 
 Nedostatky odhalené při používání se vyskytly v následujícíh scénářích:
@@ -210,12 +203,12 @@ Nedostatky odhalené při používání se vyskytly v následujícíh scénář�
     - Častá nespokojenost směřovala k nemožnosti vrátit se zpátky, uživatelé se zaseknuli a nevěděli, jak v programu pokračovat, v tomto ohledu budeme muset doimplementovat možnost nějaké zpětné šipky pro vrácení se o krok dozadu, je možné implementovat i z hlediska gesta (potáhnutí doprava, jak jsou standartně novodové OS telefonů tvořeny)
 - **Hláška o provedení akce**
     - Připomínka od uživatele David Š. směřovala na nedostatek/až absenci chybových a úspěšných hlášek, podle testera bylo dobře zvolené červené podbarvení tlačítka v chybovém stavu, ale navíc by si přál získat i text s konkrétní chybou, to stejné pro úspěch např. vytvoření/smazaní uživatele nám bude doprovázet hláška o úspěchu
+- **Design Input Fields**
+    - Uživatel Michal A. (FE vývojář) namítl, že mu nepřijde zřejmé jaké pole jsou možné editovat v kartě detailu uživatele, bylo by tedy dobré v implementované verzi tuto designovou chybku ošetřit, ať je opravdu zřejmé.
     
-Testeři: Michal B., David Š. (bližší informace o uživatelech poskytnuty v sekci pro dotazníky)
+Testeři: Michal B., David Š., Jan K., Patrik Š., Michal A. (bližší informace o uživatelech poskytnuty v sekci pro dotazníky)
 
 ## 9. Technické řešení + technologie
- 
-<span style="color: #31c3d4">TEAM</span>
 
 Pro náš projekt jsme jednoznačně zvolili technologii **Flutter** pro vývoj mobilní aplikace. Flutter je známý svou výkonností, rychlostí vývoje a schopností poskytnout křížovou kompatibilitu mezi *iOS* a *Android* platformami.
 
