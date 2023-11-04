@@ -213,7 +213,7 @@ Uživatelé si přáli jednoduše vybrat jedno z firemních vozidel, k tomu jsme
 <figure style="margin: 0 auto;
         text-align: center;">
     <img src="https://private-user-images.githubusercontent.com/94356069/280488176-c69431d5-52d7-49ce-9110-d7b126c9621b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU5NjQsIm5iZiI6MTY5OTEyNTY2NCwicGF0aCI6Ii85NDM1NjA2OS8yODA0ODgxNzYtYzY5NDMxZDUtNTJkNy00OWNlLTkxMTAtZDdiMTI2Yzk2MjFiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MjEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRjN2YzZDZhM2I5MDQ1MzI4OWM3NDBjMDhmOWMyZDlmZTg4ZmZlZGY4NmM1MjU3YzZmYjk5ODlmMzk3Njk1OWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.4JFQ4gO6KJzmi0A4Et3_8LXTOwGHbMRzCwiQVOZy9Z4">
-    <figcaption>Náhledová stránka s přehledem stavu tachometru, detailu vozidla i možnost přidání poznámek/záznamů tankování </figcaption>
+    <figcaption> Náhledová stránka s přehledem stavu tachometru, detailu vozidla i možnost přidání poznámek/záznamů tankování </figcaption>
 </figure>
  
 <figure style="margin: 0 auto;
