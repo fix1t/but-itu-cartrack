@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "1054522879949",
+    "firebase_url": "https://cartravk-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cartravk",
+    "storage_bucket": "cartravk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054522879949:android:52ce307e61d86b3df51e84",
+        "android_client_info": {
+          "package_name": "but.itu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCtuj5R1ubLglx2EYZll935AM1YQvaSQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054522879949:android:f8c1a0f555d8dcfef51e84",
+        "android_client_info": {
+          "package_name": "but.itu.itu_cartrack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCtuj5R1ubLglx2EYZll935AM1YQvaSQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
