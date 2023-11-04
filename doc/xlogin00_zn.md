@@ -6,24 +6,11 @@
 - **Jakub Mikyšek (xmikys03) - vedoucí**
 
 TO-DO
-- [ ] 4. Analýza existující aplikace
-    - [x] xmikys
-    - [x] xbielg
-    - [x] xgabry
-- [x] 5. Uživatelské potřeby a klíčové problémy
-- [x] 6. Návrh aplikace - Rozdělení práce
-- [ ] 7. Návrh aplikace - Návrh makety
-    - [ ] xmikys
-    - [ ] xbielg
-    - [ ] xgabry
-- [ ] 8. Návrh aplikace - Testování
-    - [ ] xmikys
-    - [ ] xbielg
-    - [ ] xgabry
-- [ ] 9. Technické řešení + technologie
-- [ ] A. Odebrat SOLO/TEAM, poznámky a TO-DO
-- [ ] B. Rozsah: 10-12 normostran
-- [ ] C. Titulní strana
+- [ ] A. Rozsah: 10-12 normostran
+- [ ] B. Titulní strana
+- [ ] C. Kontrola pravopis zprávy
+- [ ] D. Zabalit kostru do zip
+- [ ] E. Odebrat TO-DO
 
 
 ## 1. Navržené téma
@@ -80,7 +67,7 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
 
 <figure style="margin: 0 auto;
     text-align: center;">
-    <img src="https://private-user-images.githubusercontent.com/94748640/280488158-b722133f-4ba5-402f-b143-7627f868b083.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU5NDcsIm5iZiI6MTY5OTEyNTY0NywicGF0aCI6Ii85NDc0ODY0MC8yODA0ODgxNTgtYjcyMjEzM2YtNGJhNS00MDJmLWIxNDMtNzYyN2Y4NjhiMDgzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MjA0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWMyYjI4YTllNzMyMDAwOTcyODgyYTNlZDI1OGMwYzYxNGE0MjQ4ODg0MDhiMTI0MjBhZTYwYjYwMDRlODhkNTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.lYOK1MIX2e2MuTBDLAFu-jiIvKDLHWQ3TNGFgkDVb1M"
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHee4HZG0wvxfqQ5T_KrIurLwTU0j4S7VIWsN8aqAsVfjyTrKUrgbPd5K06cTwKpVrzVsErY17YTz0qI9R0S16wd9BQCXpDYuQ2-pcWKZZoKQrlwlt4ANetCNqQa_7TZ7-EgXi8WgPvsj4c07ynicMo_hGswOQjEzaltGVVjG5JSvdD--w9CFXnDRSci2WvlULlSQfHJOb_0V7ButS-E2U8lgGZqr8qYHEGyKAV8jO0kdufONmC5L3_Vk2TEUsog93TOdSahILrWPBomrPnydNNGNfw_3j7EEKSZ5ITmZbzDGgNq0aijzixpzTyMqMRQLRKJ5rxVZiRaMz2boBD1sFuBwO10ckiocgzeVMwY8ljeyjEkcOpjenvo78eMpVWgoS_WqZT-0Q8s-lon8XGCgx284h1MzOlb02j1DY-Atn4FAu11ArfAij-IyF1ZigpaF2Au0NvJ7KMbfsB4uSEgytNgiUCRGAu5n5xJYNjOX3tLIRhE8qGyBy3xiZ_UxmKoE9q4xmxjOhfUiB-ZUv7KO9oDNyG8F2OdE1xmBchmjpH3-DmjPj9zQE8UXgSeKZ2UGG--ci5abUs4aoK07SaSF64NuDUe2J-eCoH2EIrNe-KqMurdhnu6ouNd1VoEJ0nEy4iplnpGVOaTz_MzynOWqN44ABa_4S0IlrnmpAiqMfPo-79xjBTMbs8HA3O7PPLZ4T6SVXvh4-76rS5dwqk2uzMmbm8146flMfzSZfCGvKaZVT6DEh7vuf4o1vs1zKj6x4VJNODRHKC9mCrXCRYJsHV0MORRjm3RNJ8AKKlPlOrfpxalh5YEE0P_1xTqfBnp-_9TeKqKBzH_bH0wVQ5zHdS0YBJfnmU0kKTF5L3IC7X7nXecjj9l5q6Ek0k8LEtOgeJGL4oYVzp7_2DgcugWgcY5UnG-7Sv0i2H9c4N3-9Qdk8IGkOyoyKgZXard-8Q9psTIx3yMPJG6Df_jRFrJ4eD4MaRyA8cyzJoFihsTbtHNvY-DyhdG6fQUKfMKm_pEIsuM=w495-h246-s-no-gm?authuser=0"
         alt="Graf volba SPZ/jméno auta">
     <figcaption>Nejlepší volbou z pohledu uživatelů je vyhledávání pomocí SPZ i názvu auta.</figcaption>
 </figure>
@@ -93,7 +80,7 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
 
 <figure style="margin: 0 auto;
     text-align: center;">
-    <img src="https://private-user-images.githubusercontent.com/94748640/280488105-2d581c91-6412-455d-ab8e-5a7fedc93293.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU4NzksIm5iZiI6MTY5OTEyNTU3OSwicGF0aCI6Ii85NDc0ODY0MC8yODA0ODgxMDUtMmQ1ODFjOTEtNjQxMi00NTVkLWFiOGUtNWE3ZmVkYzkzMjkzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTkzOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4MjZlMTRlYzFlZGQxNDQzZmE1ODM4ZmQwMGJkMGI1MmQ5ZGMwYWY1ZDhlYTc3MWZkZDc2YmI3YTQ2ZTE1NWYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.kY5xejmJcw6TxgxDzdUSXH_1JaPPgZFj-1jGRxMLIV0"
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHehq2rScd9PyC4tx3hJsbnGmTFWDJMzV8VNx98QEDYPK1AYBGat35A8p8eaJlfdjxQg6CEjyCneB-BeKk3ae23V3Dd7LYkWlXgYe_RJ1S5bv7ZzzkZIcR706wGBEkcATfezSL88-fjRPTSCWMacCW7xW_sIu8Zke6UWcX172kIdOJ8RiQ-XkYAED2AbkEX6lUogwAw2qI2uuLyllMZqH12nr5qyQBFcw32Q7Lvn-RjARYXs2o_av_uk6igxOCe8evRK0eranzWBYFHZP4l4KHX51IB-yOIDY4t52jLwL7st6Or1oYoWHkNVclR61hd2kcpnWqxKvY0h_lwz7n1FkvtSRXf0ttpZnIg0psjhD2Lpy5g93zrmd_0-cgt2Z2ZXM0k6hWWoRQgS3l9oCL-62EwBBV7ZO9YOFyDhMUAII7UJaon5i3Si3qQIporsPAjQ8ZqubqDpf4QWbbejq39Usrk0cStJ2f2-TCjmCRYt3SrqqxZ1rheI9UcWJXzZfRkQSpMUoNoyErDZhhCdIb_pQMS_wI1IvCT4DNJ8PIo9RLOZ-Utzb5JWLcXBtncV-q-NhUW67Z-_ZWzxB0GV6XCDJXv_f850fCzYYv74yOLs-1U9RJQanV0uUT9cw1Pw_oQAKU-K-lMibUP6KmoaFTVrOHIjrbCXilpEBDrBXM0G3NjpH9lsGjw8VwhMeO1Xtz8qqS3EYNNnutqDgzUN6ktyWvZfANYOFXv6OtwAg5P1dW-rLqXXNv620YxCYbSNe4V8kh1pZxky_2muWo45XBo2gxdeaTDCwd4wGPMqiZGImUoVKvRLbr8n8Tuyq3hN9XYceQtwf3OyZdsFNyZkNzk9Dgpl6n0uzMDyXnqLD4VjsWZVFgNiGuZQ8m504XvJGsPw0BbmYogM_50XnXtM1tmFCg7gIMW_0Pk3454l9f_qzLcjWrsfcH4SKj4SdoxQtUqER4Q1OJb2C06p-h8PdCqelv8n35QS6eyzvH7V971ffqt7YhcnR8w0qsqZq9RbfERcVCZO=w703-h235-s-no-gm?authuser=0"
         alt="Graf volba SPZ/jméno auta">
     <figcaption>Zde už popularita klesala, i přesto by o to někteří měli zájem.</figcaption>
 </figure>
@@ -148,7 +135,7 @@ Mimo to se ale jedná o variantu, která nemusí být vždy intuitivní a jednod
 Řešení naší aplikace: Uživatel přidává data a nemůže editovat nebo mazat data, která již byla napsána jinými uživateli. 
 
 #### Elektronická kniha jízd (xbielg00)
- [Satelitni Sledovani Cz - Elektronická kniha jízd](https://satelitnisledovani.cz/funkce/elektronicka-kniha-jizd?gad=1&gclid=CjwKCAjwp8OpBhAFEiwAG7NaEtv_5M5m_w0kIFcoJ2FhajByzBRqAQhAaMwz79j_jqRGMVX71QCXCRoCLtIQAvD_BwE)  
+ [Satelitni Sledovani CZ - Elektronická kniha jízd](https://satelitnisledovani.cz/funkce/elektronicka-kniha-jizd?gad=1&gclid=CjwKCAjwp8OpBhAFEiwAG7NaEtv_5M5m_w0kIFcoJ2FhajByzBRqAQhAaMwz79j_jqRGMVX71QCXCRoCLtIQAvD_BwE)  
 
 Elektronická kniha jízd je produkt, který umožňuje monitorovat a evidovat jízdy vozidel pomocí GPS lokátorů. Produkt má některé funkce, které se zdají být užitečné jako je automatické zpracování dat, rozlišení typu a účelu jízdy, zobrazení jízd na mapě, pravidelné odesílání dat do účtárny, mobilní aplikace a připomínky a upozornění na servis a pojištění. 
 
@@ -189,44 +176,48 @@ Rozdělení práce:
 
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://private-user-images.githubusercontent.com/94748640/280487696-d4a91d17-5c78-4b91-a7a6-0b39ac971591.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjUzNjQsIm5iZiI6MTY5OTEyNTA2NCwicGF0aCI6Ii85NDc0ODY0MC8yODA0ODc2OTYtZDRhOTFkMTctNWM3OC00YjkxLWE3YTYtMGIzOWFjOTcxNTkxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWRhMWU1OWM2MDIzYmRkNjJlZGI2NjY0YzEzYWE3MGM5YTc2MWMzODEyNDM3OTY5YjY5NDAyM2RkNTI2YTQ1NTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.xhXFg6PW-QWTL_L4YDXj2cicHHYxANClEdMvn13CQCo"
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHeAgy6y1hpDx8tBCtdwOjEs2PVKOZCRPdGMNl1tJew0mFvRI8_mkwtis6tetLhVEbJMF8Qk0D4r-nHc1R9soCC6gfzNRwkAMyTm36K9G39E1V8fXR9WxS69m90qAzvoH-oax2_YD6lI5T8Q9LNpNgna0kkz2vFxv4IuAomO_o0Tpc5Hmw7SzG0WewQPhWou8rLjU0ZAIm5Pxg3kGgi-_QBNEpXJVSTmPtpJvsuIutDjhF8-ioho50E-6BJJRn6VqvoMgNCbd2JxBKGHrV4SymW0GSMgswCNIX9TKuhTUKvK4l39kMSutHAFqRtdt-4Hllmw1DjOGruEa-YLfZlT396PttMwmQUQUQPNYVWFwZAo1dNHHcg-PNeb4E_f6tmRfJQSNRyReAbhzrmk-MsLgvOxfGj05CbMq1yGv34tm-ScPkVvqH6Lksm-i_B79oeFMcyO-fY35jHrlFj7r_k6sKGTjLdh9cvMrAPJyHB5zzdLsv4gJpLwn-NnYUrbTqallQDZv7zJzi0mjgnY35FYHzYRvWxuC2fp71IVtgBgy5qqIm86w2GCxp8RrR6XzeUVwpYE-Whx6ac2soHRtyKK8HYunCt3OMHC2i7xqVtwiuYGnHeeW-btsIYvL8yhtDczbuTngOM1a12-ERKKwtp0HJU-bIFVUutK407EqpXL1tsyifVE02kgwjCKhwzN7D16rhTZkWbma86JBcnDBK1HyuIezG3khgdg8IdIdpC2IHHLii5V_ZLru_Y9k8wQcafw9fSiIE3Rjf-bVEtvv_x4NGhVZn1BbLGLaGYZa-CmjHiWtT5O0yrSy4-P2n8TIFWYe-NLgom3gqcyf46vPoUyhlpB8eSwB_jXLpUxmGGSnWuvCvedLL2R4r2mXBHKBs6mWRtGO73wGpqNjxFprD0rp0zSStiKp26xukjcWlIRtyXFSDomkq0SBr_ZUUdsprvbxmGWvN4e9N6Ndkq9LYozXA6Iff7kIZvF6fXW66P9du0o5K9V3VNQm6FjEAk8crAcy8D5=w1147-h1225-s-no-gm?authuser=0"
         alt="Figma Mockup Overview">
     <figcaption>Přehled celkové namodelované makety</figcaption>
 </figure>
-
-
+<br>
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://private-user-images.githubusercontent.com/94748640/280487780-c99df187-fb14-4d75-ab9f-f0053a83cbc7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU0NzEsIm5iZiI6MTY5OTEyNTE3MSwicGF0aCI6Ii85NDc0ODY0MC8yODA0ODc3ODAtYzk5ZGYxODctZmIxNC00ZDc1LWFiOWYtZjAwNTNhODNjYmM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTI1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWUwYjEzN2IxNGU4Nzk5MGUwZDFmYjZiOTUyOGI1Yjc4NjRiNzcxZTc3YzQwYjdlMmM3YmU5NmIxYzQ2N2IwNTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.Y9OM6SThSWEhzjVEc-07uKdMkGSc_58KNo4jYpEJfqI"
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHciLT6rp_iSlUEO6OppucfPH6lVBVkdSy60RQQgWDkq6egJtPJ3hxaY21w7OsY-TgRkdEJyDnw5hZ-HqEdmIY-IRNtwnsT0rqbrUZGiPyECAJk2UWO67YAzw7Y06srNu_1OArNll5pKYKz9nrih8D0ypV1_NqV4krfSWLeMjk6oB9qaWd3uGpBTpGXWyhg0uvI73FUaolum8-G7eSTu5qdAVzNhSI4MsCGmD4rRn4RW0ldqI4-FPeLdhya43Y978HiJpu7067xVrbVaeL5OEQCbfHfofro-_lSF404kRkIkBILosRVTMFQO0T82A3B2X0XM55_SLQcpE9ypkErLFFOSOEdcReorOZPXKpCXfhfu9AP0MrQwTzu87syyX1ilXW1HozvqyedbWeMlp7jDGph_QccUROFHnJ35p1UOsBfkYg46ORGR8W-PNGyepyMwOifrZNykhsX4xCOXG3xm7Wn8ewFrRufXz6IzIDTKn57NZAqLkPhJeWVEGLYGq8vZk7VT_VWENsvbmGPpW-lIF47dYynFgYmPpiOIKVa7gr6UY6rvpoCHx1Kckz3NrbGfzJsP8do6Ksvu02foXF6GCaSEhPsFiLvyN5ZBykxpsbGO97p8zT9xNf_lklmOw-bZebND8ty0F4amRARzXefxs0R6DoBKuD5Tu22GQWgmruz4ZphYf6F0N-qs5GXCqrwxYc5MYysj4PJAKjzIgScF-RolYVpCU0wBUL6UhAtulin6hLZe3QRZn2nuoTwooxy85gXYhEo2K2N3VJ0tpK8KqiFhJFWFlVGb0AnC5HnHD4pXI45N6B4Wrkv90DSUdhVOLXMQbcZmB0Xqw-MMiMBulTG6Z-gtPudn-lDt0hBMUAdJzhoVk0QXdKvBY81nSEEQldzIn0MsWp44s4F5ikxPV4boWwfCnmVGn3KR9ID7ty8z8loO1TxiDJCxqzMI5vGPoS_-oakHP-eCD966kRte0s55AOvc6BXCIQydAblmBXmswxQG1_b1ZyUy3bKNLSGOxKQg=w393-h852-s-no-gm?authuser=0"
         alt="Figma Mockup Overview">
     <figcaption>Centrální evidence vozidel</figcaption>
-</figure>  
+</figure>
+
 Uživatelé si přáli jednoduše vybrat jedno z firemních vozidel, k tomu jsme vytvořili i možnost přidat nová firemní auta.
+<br>
 
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/94356069/280487460-40673fd6-4c79-4565-8253-67d32871b160.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231104T190911Z&X-Amz-Expires=300&X-Amz-Signature=16c2e5d92d9816e706a6247aee72c3e22e5396391abcf8aff8b0e3549997dc68&X-Amz-SignedHeaders=host&actor_id=94356069&key_id=0&repo_id=701465030"
-        alt="Figma Finished Ride with shown end state of kms">
-    <figcaption>Zobrazení počtu ujetých kilometrů společně se záměrem a destinací jízdy + zobrazení tlačítka s informacemi o asistenční službě </figcaption>
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHdLuPRW--yJjAoRWQZUZV3vK4SpFB987sJz6EBZUiQYgeLHtz0xbJXX10fxxVtuJYO1hiDrcb48Rbp8wyPQ5V-ajyz7xGEJDFSmJ6burKnLyF8AYY2HhSRFp992iuWwTBqKg-rTMw72RzFGhP5YfcO6HJIsrQud4ycFmpZjDH5bugssV6stPuFG29Yqd6kmYQvzbx_EVpXg3zojezFLJsK9MuH6lLA6-52-dOdvInZafeQYZnhwlfhinrw1PAoQud5-YmmpP-6uamFGsq5uQ4_iNmtUnQmNBECQ_fWF8279J9dhLloPHYgKZyz2UWfB-e4fC4X9tXP4r_jAjwoHzAPxsFkI5stZUg49mmR79Xj0k-eDj0sZRvu7W8QMQTqgSS1p8HmjlaD4jb9bt8D_AofX0ajNOEISZZHFKsbsoLrRfVmK2ejJm8J51T6iGN0syZCBVDfBLLSHf_8nGo0g2iXfeOD6w0jDEN76wA2GqPIEP9jrt1RuLKA4BXJlHJ-npcXLCfspKN7Jl7AEqS5C9alde9Zil-AArIEr2TB61Con68fBCQdvdJpYMshgWdHE0Jbrw88XIrK1a9R-rZ6b73IohAuuKyvZ7qmmCccSaOvcvk-UheztZyAwLuRlnZCvB6Q3Fey2Wys76eQ-Mq6PxYVWM2zd1uReSxA5lk9vEqbGOs_ACKL3itdXpbTB4ltHDbUn9ZMF4JXLPx2UB82Dy7ZoZv4fQ32eGiQGWKOZzoMIU5XgxgpqKZM0x84A91MdZ9CzA4bNKxjcKHz5boiuSPlN-vITRH9mObTE5StkKCDSN1fAm--5JVeY_XVejMp2nhYBabWiuA2kKUHJ7Gt483OJ-w0fFpYD0dEc7fVsp3CKrZ3w9ayik5lwDgn4-YSjfuhPTLFFl2XHKKO4ahW8zMOT_Z8CjGpYE2M7vEQKI6ywqKxNp6rtALdbLIeZsP4bvdc3X79pKmkA-PjsQ_2Mr-JVbaVHsS0lh_0ql9Lmdt7jjyf0ntId4lRVVENEzOFDbNO0=w393-h852-s-no-gm?authuser=0"
+        alt="Figma Start Ride">
+    <figcaption>Karta pro začátek jízdy a rozcestník pro práci s knihou jízd po vybrání auta</figcaption>
 </figure>
+
+Náhledová stránka s přehledem stavu tachometru, detailu vozidla i možnost přidání poznámek/záznamů tankování.
+<br>
 
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://private-user-images.githubusercontent.com/94356069/280488176-c69431d5-52d7-49ce-9110-d7b126c9621b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU5NjQsIm5iZiI6MTY5OTEyNTY2NCwicGF0aCI6Ii85NDM1NjA2OS8yODA0ODgxNzYtYzY5NDMxZDUtNTJkNy00OWNlLTkxMTAtZDdiMTI2Yzk2MjFiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MjEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRjN2YzZDZhM2I5MDQ1MzI4OWM3NDBjMDhmOWMyZDlmZTg4ZmZlZGY4NmM1MjU3YzZmYjk5ODlmMzk3Njk1OWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.4JFQ4gO6KJzmi0A4Et3_8LXTOwGHbMRzCwiQVOZy9Z4">
-    <figcaption> Náhledová stránka s přehledem stavu tachometru, detailu vozidla i možnost přidání poznámek/záznamů tankování </figcaption>
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHdAfjzuPEVl9cfb7nknbbpPaqY_wJlUBTlXdA4gtVzk2FDqFxtAv4TjkGpYfOhXmpXCRBHPtxlQ4Tb8HYaMBg44J2NK27WiTXJ1Ch0l-_ITuqzXPOugp2V3HHLnrJOZRXdI3JrEx3EfRfWQMRo-Oe_YPMlhdMySYgamQtv-wAB2yNXluNUaiPkuArVUtgyHUF6RtEJu1l28GvC9wycEGeiCmcjxTwNzTLK-MiXpnVJnOUK1fblK3l_MHbPugd1b3jDZsFiqnZFCuPK_fSgoCMskP2JNOWfxlif9DQfM03THro3Zvm-MAAL0By3gbbgLDNakzWpclcRrK_ZUt_sQoabhU0ojUvEDb5FFcl7uj_BWw3B2lhubTbNy0if2sxukRNv9cNdUH3BJwU15Bi3y--PWFK1lltJt48QJg3sXLMRCuAwVpo2G62uYW5BVYQz31y2hjv1LyV5dZxY9BBR7f7mUPFOrtrs3RtIOxnbGbTuJsNtEFWLJ28MywVKcLsp8B4B9xmQ9J6XLHDrbOZiv13NklXbBTAayPLJNL7Syt8XCj30fsfRSOuPyNPGg8f6gjx8E0SX7Ag5nrkJa9vkU5DrW2vmmo_mTrurQEs4cY-X7kQAIcIYx1oc5ET1l4UKh8ZyZLTcOS2NLXEORn-aeVm-OZEnjsAPsRYW3B3vvcIZBeXOD-gO9cPgMosMmkQAARlvDyVCuHoMndHXJhF_k468V9OVGegLZyPxt8isATM5h3wsfwnSU40WKAAGnUNZMk0LI4u7W3Yw2y0kjSR2iAoZQq6XISnrxGy4-_MiunR-QfjLaF8BqIzotrVrY52uc_XbZvQTzmFD_WXz3ceeIgySmH1gZVJNiABRJi6HQSWdw9z48iSqj0vf4w3TwUb9QAWXnHxgxJ9ZsEyIypT7mVw_sIbUMlfiWcR4mP_GLKS_MVTLzzepym8SQ099kJDIv15-Lzi1_DvYvQBzljCZBEpwLDVB36DWJWLV4Y-zMOuJPTfVV85TYlXD1o7VMvzRIFR8F=w393-h852-s-no-gm?authuser=0"
+        alt="Figma Finish Ride">
+    <figcaption>Stav po započetí jízdy</figcaption>
 </figure>
- 
+
+Potom co začneme jízdu se nám zobrazí následující obrazovka, kde pro dokončení jízdy zadáme údaj z tachometru a stiskneme tlačítko "FINISH DRIVE".
+<br>
+
 <figure style="margin: 0 auto;
         text-align: center;">
-    <img src="https://private-user-images.githubusercontent.com/94356069/280488086-6b0c6f2e-12de-44d7-8567-0e8382999f96.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTkxMjU4NTAsIm5iZiI6MTY5OTEyNTU1MCwicGF0aCI6Ii85NDM1NjA2OS8yODA0ODgwODYtNmIwYzZmMmUtMTJkZS00NGQ3LTg1NjctMGU4MzgyOTk5Zjk2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTA0VDE5MTkxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEzMzJhYjliNGZjNTdhMzQ3Y2RkYzA0ZmE4ZGQ1N2JiZjllMzYzNDY4MzZlY2NjMDAyNjNiZTkyMTNjNTM0MDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ChtdwzIxJ_P_elHbezmvzWsEZJB14fW36W2RAGOCHLQ">
-    <figcaption>Zobrazení interaktivní změny tlačítka započaté jízdy</figcaption>
+    <img src="https://lh3.googleusercontent.com/pw/ADCreHem5mWm1bVh0xlODi6lJqydWF1ZiYsifZS39CNoolQDE5gSf6w0YlCCtQV5o2XzpdomoYfPVpo91Q2NfAT7m_gO_lC61GDRmjZA3Ud81IVTpLV7xFIdzX9jLcNaAuyMvXU7qwqeIJwXA9GNZc5QcrZQq7rs0-Etdr6I30W8bBZR5hqSPr5wn4kVBf_D3cBtvYHNY77Sw9dtcvShnyeBk5NQ0Sqsff96kHv9Sl3YZdC0uyTvJOmazcWxCTS1vBvBy8rUr_l1p3kVZ8YxH7VRSnoPh2yBnYaLDoM0O6XHlestKvyh3b3DQ1QwOK_bzM84IejfMaish6T0Q_3Ox4npEne5_mo83ZoDq1dklPvtDPBaZdzlyhBjtHujhFymhaJK2Id6zlTs8JtV9qIeKpp8cwPtHS0nOZb_7u59KzJzNEd4oOvC1obTOVK1ajXlIj2iQqDpGN1D3JKMhDDp6vTXKX0XMeXaH32OQFqw_am7YN_VcGEwiDLKqa9ATILWg9IdjRlBQk0quVUkuKM_vWoyqaDGJ5M2-Q3b4HcOdUgFcKULE1IeE9iVlPEu6-Z4HPrOjaIBUgvJ6SX01vyc8AG4vNoans2X0AoavAJVEoj8hpWokZ0trLZbF1Nq-IgnznpNHdvq5eyRNIr8Bk55Wkd9whwDiCoER3OSoXYz8k6sDsVl-KBzngteSgnef_evZAhGgd7Tpj_IYPVXMaMpcyoYwX8wVnADstdHMN-aQRJyb4PR-1HmnXpAQtt0k7_7RAO3sWjUhEDmfce5o8X757DcmPIEBBgSw7-VvsPWjW5GXHTmmQGUi-3my7qIb5aKz30MITDpm9SEjquQGnDz-lr3BWP8lueS32Ydgu9Sbrle7hAX5PxDFSAuvbg7C9-RBNPJly2zWAsy_jSNVvreJoAlmLBfAUyaIvv07YboxZHOblJ543GielyOWWxruPA4z2QrlCuXYze6J89xL944Dx3hcLBK9xc5xHdvjtnz6OMvjz1k7qAca8Y5Q4WbKVnOoLy5KkbK=w401-h860-s-no-gm?authuser=0"
+        alt="Figma Finished Ride Result">
+    <figcaption>Souhrn po dokončení jízdy</figcaption>
 </figure>
- 
-<span style="color:orange">SOLO</span>
-
-- jak řeší potřeby uživatele (bod 5)
-- obrázky, diagramů, snímů obrazovky
-- krátky popis
+Zobrazení počtu ujetých kilometrů společně se záměrem a destinací jízdy + zobrazení tlačítka s informacemi o asistenční službě
 
 ## 8. Návrh aplikace - Testování
 
@@ -296,19 +287,3 @@ void fetchUserData(String userID) {
 V tomto příkladu vytváříme referenci na cestu users v databázi a následně získáváme data konkrétního uživatele na základě jeho ID. Získaná data můžeme dále zpracovat v naší aplikaci.
 
 Tímto způsobem budeme komunikovat s Firebase Realtime Database, a to včetně operací pro **získání, aktualizaci, přidání** a **mazání** dat podle potřeby v naší aplikaci.
-
-**tasks**:
-
-<span style="color: #31c3d4">TEAM</span>  
-
-- [ ] kostra aplikace
-- [ ] základní datový model (stačí jednoduchá datová struktura) -- tedy napojení na ezpez databázi
-- [ ] minimální funkčnost BackEndu - Operace Create a Read
-
-<span style="color:orange">SOLO</span>
-
-- [ ] nainstalované vývojové prostředí
-- [ ] doplnění kostry o svůj GUI prvek a napojení na BE, stačí **jedno tlačítko** k odeslání požadavku/zavolání funkce a textový GUI element k zobrazení výsledku.
-    - [ ] třeba si jen zavolat soubor s databází aut
-    - [ ] další z nás s databází uživatelů a ty listy zobrazit
-    - [ ] třeba zobrazit detail 1 uživatele.
