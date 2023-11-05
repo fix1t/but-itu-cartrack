@@ -10,9 +10,11 @@ class CarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Car List'),
+        backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<Car>>(
         stream: userController.users,
@@ -31,7 +33,8 @@ class CarView extends StatelessWidget {
                 return ListTile(
                   title: Text(cars[index].name),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: Icon(Icons.delete_outline),
+                    color: theme.colorScheme.primary,
                     onPressed: () {
                       userController.deleteCar(cars[index].id);
                     },
@@ -42,36 +45,53 @@ class CarView extends StatelessWidget {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final nameController = TextEditingController();
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('Add Car'),
-                content: TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(labelText: 'Name'),
-                ),
-                actions: [
-                  ElevatedButton(
-                    onPressed: () {
-                      final name = nameController.text.trim();
-                      if (name.isNotEmpty) {
-                        userController.addCar(name);
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    child: Text('Submit'),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: AddCarButton(userController: userController),
+    );
+  }
+}
+
+class AddCarButton extends StatelessWidget {
+  const AddCarButton({
+    super.key,
+    required this.userController,
+  });
+
+  final CarController userController;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () => _showAddCarDialog(context),
+      child: Icon(Icons.add),
+    );
+  }
+
+  void _showAddCarDialog(BuildContext context) {
+    final nameController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Add Car'),
+          content: TextField(
+            controller: nameController,
+            decoration: InputDecoration(labelText: 'Name'),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                final name = nameController.text.trim();
+                if (name.isNotEmpty) {
+                  userController.addCar(name);
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text('Submit'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

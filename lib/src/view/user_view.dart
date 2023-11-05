@@ -9,9 +9,11 @@ class UserView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('User List'),
+        backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<User>>(
         stream: userController.users,
@@ -28,11 +30,12 @@ class UserView extends StatelessWidget {
               itemCount: users.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                    title: Text(users[index].name),
+                  title: Text(users[index].name),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: Icon(Icons.delete_outline),
+                    color: theme.colorScheme.primary,
                     onPressed: () {
-                    userController.deleteUser(users[index].id);
+                      userController.deleteUser(users[index].id);
                     },
                   ),
                 );
@@ -41,36 +44,52 @@ class UserView extends StatelessWidget {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final nameController = TextEditingController();
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('Add User'),
-                content: TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(labelText: 'Name'),
-                ),
-                actions: [
-                  ElevatedButton(
-                    onPressed: () {
-                      final name = nameController.text.trim();
-                      if (name.isNotEmpty) {
-                        userController.addUser(name);
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    child: Text('Submit'),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: AddUserButton(userController: userController),
+    );
+  }
+}
+
+class AddUserButton extends StatelessWidget {
+  const AddUserButton({
+    super.key,
+    required this.userController,
+  });
+
+  final UserController userController;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () => _showAddUserDialog(context),
+      child: Icon(Icons.add),
+    );
+  }
+
+  void _showAddUserDialog(BuildContext context) {
+    final nameController = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Add User'),
+          content: TextField(
+            controller: nameController,
+            decoration: InputDecoration(labelText: 'Name'),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                final name = nameController.text.trim();
+                if (name.isNotEmpty) {
+                  userController.addUser(name);
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text('Submit'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
