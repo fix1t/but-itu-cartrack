@@ -1,5 +1,5 @@
 import 'package:itu_cartrack/src/model/car_model.dart';
-
+import 'package:itu_cartrack/src/model/car.dart';
 
 class CarController {
   final CarModel userModel;
@@ -10,5 +10,10 @@ class CarController {
 
   Future<void> addCar(String name) async {
     await userModel.addCar(name);
+  }
+
+  Future<void> deleteCar(String userId) async {
+    await userModel.deleteCar(userId);
+    userModel.getCars();
   }
 }

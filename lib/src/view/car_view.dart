@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/model/car.dart';
 
 class CarView extends StatelessWidget {
   final CarController userController;
@@ -24,12 +24,18 @@ class CarView extends StatelessWidget {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(child: Text('No cars found'));
           } else {
-            List<Car> users = snapshot.data!;
+            List<Car> cars = snapshot.data!;
             return ListView.builder(
-              itemCount: users.length,
+              itemCount: cars.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(users[index].name),
+                  title: Text(cars[index].name),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      userController.deleteCar(cars[index].id);
+                    },
+                  ),
                 );
               },
             );

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:itu_cartrack/src/model/user_model.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
+import 'package:itu_cartrack/src/model/user.dart';
 
 class UserView extends StatelessWidget {
   final UserController userController;
-  final TextEditingController _nameController = TextEditingController();
 
   UserView(this.userController);
 
@@ -29,7 +28,13 @@ class UserView extends StatelessWidget {
               itemCount: users.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(users[index].name),
+                    title: Text(users[index].name),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                    userController.deleteUser(users[index].id);
+                    },
+                  ),
                 );
               },
             );

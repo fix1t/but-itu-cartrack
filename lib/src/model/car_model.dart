@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:itu_cartrack/src/model/car.dart';
 
 class CarModel {
   final DatabaseReference databaseReference;
@@ -7,7 +8,11 @@ class CarModel {
 
   Future<void> addCar(String name) async {
     DatabaseReference userRef = databaseReference.child('cars').push();
-    await userRef.set({'name': name});  // Use the input to create a new user
+    await userRef.set({'name': name});
+  }
+
+  Future<void> deleteCar(String userId) async {
+    await databaseReference.child('cars').child(userId).remove();
   }
 
   Stream<List<Car>> getCars() {
@@ -17,22 +22,12 @@ class CarModel {
       if (data != null) {
         List<Car> users = [];
         data.forEach((key, value) {
-          Car user = Car.fromMap(value);
-          users.add(user);
+          Car car = Car.fromMap(key, value);
+          users.add(car);
         });
         return users;
       }
       return [];
     });
-  }
-}
-
-class Car {
-  final String name;
-
-  Car(this.name);
-
-  static Car fromMap(Map<dynamic, dynamic> map) {
-    return Car(map['name']);
   }
 }
