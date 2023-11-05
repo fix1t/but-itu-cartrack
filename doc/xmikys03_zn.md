@@ -1,25 +1,10 @@
-# Zpráva návrhu - ITU 
-
-Členové týmů:
-- Gabriel Biel (xbielg00)
-- Adam Gabrys (xgabry01)
-- **Jakub Mikyšek (xmikys03) - vedoucí**
-
-TO-DO
-- [ ] A. Rozsah: 10-12 normostran
-- [ ] B. Titulní strana
-- [ ] C. Kontrola pravopis zprávy
-- [ ] D. Zabalit kostru do zip
-- [ ] E. Odebrat TO-DO
-
-
 ## 1. Navržené téma
 
 #### Duosomethingo - Aplikace pro sebevzdělání (xmikys03)
 Můj nápad byl vytvořit aplikaci rozšiřující a spojující vzdělávací aplikace jako Duolingo (pro cizí jazyky) a Flashcards (pro zapamatování pojmů). Celá aplikace by měla pojmout témata primárně v oblastech IT světa, například - Řecká abeceda, rozpoznání elektrotechnických součástek, procvičování návrhových vzorů. Způsob procvičování by byl od formy vybírání z 4 možností, přes spojování pojmů až po doplňování názvů uživatelem. 
 
 #### CarTrack - Elektronická kniha jízd (xgabry01)
-Nápad vznikl se zaměřením na profesionální řidiče, kdy jsem je nejednoul slyšel stěžovat si na zápis do papírové knihy jízd. S tímto přišel nápad na vytvoření elektronické knihy jízd pro firmy/profesionální řidiče. V aplikaci by bylo možné si vybrat z nabídky aut vlastněné firmou konkrétní vozidlo použité při jízdě a pouze zadat konečný stav tachometru. V aplikaci by se zobrazil počet ujetých kilometrů za jízdu, jelikož by si aplikace uchovávala všechny záznamy a odečetla by nejnovější záznam tachometru od záznamu minulé jízdy. V úvahu padla i možnost rozšířit aplikaci o informaci o konkrétních autech či tlačítko 'Potřebuji pomoc', kdy by se uživateli zobrazilo číslo na asistenční službu/ZS či jak postupovat v případě nehody. 
+Nápad vznikl se zaměřením na profesionální řidiče, kdy jsem je nejednou slyšel stěžovat si na zápis do papírové knihy jízd. S tímto přišel nápad na vytvoření elektronické knihy jízd pro firmy/profesionální řidiče. V aplikaci by bylo možné si vybrat z nabídky aut vlastněné firmou konkrétní vozidlo použité při jízdě a pouze zadat konečný stav tachometru. V aplikaci by se zobrazil počet ujetých kilometrů za jízdu, jelikož by si aplikace uchovávala všechny záznamy a odečetla by nejnovější záznam tachometru od záznamu minulé jízdy. V úvahu padla i možnost rozšířit aplikaci o informaci o konkrétních autech či tlačítko 'Potřebuji pomoc', kdy by se uživateli zobrazilo číslo na asistenční službu/ZS či jak postupovat v případě nehody. 
 
 #### Restauranto - Aplikace pro číšníky (xbielg00)
 Mým nápadem je vytvořit aplikaci "Restauranto" pro číšníky, která zjednoduší jejich práci a zlepší zážitek hostů v restauracích. Klíčové funkce zahrnují:
@@ -116,9 +101,9 @@ Otázky byly typu **ANO/NE**, **bodové ohodnocení 1**(rozhodně ne) **- 5**(ro
     - Zobrazení stavu nádrže (málo, hodně...)
 
 Respondenti:
-- xmikys03: Michal B. (bývalý řidič rozvozu KFC), David Š. (COO v ARBO, jízda firemním autem s kameramami pro skenování stromů), Samuel Č. (Wolt řidič), Patrik K. (bezpečností specialista v Red Hat), Michal H. (PHP developer)
+- xmikys03: Michal B. (bývalý řidič rozvozu KFC), David Š. (COO v ARBO, jízda firemním autem s kameramani pro skenování stromů), Samuel Č. (Wolt řidič), Patrik K. (bezpečností specialista v Red Hat), Michal H. (PHP developer)
 - xgabry01: Jan K. (profesionální řidič nákladních vozidel), Veronika K. (řidička pro nemocniční zásobování)
-- xbielg00: Ludmila M. (zdrvotní sestra v terénu), Patrik Š. (podnikatel)
+- xbielg00: Ludmila M. (zdravotní sestra v terénu), Patrik Š. (podnikatel)
 
 ## 4. Analýza existující aplikace
 
@@ -230,15 +215,15 @@ Zobrazení počtu ujetých kilometrů společně se záměrem a destinací jízd
 
 Uživatelům, kterým bylo umožněněno testovat náš návrh aplikace byla zpřístupněna funkční maketa ve webové aplikaci Figma.
 
-Nedostatky odhalené při používání se vyskytly v následujícíh scénářích:
+Nedostatky odhalené při používání se vyskytly v následujících scénářích:
 - **Nemožnost se vrátit o krok zpět**
-    - Častá nespokojenost směřovala k nemožnosti vrátit se zpátky, uživatelé se zaseknuli a nevěděli, jak v programu pokračovat, v tomto ohledu budeme muset doimplementovat možnost nějaké zpětné šipky pro vrácení se o krok dozadu, je možné implementovat i z hlediska gesta (potáhnutí doprava, jak jsou standartně novodové OS telefonů tvořeny)
+    - Častá nespokojenost směřovala k nemožnosti vrátit se zpátky, uživatelé se zaseknuli a nevěděli, jak v programu pokračovat, v tomto ohledu budeme muset doimplementovat možnost nějaké zpětné šipky pro vrácení se o krok dozadu, je možné implementovat i z hlediska gesta (potáhnutí doprava, jak jsou standardně novodové OS telefonů tvořeny)
 - **Hláška o provedení akce**
     - Připomínka od uživatele David Š. směřovala na nedostatek/až absenci chybových a úspěšných hlášek, podle testera bylo dobře zvolené červené podbarvení tlačítka v chybovém stavu, ale navíc by si přál získat i text s konkrétní chybou, to stejné pro úspěch např. vytvoření/smazaní uživatele nám bude doprovázet hláška o úspěchu
 - **Design Input Fields**
     - Uživatel Michal A. (FE vývojář) namítl, že mu nepřijde zřejmé jaké pole jsou možné editovat v kartě detailu uživatele, bylo by tedy dobré v implementované verzi tuto designovou chybku ošetřit, ať je opravdu zřejmé.
     
-Testeři: Michal B., David Š., Jan K., Patrik Š., Michal A. (bližší informace o uživatelech poskytnuty v sekci pro dotazníky)
+Testeři: Michal B., David Š., Jan K., Patrik Š., Michal A. (bližší informace o uživatelích poskytnuty v sekci pro dotazníky)
 
 ## 9. Technické řešení + technologie
 
@@ -247,7 +232,7 @@ Pro náš projekt jsme jednoznačně zvolili technologii **Flutter** pro vývoj 
 Architektura naší aplikace bude postavena na návrhovém vzoru **MVC** (Model-View-Controller). **Model** bude obsahovat *datové struktury* pro ukládání informací o jízdách, vozidlech a uživatelích, a bude propojen s **Firebase databází**. Bude také zahrnovat funkce pro zpracování dat, výpočet kilometrů a uchovávání historie jízd. **View** bude zodpovědné za vizuální reprezentaci aplikace a uživatelské rozhraní, zatímco **Controller** bude obsahovat aplikační logiku, která řídí interakci mezi modelem a view.
 
 **Architektura FE**:
-- **Model (Data)**: V FE budeme používat datový model pro uchovávání informací o uživatelích, firmách, autech, jízdách, poznámkách a výdavcích. Firma má uživatele, kteří přidávají jízdy jednotlivým autům. Uživatelé mohou také přidávat poznámky a záznamy o výdajích za auto. Auta, která existují v rámci firmy, mají několik důležitých atributů, jako je počet ujetých kilometrů a další relevantní údaje.
+- **Model (Data)**: V FE budeme používat datový model pro uchovávání informací o uživatelích, firmách, autech, jízdách, poznámkách a výdajích. Firma má uživatele, kteří přidávají jízdy jednotlivým autům. Uživatelé mohou také přidávat poznámky a záznamy o výdajích za auto. Auta, která existují v rámci firmy, mají několik důležitých atributů, jako je počet ujetých kilometrů a další relevantní údaje.
 
 - **View (Uživatelské rozhraní)**:
     - **Login (Přihlášení do firmy)**: První obrazovka, kde uživatel zadá přihlašovací údaje pro přístup do firmy.
@@ -256,7 +241,7 @@ Architektura naší aplikace bude postavena na návrhovém vzoru **MVC** (Model-
     - **Car List (Seznam vozidel)**: **Hlavní obrazovka**  s výpisem všech vozidel v rámci firmy.
     - **Car Detail (Detail vozidla)**: Zobrazí informace o konkrétním vozidle, včetně jeho technických údajů a historie jízd.
     - **Car Edit (Úprava vozidla)**: Umožní úpravu informací o vozidle (např. SPZ, typ paliva).
-    - **Add Ride (Přidání jízdy)**: Obrazovka **akce**, kde uživatel, pro vybrané vozidlo, zadáva údaje o jízdě.
+    - **Add Ride (Přidání jízdy)**: Obrazovka **akce**, kde uživatel, pro vybrané vozidlo, zadává údaje o jízdě.
     - **Add Expense (Přidání výdaje)**: Přidání nového výdaje k vozidlu.
     - **Add Note (Přidání poznámky)**: Přidání poznámky k vozidlu.
     - **List Rides (Seznam jízd)**: Zobrazí seznam všech jízd auta.
