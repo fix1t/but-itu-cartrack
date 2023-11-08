@@ -107,11 +107,6 @@ Respondenti:
 
 ## 4. Analýza existující aplikace
 
-- popsat
-    - přednosti a nedostatky
-- jak se budeme inspirovat a jak řešit nedostatky?
-- lze se zeptat i uživatelů
-
 #### Papírová podoba (xgabry01)
 Nejklasičtější podoba Knihy jízd, která se nachází v každém autě firmy, pokud tuto podobu používá. Tyto knihy jsou obvykle v tištěné formě a jsou používány pro účely evidování a správy firemních nebo osobních vozidel. Je třeba do ni ručně zapisovat všechny údaje a velkou nevýhodou je nezálohovatelnost těchto údajů v případě ztráty jednotlivých knih. Každý uživatel má také jiný rukopis, takže je také někdy obtížné dané záznamy přečíst. Výhodou je však pořizovací cena a snadné zacházení. Díky aplikaci, kterou chceme implementovat se snažíme všechny tyto problémy eliminovat a to jak naimplementovat jednoduché zadávání koncového stavu kilometrů, tak jistou čitelnost údajů i zálohovanost dat.
 
