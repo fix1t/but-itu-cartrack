@@ -65,7 +65,7 @@ class UserListScreen extends StatelessWidget {
               onPressed: () {
                 final name = nameController.text.trim();
                 if (name.isNotEmpty) {
-                  UserController().addUser(name);
+                  UserController().addUser(name: name);
                   Navigator.of(context).pop();
                 }
               },
