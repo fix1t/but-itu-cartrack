@@ -10,8 +10,9 @@ class LoginController {
     return _instance;
   }
 
-  void handleLoginPressed(BuildContext context) {
+  void handleLoginPressed(BuildContext context, String? selectedUser) {
     // TODO: implement context switching for logged in user
+    // TODO: user added to session
     Navigator.pop(context);
   }
 }
