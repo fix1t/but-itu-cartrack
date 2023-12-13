@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
 class CarHomeScreen extends StatelessWidget {
-  final Car car;
+  final Car selectedCar = CarController.activeCar;
 
-
-  CarHomeScreen({required this.car});
+  CarHomeScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CarHomeScreen extends StatelessWidget {
         title: Text('Car Home Screen'),
       ),
       body: Center(
-        child: Text('Car Name: ${car.name}'),
+        child: Text('Car Name: ${selectedCar.name}'),
       ),
     );
   }

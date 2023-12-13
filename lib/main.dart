@@ -57,11 +57,7 @@ class MyApp extends StatelessWidget {
 
         // IMPLEMENT AS BOTTOM NAVIGATION BAR
         //
-        '/car/home': (context) {
-          // NOTE: This is how we pass arguments to a route not in on generate
-          final selectedCar = ModalRoute.of(context)!.settings.arguments as Car;
-          return CarHomeScreen(car: selectedCar);
-        }, // action page - wheel
+        '/car/home': (context) => CarHomeScreen(),  // car home screen
         // '/car/detail': (context) => CarListScreen(), // show car details
         // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
