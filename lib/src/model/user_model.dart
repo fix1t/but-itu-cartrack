@@ -2,34 +2,36 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
 class UserModel {
-  // Reference to the Firebase Realtime Database
-  final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+  final DatabaseReference databaseReference = FirebaseDatabase.instance.reference();
 
   UserModel();
 
-  Future<void> addUser(String name) async {
+  Future<void> addUser(User user) async {
     DatabaseReference userRef = databaseReference.child('users').push();
-    await userRef.set({'name': name});
+    await userRef.set(user.toMap());
   }
 
   Future<void> deleteUser(String userId) async {
     await databaseReference.child('users').child(userId).remove();
   }
 
+
   Stream<List<User>> getUsers() {
     return databaseReference.child('users').onValue.map((event) {
       var snapshot = event.snapshot;
       var data = snapshot.value as Map<dynamic, dynamic>?;
+
       if (data != null) {
-        List<User> users = [];
+        List<User> userList = [];
         data.forEach((key, value) {
-          User user = User.fromMap(key, value);
-          users.add(user);
+          if (value is Map<Object?, Object?>) {
+              userList.add(User.fromMap(key, value.cast<String, dynamic>()));
+          }
         });
-        return users;
+        return userList;
       }
       return [];
     });
   }
-}
 
+}
