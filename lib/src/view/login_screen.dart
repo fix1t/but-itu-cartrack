@@ -3,13 +3,11 @@ import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
+String? selectedUser;
+
 class LoginScreen extends StatelessWidget {
   final UserController userController = UserController();
-  // Sample list for dropdown items, replace it with your data
-  final List<String> dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
-
-  // Variable to store the selected dropdown value
-  String selectedDropdownValue = 'Option 1';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +20,7 @@ class LoginScreen extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
-                  children: [
+                  children: const [
                     TextSpan(
                       text: 'CAR',
                       style: TextStyle(
@@ -42,17 +40,17 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
-               SizedBox(height: 64.0),
+              const SizedBox(height: 64.0),
               UserDropdown(userController),
-              SizedBox(height: 16.0), // Adding some space between the input field and the button
+              const SizedBox(height: 16.0), // Adding some space between the input field and the button
               ElevatedButton(
                 onPressed: () {
-                  LoginController().handleLoginPressed(context);
+                  LoginController().handleLoginPressed(context, selectedUser);
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(16.0), // Making the button bigger
                 ),
-                child: Text(
+                child: const Text(
                   'LOGIN',
                   style: TextStyle(
                     fontSize: 18.0, // Increasing the font size
@@ -78,8 +76,6 @@ class UserDropdown extends StatefulWidget {
 }
 
 class _UserDropdownState extends State<UserDropdown> {
-  String? selectedUser;
-  
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<User>>(
@@ -94,6 +90,7 @@ class _UserDropdownState extends State<UserDropdown> {
           if (selectedUser == null && users.isNotEmpty) {
             selectedUser = users[0].name; // Initialize with the first user's name
           }
+          print(selectedUser); 
 
           return DropdownButton<String>(
             value: selectedUser,
