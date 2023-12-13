@@ -6,27 +6,35 @@ class CarModel {
 
   CarModel();
 
-  Future<void> addCar(String name) async {
-    DatabaseReference userRef = databaseReference.child('cars').push();
-    await userRef.set({'name': name});
+  Future<void> addCar(Car car) async {
+    DatabaseReference carRef = databaseReference.child('cars').push();
+    await carRef.child('detail').set(car.toMap());
   }
 
-  Future<void> deleteCar(String userId) async {
-    await databaseReference.child('cars').child(userId).remove();
+  Future<void> deleteCar(String carId) async {
+    await databaseReference.child('cars').child(carId).remove();
   }
 
   Stream<List<Car>> getCars() {
     return databaseReference.child('cars').onValue.map((event) {
       var snapshot = event.snapshot;
       var data = snapshot.value as Map<dynamic, dynamic>?;
+
       if (data != null) {
-        List<Car> users = [];
+        List<Car> carsList = [];
         data.forEach((key, value) {
-          Car car = Car.fromMap(key, value);
-          users.add(car);
+          if (value is Map<Object?, Object?>) {
+            var detail = value['detail'] as Map<Object?, Object?>?;
+            if (detail != null && detail.isNotEmpty) {
+              carsList.add(Car.fromMap(key, detail.cast<String, dynamic>()));
+            }
+          }
         });
-        return users;
+
+        print(carsList);
+        return carsList;
       }
+
       return [];
     });
   }
