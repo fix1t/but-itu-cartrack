@@ -2,9 +2,9 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
 class CarModel {
-  final DatabaseReference databaseReference;
+  final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
 
-  CarModel(this.databaseReference);
+  CarModel();
 
   Future<void> addCar(String name) async {
     DatabaseReference userRef = databaseReference.child('cars').push();

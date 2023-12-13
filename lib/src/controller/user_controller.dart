@@ -1,11 +1,17 @@
 import 'package:itu_cartrack/src/model/user_model.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
-
 class UserController {
   final UserModel userModel;
 
-  UserController(this.userModel);
+  // Private constructor for the Singleton pattern
+  UserController._private(this.userModel);
+
+  static final UserController _instance = UserController._private(UserModel());
+
+  factory UserController() {
+    return _instance;
+  }
 
   Stream<List<User>> get users => userModel.getUsers();
 

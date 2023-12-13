@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
-class CarView extends StatelessWidget {
+class CarListScreen extends StatelessWidget {
+  final UserController userController = UserController();
   final CarController carController = CarController();
   final TextEditingController _nameController = TextEditingController();
 
-  CarView();
+  CarListScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +47,15 @@ class CarView extends StatelessWidget {
           }
         },
       ),
-      floatingActionButton: AddCarButton(userController: carController),
+      floatingActionButton: AddCarButton(),
     );
   }
 }
 
 class AddCarButton extends StatelessWidget {
-  const AddCarButton({
-    super.key,
-    required this.userController,
-  });
+  AddCarButton({Key? key}) : super(key: key);
 
-  final CarController userController;
+  final CarController carController = CarController();
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +82,7 @@ class AddCarButton extends StatelessWidget {
               onPressed: () {
                 final name = nameController.text.trim();
                 if (name.isNotEmpty) {
-                  userController.addCar(name);
+                  carController.addCar(name);
                   Navigator.of(context).pop();
                 }
               },

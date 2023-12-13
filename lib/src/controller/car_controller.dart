@@ -2,18 +2,24 @@ import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
 class CarController {
-  final CarModel userModel;
+  static final CarController _instance = CarController._internal();
 
-  CarController(this.userModel);
-
-  Stream<List<Car>> get users => userModel.getCars();
-
-  Future<void> addCar(String name) async {
-    await userModel.addCar(name);
+  factory CarController() {
+    return _instance;
   }
 
-  Future<void> deleteCar(String userId) async {
-    await userModel.deleteCar(userId);
-    userModel.getCars();
+  CarController._internal();
+
+  final CarModel carModel = CarModel(); // Assuming CarModel is your model class
+
+  Stream<List<Car>> get cars => carModel.getCars();
+
+  Future<void> addCar(String name) async {
+    await carModel.addCar(name);
+  }
+
+  Future<void> deleteCar(String carId) async {
+    await carModel.deleteCar(carId);
+    carModel.getCars();
   }
 }

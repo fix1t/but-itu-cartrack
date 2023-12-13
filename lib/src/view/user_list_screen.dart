@@ -1,42 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:itu_cartrack/src/controller/car_controller.dart';
-import 'package:itu_cartrack/src/model/car.dart';
+import 'package:itu_cartrack/src/controller/user_controller.dart';
+import 'package:itu_cartrack/src/model/user.dart';
 
-class CarView extends StatelessWidget {
-  final CarController carController = CarController();
-  final TextEditingController _nameController = TextEditingController();
-
-  CarView();
+class UserListScreen extends StatelessWidget {
+  UserListScreen();
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car List'),
+        title: Text('User List'),
         backgroundColor: theme.colorScheme.secondary,
       ),
-      body: StreamBuilder<List<Car>>(
-        stream: carController.cars,
+      body: StreamBuilder<List<User>>(
+        stream: UserController().users, // Assume UserController is a singleton
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No cars found'));
+            return Center(child: Text('No users found'));
           } else {
-            List<Car> cars = snapshot.data!;
+            List<User> users = snapshot.data!;
             return ListView.builder(
-              itemCount: cars.length,
+              itemCount: users.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(cars[index].name),
+                  title: Text(users[index].name),
                   trailing: IconButton(
                     icon: Icon(Icons.delete_outline),
                     color: theme.colorScheme.primary,
                     onPressed: () {
-                      carController.deleteCar(cars[index].id);
+                      UserController().deleteUser(users[index].id);
                     },
                   ),
                 );
@@ -45,35 +42,20 @@ class CarView extends StatelessWidget {
           }
         },
       ),
-      floatingActionButton: AddCarButton(userController: carController),
-    );
-  }
-}
-
-class AddCarButton extends StatelessWidget {
-  const AddCarButton({
-    super.key,
-    required this.userController,
-  });
-
-  final CarController userController;
-
-  @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => _showAddCarDialog(context),
-      child: Icon(Icons.add),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showAddUserDialog(context),
+        child: Icon(Icons.add),
+      ),
     );
   }
 
-  void _showAddCarDialog(BuildContext context) {
+  void _showAddUserDialog(BuildContext context) {
     final nameController = TextEditingController();
-
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Add Car'),
+          title: Text('Add User'),
           content: TextField(
             controller: nameController,
             decoration: InputDecoration(labelText: 'Name'),
@@ -83,7 +65,7 @@ class AddCarButton extends StatelessWidget {
               onPressed: () {
                 final name = nameController.text.trim();
                 if (name.isNotEmpty) {
-                  userController.addCar(name);
+                  UserController().addUser(name);
                   Navigator.of(context).pop();
                 }
               },

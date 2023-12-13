@@ -1,39 +1,77 @@
-// main.dart
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:itu_cartrack/src/controller/car_controller.dart';
-import 'package:itu_cartrack/src/model/car_model.dart';
-import 'package:itu_cartrack/src/tab_manager.dart';
-import 'firebase_options.dart';
-import 'package:itu_cartrack/src/model/user_model.dart';
+import 'package:flutter/material.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
+import 'package:itu_cartrack/src/model/user_model.dart';
+import 'package:itu_cartrack/src/tab_manager.dart';
+import 'package:itu_cartrack/src/view/car_list_screen.dart';
+import 'package:itu_cartrack/src/view/login_screen.dart';
+import 'package:itu_cartrack/src/view/user_list_screen.dart';
+
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  final databaseReference = FirebaseDatabase.instance.ref();
-  final userModel = UserModel(databaseReference);
-  final carModel = CarModel(databaseReference);
-  final userController = UserController(userModel);
-  final carController = CarController(carModel);
-  runApp(MyApp(userController, carController));
+
+  // Instantiate UserModel
+  final UserModel userModel = UserModel();
+
+  // Instantiate Controllers as Singletons
+  final UserController userController = UserController();
+  final LoginController loginController = LoginController();
+
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  final UserController userController;
-  final CarController carController;
 
-  MyApp(this.userController, this.carController);
+class MyApp extends StatelessWidget {
+
+  MyApp();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme:
-          ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)),
-      home: TabManager(userController, carController),
+      title: 'Your App Name',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/login',
+
+      routes: {
+        '/': (context) => TabManager(), // car list
+
+        '/login': (context) => LoginScreen(), // company link + choose user
+
+        // '/user/list': (context) => UserListScreen(), // list of users ??? needed?
+        // '/user/detail': (context) => UserListScreen(), // show user details
+        // '/user/edit': (context) => UserListScreen(), // edit user details + add user
+        //
+        // '/car': (context) => CarListScreen(), // LIST of cars + mark favorite!
+        //
+        // IMPLEMENT AS BOTTOM NAVIGATION BAR
+        // '/car/home': (context) => CarListScreen(), // action page - wheel
+        // '/car/detail': (context) => CarListScreen(), // show car details
+        // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
+        //
+        // '/car/expense': (context) => CarListScreen(), // LIST of expenses
+        // '/car/expense/detail': (context) => CarListScreen(), // show expense details
+        // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
+        //
+        // '/car/notes': (context) => CarListScreen(), // list of notes + add note - chat like
+        //
+        // '/car/history': (context) => CarListScreen(), // LIST of rides
+        // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
+        // '/car/history/detail/edit': (context) => CarListScreen(), // edit ride details + add ride ??? needed?
+        //
+        // '/car/home/help': (context) => CarListScreen(), // show help detail
+        // '/car/home/help/photo': (context) => CarListScreen(), // allow to take photo
+      },
     );
   }
 }

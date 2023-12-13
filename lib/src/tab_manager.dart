@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:itu_cartrack/src/view/user_view.dart';
-import 'package:itu_cartrack/src/view/car_view.dart';
+import 'package:itu_cartrack/src/view/user_list_screen.dart';
+import 'package:itu_cartrack/src/view/car_list_screen.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 
 class TabManager extends StatefulWidget {
-  final UserController userController;
-  final CarController carController;
+  final UserController userController = UserController();
+  final CarController carController = CarController();
 
-  TabManager(this.userController, this.carController);
+  TabManager();
 
   @override
   _TabManagerState createState() => _TabManagerState();
@@ -45,8 +45,8 @@ class _TabManagerState extends State<TabManager> with SingleTickerProviderStateM
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          UserView(widget.userController),
-          CarView(widget.carController),
+          UserListScreen(),
+          CarListScreen(),
         ],
       ),
     );
