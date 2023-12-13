@@ -3,7 +3,7 @@ import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
-String? selectedUser;
+User? currentUser;  // Global variable to store the current user
 
 class LoginScreen extends StatelessWidget {
   final UserController userController = UserController();
@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 16.0), // Adding some space between the input field and the button
               ElevatedButton(
                 onPressed: () {
-                  LoginController().handleLoginPressed(context, selectedUser);
+                  LoginController().handleLoginPressed(context, currentUser);
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(16.0), // Making the button bigger
@@ -76,6 +76,8 @@ class UserDropdown extends StatefulWidget {
 }
 
 class _UserDropdownState extends State<UserDropdown> {
+  String? selectedUser;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<User>>(
@@ -89,6 +91,7 @@ class _UserDropdownState extends State<UserDropdown> {
           List<User> users = snapshot.data!;
           if (selectedUser == null && users.isNotEmpty) {
             selectedUser = users[0].name; // Initialize with the first user's name
+            currentUser = users[0];       // Initialize with the first user
           }
           print(selectedUser); 
 
@@ -97,6 +100,7 @@ class _UserDropdownState extends State<UserDropdown> {
             onChanged: (String? newValue) {
               setState(() {
                 selectedUser = newValue;
+                currentUser = users.firstWhere((user) => user.name == newValue); // Update currentUser
               });
             },
             items: users.map<DropdownMenuItem<String>>((User user) {
