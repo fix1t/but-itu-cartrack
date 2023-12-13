@@ -3,6 +3,7 @@ import 'package:itu_cartrack/src/model/car.dart';
 
 class CarController {
   static final CarController _instance = CarController._internal();
+  static Car activeCar = Car();
 
   factory CarController() {
     return _instance;
@@ -16,23 +17,20 @@ class CarController {
 
   Future<void> addCar(String name) async {
     // TODO: implement addCar
-    Car newCar = Car(
-      id: '',
-      name: name,
-      fuelType: '',
-      licensePlate: '',
-      alias: '',
-      insurance: '',
-      insuranceContact: '',
-      odometerStatus: '',
-      responsiblePerson: '',
-      description: '',
-    );
+    Car newCar = Car();
     await carModel.addCar(newCar);
   }
 
   Future<void> deleteCar(String carId) async {
     await carModel.deleteCar(carId);
     carModel.getCars();
+  }
+
+  void setActiveCar(Car car) {
+    activeCar = car;
+  }
+
+  Car getActiveCar() {
+    return activeCar;
   }
 }

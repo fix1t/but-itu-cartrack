@@ -11,16 +11,16 @@ class Car {
   final String description;
 
   Car({
-    required this.id,
-    required this.name,
-    required this.fuelType,
-    required this.licensePlate,
-    required this.alias,
-    required this.insurance,
-    required this.insuranceContact,
-    required this.odometerStatus,
-    required this.responsiblePerson,
-    required this.description,
+    this.id='',
+    this.name = '',
+    this.fuelType = '',
+    this.licensePlate = '',
+    this.alias = '',
+    this.insurance = '',
+    this.insuranceContact = '',
+    this.odometerStatus = '',
+    this.responsiblePerson = '',
+    this.description = '',
   });
 
   factory Car.fromMap(String id, Map<String, dynamic> data) {
