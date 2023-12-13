@@ -34,6 +34,9 @@ class CarListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(cars[index].name),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/car/home', arguments: cars[index]);
+                  },
                   trailing: IconButton(
                     icon: Icon(Icons.delete_outline),
                     color: theme.colorScheme.primary,

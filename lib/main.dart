@@ -3,8 +3,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
+import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/user_model.dart';
 import 'package:itu_cartrack/src/tab_manager.dart';
+import 'package:itu_cartrack/src/view/car_home_screen.dart';
 import 'package:itu_cartrack/src/view/car_list_screen.dart';
 import 'package:itu_cartrack/src/view/login_screen.dart';
 import 'package:itu_cartrack/src/view/user_list_screen.dart';
@@ -37,12 +39,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Your App Name',
+      title: 'Car Track',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/login',
-
       routes: {
         '/': (context) => TabManager(), // car list
 
@@ -52,10 +53,15 @@ class MyApp extends StatelessWidget {
         // '/user/detail': (context) => UserListScreen(), // show user details
         // '/user/edit': (context) => UserListScreen(), // edit user details + add user
         //
-        // '/car': (context) => CarListScreen(), // LIST of cars + mark favorite!
-        //
+        '/car': (context) => CarListScreen(), // LIST of cars + mark favorite!
+
         // IMPLEMENT AS BOTTOM NAVIGATION BAR
-        // '/car/home': (context) => CarListScreen(), // action page - wheel
+        //
+        '/car/home': (context) {
+          // NOTE: This is how we pass arguments to a route not in on generate
+          final selectedCar = ModalRoute.of(context)!.settings.arguments as Car;
+          return CarHomeScreen(car: selectedCar);
+        }, // action page - wheel
         // '/car/detail': (context) => CarListScreen(), // show car details
         // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
