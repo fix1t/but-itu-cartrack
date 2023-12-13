@@ -6,11 +6,11 @@ class User {
   final String phoneNumber;
 
   User({
-    required this.id,
-    required this.name,
-    required this.login,
-    required this.email,
-    required this.phoneNumber,
+    this.id = '',
+    this.name = '',
+    this.login = '',
+    this.email = '',
+    this.phoneNumber = '',
   });
 
   factory User.fromMap(String id, Map<String, dynamic> data) {

@@ -6,12 +6,12 @@ class Note {
   final DateTime createdAt;
 
   Note({
-    required this.id,
+    this.id = '',
     required this.userId,
-    required this.title,
-    required this.content,
-    required this.createdAt,
-  });
+    this.title = '',
+    this.content = '',
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
 
   factory Note.fromMap(String id, Map<String, dynamic> data) {
     return Note(

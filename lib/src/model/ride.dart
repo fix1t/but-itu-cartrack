@@ -9,11 +9,13 @@ class Ride {
   Ride({
     required this.id,
     required this.userId,
-    required this.startedAt,
-    required this.finishedAt,
+    DateTime? startedAt,
+    DateTime? finishedAt,
     required this.rideType,
     required this.distance,
-  });
+  })   : startedAt = startedAt ?? DateTime.now(),
+        finishedAt = finishedAt ?? DateTime.now();
+
 
   factory Ride.fromMap(String id, Map<String, dynamic> data) {
     return Ride(

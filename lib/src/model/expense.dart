@@ -5,11 +5,12 @@ class Expense {
   final DateTime date;
 
   Expense({
-    required this.id,
-    required this.description,
-    required this.amount,
-    required this.date,
-  });
+    this.id = '',
+    this.description = '',
+    this.amount = 0.0,
+    DateTime? date,
+  }) : date = date ?? DateTime.now();
+
 
   factory Expense.fromMap(String id, Map<String, dynamic> data) {
     return Expense(

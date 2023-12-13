@@ -35,6 +35,7 @@ class CarListScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(cars[index].name),
                   onTap: () {
+                    carController.setActiveCar(cars[index]);
                     Navigator.pushNamed(context, '/car/home', arguments: cars[index]);
                   },
                   trailing: IconButton(
