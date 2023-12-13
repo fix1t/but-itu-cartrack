@@ -4,6 +4,7 @@ import 'package:itu_cartrack/src/model/car.dart';
 class CarHomeScreen extends StatelessWidget {
   final Car car;
 
+
   CarHomeScreen({required this.car});
 
   @override

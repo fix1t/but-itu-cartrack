@@ -7,12 +7,12 @@ class Ride {
   final double distance; // Distance in kilometers
 
   Ride({
-    required this.id,
-    required this.userId,
+    this.id = '',
+    this.userId = '',
     DateTime? startedAt,
     DateTime? finishedAt,
-    required this.rideType,
-    required this.distance,
+    this.rideType = '',
+    this.distance = 0.0,
   })   : startedAt = startedAt ?? DateTime.now(),
         finishedAt = finishedAt ?? DateTime.now();
 
