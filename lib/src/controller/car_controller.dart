@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
@@ -15,9 +17,17 @@ class CarController {
 
   Stream<List<Car>> get cars => carModel.getCars();
 
-  Future<void> addCar(String name, String fuelType, String licensePlate) async {
+  Future<void> addCar(String name, String alias, String fuelType,
+      String licensePlate, String insuranceContact, String odometerStatus, String description) async {
     // TODO: implement addCar
-    Car newCar = Car(name: name, fuelType: fuelType, licensePlate: licensePlate);
+    Car newCar = Car(
+        name: name,
+        alias: alias,
+        fuelType: fuelType,
+        licensePlate: licensePlate,
+        insuranceContact: insuranceContact,
+        odometerStatus: odometerStatus,
+        description: description);
     await carModel.addCar(newCar);
   }
 
