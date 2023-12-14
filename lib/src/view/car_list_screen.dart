@@ -73,22 +73,39 @@ class AddCarButton extends StatelessWidget {
 
   void _showAddCarDialog(BuildContext context) {
     final nameController = TextEditingController();
+    final fuelTypeController = TextEditingController();
+    final licensePlateController = TextEditingController();
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: Text('Add Car'),
-          content: TextField(
-            controller: nameController,
-            decoration: InputDecoration(labelText: 'Name'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: 'Name'),
+              ),
+              TextField(
+                controller: fuelTypeController,
+                decoration: InputDecoration(labelText: 'Fuel Type'),
+              ),
+              TextField(
+                controller: licensePlateController,
+                decoration: InputDecoration(labelText: 'License Plate'),
+              ),
+            ],
           ),
           actions: [
             ElevatedButton(
               onPressed: () {
                 final name = nameController.text.trim();
-                if (name.isNotEmpty) {
-                  carController.addCar(name);
+                final fuelType = fuelTypeController.text.trim();
+                final licensePlate = licensePlateController.text.trim();
+                if (name.isNotEmpty && fuelType.isNotEmpty && licensePlate.isNotEmpty) {
+                  carController.addCar(name, fuelType, licensePlate);
                   Navigator.of(context).pop();
                 }
               },

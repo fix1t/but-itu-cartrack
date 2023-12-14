@@ -15,9 +15,9 @@ class CarController {
 
   Stream<List<Car>> get cars => carModel.getCars();
 
-  Future<void> addCar(String name) async {
+  Future<void> addCar(String name, String fuelType, String licensePlate) async {
     // TODO: implement addCar
-    Car newCar = Car();
+    Car newCar = Car(name: name, fuelType: fuelType, licensePlate: licensePlate);
     await carModel.addCar(newCar);
   }
 
