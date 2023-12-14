@@ -43,5 +43,4 @@ class CarController {
   static void finishRide() {
     activeRide.finishedAt = DateTime.now();
   }
-
 }

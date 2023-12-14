@@ -23,14 +23,15 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
             label: 'Undo',
             onPressed: () {
               setState(() {
-                activeRide = !activeRide;
+                activeRide = false;
               });
             },
           ),
-        )
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.zero,
+        ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,8 +100,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                       icon: Icon(Icons.car_crash_rounded),
                       color: Theme.of(context).colorScheme.secondary,
                       onPressed: () {
-                        // go to help screen
-
+                        Navigator.pushNamed(context, '/car/home/help');
                       }),
                 ),
                 // odometer + odometer status
@@ -134,7 +134,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
           ),
           // Steering Wheel
           Container(
-            height: MediaQuery.of(context).size.height * 0.30,
+            height: MediaQuery.of(context).size.height * 0.25,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: RotatingSteeringWheel(
@@ -158,4 +158,3 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
     );
   }
 }
-
