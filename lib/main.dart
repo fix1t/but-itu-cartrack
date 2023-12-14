@@ -6,13 +6,13 @@ import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/user_model.dart';
 import 'package:itu_cartrack/src/widgets/tab_manager.dart';
-import 'package:itu_cartrack/src/view/car_detail.dart';
+import 'package:itu_cartrack/src/view/car_detail_screen.dart';
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
 import 'package:itu_cartrack/src/view/car_list_screen.dart';
 import 'package:itu_cartrack/src/view/login_screen.dart';
-import 'package:itu_cartrack/src/view/car_expense.dart';
+import 'package:itu_cartrack/src/view/car_expense_screen.dart';
 import 'package:itu_cartrack/src/widgets/car_navbar.dart';
-import 'package:itu_cartrack/src/view/car_notes.dart';
+import 'package:itu_cartrack/src/view/car_notes_screen.dart';
 
 import 'firebase_options.dart';
 
