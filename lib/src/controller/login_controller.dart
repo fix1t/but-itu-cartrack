@@ -24,7 +24,6 @@ class LoginController {
   User? getCurrentUser() {
     return currentUser;
   }
-
   String getCurrentUserId() {
     return currentUser!.id;
   }
