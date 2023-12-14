@@ -115,33 +115,40 @@ class CarNotesScreen extends StatelessWidget {
   Row noteInputField(BuildContext context) {
     return Row(
       children: [
-        IconButton(
-          onPressed: () {
-            // TODO: Send an image
-          },
-          icon: Icon(Icons.attach_file),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: IconButton(
+            onPressed: () {
+              // TODO: Send an image
+            },
+            icon: Icon(Icons.attach_file),
+          ),
         ),
         Expanded(
-          child: TextFormField(
-            controller: _messageController,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Theme.of(context).colorScheme.primary.withAlpha(100),
-              hintText: 'Type a note message',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.0),
-                borderSide: BorderSide.none,
-              ),
-              suffixIcon: IconButton(
-                onPressed: () {
-                  String message = _messageController.text;
-                  noteController.addNote(
-                      Note(userId: currentUserId, content: message),
-                      selectedCar.id);
-                  // TODO: Implement logic to send the message
-                  _messageController.clear();
-                },
-                icon: Icon(Icons.send),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: TextFormField(
+              controller: _messageController,
+              maxLines: null, // Allow multiple lines
+              keyboardType: TextInputType.multiline, // Enable multiline input
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.primary.withAlpha(100),
+                hintText: 'Type a note message',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                  borderSide: BorderSide.none,
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    String message = _messageController.text;
+                    noteController.addNote(
+                        Note(userId: currentUserId, content: message),
+                        selectedCar.id);
+                    _messageController.clear();
+                  },
+                  icon: Icon(Icons.send),
+                ),
               ),
             ),
           ),
