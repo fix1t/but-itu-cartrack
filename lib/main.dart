@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         // IMPLEMENT AS BOTTOM NAVIGATION BAR
         //
         '/car/home': (context) => CarHomeScreen(),  // car home screen
-        // '/car/detail': (context) => CarListScreen(), // show car details
+        // '/car/detail': (context) => CarListScreen(), // show car details&
         // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
         // '/car/expense': (context) => CarListScreen(), // LIST of expenses
