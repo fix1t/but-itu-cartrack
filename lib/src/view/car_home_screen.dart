@@ -9,14 +9,25 @@ class CarHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use 'car' directly within this screen
-    // For example:
     return Scaffold(
       appBar: AppBar(
         title: Text('Car Home Screen'),
       ),
       body: Center(
-        child: Text('Car Name: ${selectedCar.name}'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Car Name: ${selectedCar.name}'),
+            SizedBox(height: 16), // Add spacing
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to /car/home/help
+                Navigator.pushNamed(context, '/car/home/help');
+              },
+              child: Text('Go to Help'),
+            ),
+          ],
+        ),
       ),
     );
   }
