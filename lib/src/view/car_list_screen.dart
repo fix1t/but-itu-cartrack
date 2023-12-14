@@ -66,6 +66,7 @@ class AddCarButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () => _showAddCarDialog(context),
       child: Icon(Icons.add),
+      heroTag: 'addCarFAB'    //needs to be unique, just to cancel Exception with using the same heroes
     );
   }
 

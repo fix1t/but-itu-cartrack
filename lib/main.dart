@@ -5,13 +5,14 @@ import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/user_model.dart';
-import 'package:itu_cartrack/src/tab_manager.dart';
+import 'package:itu_cartrack/src/widgets/tab_manager.dart';
 import 'package:itu_cartrack/src/view/car_detail.dart';
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
 import 'package:itu_cartrack/src/view/car_list_screen.dart';
 import 'package:itu_cartrack/src/view/login_screen.dart';
 import 'package:itu_cartrack/src/view/car_expense.dart';
-import 'package:itu_cartrack/src/widgets/bottom_navbar.dart';
+import 'package:itu_cartrack/src/widgets/car_navbar.dart';
+import 'package:itu_cartrack/src/view/car_notes.dart';
 
 import 'firebase_options.dart';
 
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
         // '/car/expense/detail': (context) => CarListScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
-        // '/car/notes': (context) => CarListScreen(), // list of notes + add note - chat like + (photo?)
+         '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like + (photo?)
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
