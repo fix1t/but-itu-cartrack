@@ -15,8 +15,8 @@ class CarListScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car List', style: TextStyle(
-          color: theme.colorScheme.onSecondary)),
+        title: Text('Car List',
+            style: TextStyle(color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<Car>>(
@@ -57,63 +57,150 @@ class CarListScreen extends StatelessWidget {
   }
 }
 
-class AddCarButton extends StatelessWidget {
+class AddCarButton extends StatefulWidget {
   AddCarButton({Key? key}) : super(key: key);
 
+  @override
+  _AddCarButtonState createState() => _AddCarButtonState();
+}
+
+class _AddCarButtonState extends State<AddCarButton> {
   final CarController carController = CarController();
+  final List<String> fuelTypes = [
+    'Gasoline',
+    'Diesel',
+    'Electric',
+    'Hybrid',
+    'LPG',
+    'CNG',
+    'Other'
+  ];
+  String selectedFuelType = 'Gasoline';
+
+  @override
+    Widget build(BuildContext context) {
+      return FloatingActionButton(
+        onPressed: () => _showAddCarDialog(context),
+        child: Icon(Icons.add),
+        heroTag: 'addCarFAB',
+      );
+    }
+
+    void _showAddCarDialog(BuildContext context) {
+      final nameController = TextEditingController();
+      final aliasController = TextEditingController();
+      final licensePlateController = TextEditingController();
+      final insuranceContactController = TextEditingController();
+      final odometerStatusController = TextEditingController();
+      final descriptionController = TextEditingController();
+
+      showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return AlertDialog(
+                title: Text('Add Car'),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(labelText: 'Name'),
+                    ),
+                    TextField(
+                      controller: aliasController,
+                      decoration: InputDecoration(labelText: 'Alias'),
+                    ),
+                    FuelTypeDropdown(
+                      selectedFuelType: selectedFuelType,
+                      fuelTypes: fuelTypes,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedFuelType = newValue!;
+                        });
+                      },
+                    ),
+                    TextField(
+                      controller: licensePlateController,
+                      decoration: InputDecoration(labelText: 'License Plate'),
+                    ),
+                    TextField(
+                      controller: insuranceContactController,
+                      decoration: InputDecoration(labelText: 'Insurance Contact'),
+                    ),
+                    TextField(
+                      controller: odometerStatusController,
+                      decoration: InputDecoration(labelText: 'Odometer Status'),
+                    ),
+                    TextField(
+                      controller: descriptionController,
+                      decoration: InputDecoration(labelText: 'Description'),
+                    ),
+                  ],
+                ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      final name = nameController.text.trim();
+                      final alias = aliasController.text.trim();
+                      final fuelType = selectedFuelType;
+                      final licensePlate = licensePlateController.text.trim();
+                      final insuranceContact =
+                          insuranceContactController.text.trim();
+                      final odometerStatus =
+                          odometerStatusController.text.trim();
+                      final description = descriptionController.text.trim();
+                      if (name.isNotEmpty &&
+                          fuelType.isNotEmpty &&
+                          licensePlate.isNotEmpty &&
+                          insuranceContact.isNotEmpty &&
+                          odometerStatus.isNotEmpty) {
+                        carController.addCar(
+                          name,
+                          alias,
+                          fuelType,
+                          licensePlate,
+                          insuranceContact,
+                          odometerStatus,
+                          description,
+                        );
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    child: Text('Submit'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+      );
+    }
+  }
+
+class FuelTypeDropdown extends StatelessWidget {
+  final String selectedFuelType;
+  final List<String> fuelTypes;
+  final ValueChanged<String?> onChanged;
+
+  const FuelTypeDropdown({
+    required this.selectedFuelType,
+    required this.fuelTypes,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => _showAddCarDialog(context),
-      child: Icon(Icons.add),
-      heroTag: 'addCarFAB'    //needs to be unique, just to cancel Exception with using the same heroes
-    );
-  }
-
-  void _showAddCarDialog(BuildContext context) {
-    final nameController = TextEditingController();
-    final fuelTypeController = TextEditingController();
-    final licensePlateController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Add Car'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
-              ),
-              TextField(
-                controller: fuelTypeController,
-                decoration: InputDecoration(labelText: 'Fuel Type'),
-              ),
-              TextField(
-                controller: licensePlateController,
-                decoration: InputDecoration(labelText: 'License Plate'),
-              ),
-            ],
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                final name = nameController.text.trim();
-                final fuelType = fuelTypeController.text.trim();
-                final licensePlate = licensePlateController.text.trim();
-                if (name.isNotEmpty && fuelType.isNotEmpty && licensePlate.isNotEmpty) {
-                  carController.addCar(name, fuelType, licensePlate);
-                  Navigator.of(context).pop();
-                }
-              },
-              child: Text('Submit'),
-            ),
-          ],
+    return DropdownButton<String>(
+      value: selectedFuelType,
+      onChanged: onChanged,
+      items: fuelTypes.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
         );
-      },
+      }).toList(),
     );
   }
 }
