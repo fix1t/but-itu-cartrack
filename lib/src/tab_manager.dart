@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/view/user_list_screen.dart';
 import 'package:itu_cartrack/src/view/car_list_screen.dart';
-import 'package:itu_cartrack/src/controller/user_controller.dart';
-import 'package:itu_cartrack/src/controller/car_controller.dart';
 
 class TabManager extends StatefulWidget {
-  final UserController userController = UserController();
-  final CarController carController = CarController();
-
-  TabManager();
-
   @override
   _TabManagerState createState() => _TabManagerState();
 }
 
 class _TabManagerState extends State<TabManager> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -29,24 +23,38 @@ class _TabManagerState extends State<TabManager> with SingleTickerProviderStateM
     super.dispose();
   }
 
+  void _onNavItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+      _tabController.animateTo(_currentIndex);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tab Views'),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: <Widget>[
-            Tab(text: 'Users'),
-            Tab(text: 'Cars'),
-          ],
-        ),
       ),
-      body: TabBarView(
-        controller: _tabController,
+      body: IndexedStack(
+        index: _currentIndex,
         children: <Widget>[
           UserListScreen(),
           CarListScreen(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onNavItemTapped,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Users',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.directions_car),
+            label: 'Cars',
+          ),
         ],
       ),
     );
