@@ -192,15 +192,19 @@ class FuelTypeDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: selectedFuelType,
-      onChanged: onChanged,
-      items: fuelTypes.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+    return Container(
+      width: double.infinity, // Set width to full width
+      child: DropdownButton<String>(
+        hint: const Text('Select fuel type for the car'),
+        value: selectedFuelType,
+        onChanged: onChanged,
+        items: fuelTypes.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      ),
     );
   }
 }
