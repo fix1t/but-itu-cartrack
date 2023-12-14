@@ -79,6 +79,8 @@ class _CarNavigationBaseState extends State<CarNavigationBase> {
           size: 30.0,
         ),
         onPressed: () => _onNavItemTapped(0),
+        // Enforce the circular shape by defining a CircleBorder
+        shape: CircleBorder(),
       ),
     );
   }
