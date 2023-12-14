@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/model/car.dart';
 
 class HelpCallPage extends StatefulWidget {
   @override
@@ -7,6 +9,7 @@ class HelpCallPage extends StatefulWidget {
 }
 
 class _HelpCallPageState extends State<HelpCallPage> {
+  final Car selectedCar = CarController.activeCar;
   double _slideValue = 0.0;
   final double _sliderHeight = 100;
 
@@ -52,7 +55,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
               SizedBox(height: 70.0),
               // Adjust this value as needed for spacing
               Text(
-                'Number: 1234567890', // Replace with the actual number
+                'Number: ' + selectedCar.insuranceContact, // Replace with the actual number
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w500,
@@ -75,7 +78,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
                     // If the slider reaches the end, make the call
                     if (_slideValue == 1.0) {
                       _makePhoneCall(
-                          '1234567890'); // Replace with your phone number
+                          selectedCar.insuranceContact); // Replace with your phone number
                     }
                   }
                 },
