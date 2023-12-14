@@ -28,4 +28,8 @@ class LoginController {
   String getCurrentUserId() {
     return currentUser!.id;
   }
+
+  String getCurrentUserName() {
+    return currentUser!.name;
+  }
 }

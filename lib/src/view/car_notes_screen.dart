@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/note_controller.dart';
-import 'package:itu_cartrack/src/model/note.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
+//import 'package:itu_cartrack/src/controller/user_controller.dart';
+import 'package:itu_cartrack/src/model/note.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
 class CarNotesScreen extends StatelessWidget {
   final TextEditingController _messageController = TextEditingController();
   final Car selectedCar = CarController.activeCar;
   final String currentUserId = LoginController().getCurrentUserId();
+  final String currentUserName = LoginController().getCurrentUserName();
+  //UserController userController = UserController();
   NoteController noteController = NoteController();
 
   CarNotesScreen();
@@ -36,8 +40,62 @@ class CarNotesScreen extends StatelessWidget {
                   return ListView.builder(
                     itemCount: notes.length,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(notes[index].content),
+                      final message = notes[index].content;
+                      final senderId = notes[index].userId;
+                      //final Stream<User?> senderUserStream = userController.getUserById(senderId);
+
+                      return Column(
+                        crossAxisAlignment: (currentUserId == senderId)
+                            ? CrossAxisAlignment.end
+                            : CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            child: Row(
+                              mainAxisAlignment: (currentUserId == senderId)
+                                  ? MainAxisAlignment.end
+                                  : MainAxisAlignment.start,
+                              children: [
+                                (currentUserId == senderId)
+                                    ? Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            DateFormat('dd-MM-yyyy HH:mm')
+                                                .format(notes[index].createdAt),
+                                          ),
+                                          const SizedBox(width: 6.0),
+                                          Text(
+                                            currentUserName,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    : Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            notes[index].userId,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          const SizedBox(width: 6.0),
+                                          Text(
+                                            DateFormat('dd-MM-yyyy HH:mm')
+                                                .format(notes[index].createdAt),
+                                          ),
+                                        ],
+                                      ),
+                              ],
+                            ),
+                          ),
+                          messageBubble(
+                              context, currentUserId, senderId, message),
+                        ],
                       );
                     },
                   );
@@ -77,7 +135,9 @@ class CarNotesScreen extends StatelessWidget {
               suffixIcon: IconButton(
                 onPressed: () {
                   String message = _messageController.text;
-                  noteController.addNote(Note(userId: currentUserId, content: message), selectedCar.id);
+                  noteController.addNote(
+                      Note(userId: currentUserId, content: message),
+                      selectedCar.id);
                   // TODO: Implement logic to send the message
                   _messageController.clear();
                 },
@@ -89,4 +149,42 @@ class CarNotesScreen extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget messageBubble(
+    BuildContext context, String currentUserId, String sender, String message) {
+  final size = MediaQuery.sizeOf(context);
+
+  final alignment =
+      (currentUserId == sender) ? Alignment.centerRight : Alignment.centerLeft;
+
+  final color = (currentUserId == sender)
+      ? Theme.of(context).colorScheme.primary
+      : Theme.of(context).colorScheme.secondary;
+
+  final textColor = (currentUserId == sender)
+      ? Theme.of(context).colorScheme.onPrimary
+      : Theme.of(context).colorScheme.onSecondary;
+
+  return Align(
+    alignment: alignment,
+    child: Container(
+      constraints: BoxConstraints(maxWidth: size.width * 0.66),
+      padding: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(
+          8.0,
+        ),
+      ),
+      child: Text(
+        message,
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: textColor,
+              fontSize: 16.0,
+            ),
+      ),
+    ),
+  );
 }
