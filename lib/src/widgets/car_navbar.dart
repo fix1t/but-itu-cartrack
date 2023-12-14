@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
 import 'package:itu_cartrack/src/view/car_detail.dart';
 import 'package:itu_cartrack/src/view/car_expense.dart';
-import 'package:itu_cartrack/src/view/car_notes.dart';
+import 'package:itu_cartrack/src/view/car_notes_screen.dart';
 import 'package:itu_cartrack/src/view/car_history.dart';
 
 class CarNavigationBase extends StatefulWidget {

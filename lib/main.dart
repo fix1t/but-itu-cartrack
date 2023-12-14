@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
         // '/car/expense/detail': (context) => CarListScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
-        '/car/notes': (context) => NotesScreen(), // list of notes + add note - chat like
+        '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NotesScreen extends StatelessWidget {
+class CarNotesScreen extends StatelessWidget {
   final TextEditingController _messageController = TextEditingController();
 
   @override
@@ -76,7 +76,5 @@ List<String> notes = [
   'Note Message 7',
   'Note Message 8',
   'Note Message 9',
-  'Note Message 10',
-  'Note Message 11',
   // Add more notes here
 ];
