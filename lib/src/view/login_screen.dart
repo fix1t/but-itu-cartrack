@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
@@ -93,7 +95,7 @@ class _UserDropdownState extends State<UserDropdown> {
             selectedUser = users[0].name; // Initialize with the first user's name
             currentUser = users[0];       // Initialize with the first user
           }
-          print(selectedUser); 
+          log("Selected User: ${currentUser?.name ?? 'Unknown'}"); 
 
           return DropdownButton<String>(
             value: selectedUser,

@@ -35,9 +35,7 @@ void main() async {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-
   MyApp();
 
   @override
@@ -45,8 +43,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Car Track',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)),
       initialRoute: '/login',
       routes: {
         '/': (context) => TabManager(), // car list
@@ -70,7 +67,7 @@ class MyApp extends StatelessWidget {
         // '/car/expense/detail': (context) => CarListScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
-         '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like + (photo?)
+        '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
