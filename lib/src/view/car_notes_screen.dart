@@ -113,15 +113,15 @@ class CarNotesScreen extends StatelessWidget {
   Row noteInputField(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 12.0),
-          child: IconButton(
-            onPressed: () {
-              // TODO: Send an image
-            },
-            icon: Icon(Icons.attach_file),
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(bottom: 12.0),
+        //   child: IconButton(
+        //     onPressed: () {
+        //       // TODO: Send an image
+        //     },
+        //     icon: Icon(Icons.attach_file),
+        //   ),
+        // ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
