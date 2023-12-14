@@ -7,35 +7,24 @@ class TabManager extends StatefulWidget {
   _TabManagerState createState() => _TabManagerState();
 }
 
-class _TabManagerState extends State<TabManager> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class _TabManagerState extends State<TabManager> {
   int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
   }
 
   void _onNavItemTapped(int index) {
     setState(() {
       _currentIndex = index;
-      _tabController.animateTo(_currentIndex);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tab Views'),
-      ),
+      // AppBar removed
       body: IndexedStack(
         index: _currentIndex,
         children: <Widget>[
