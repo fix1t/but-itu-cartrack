@@ -15,7 +15,8 @@ class CarListScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car List'),
+        title: Text('Car List', style: TextStyle(
+          color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<Car>>(
