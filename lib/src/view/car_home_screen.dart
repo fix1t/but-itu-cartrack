@@ -12,8 +12,26 @@ class CarHomeScreen extends StatefulWidget {
 
 class _CarHomeScreenState extends State<CarHomeScreen> {
   final Car selectedCar = CarController.activeCar;
+
   bool activeRide = false;
   double rotationAngle = 0;
+
+  void showRouteStartedNotification() {
+    ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Your route has been started!'),
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              setState(() {
+                activeRide = !activeRide;
+              });
+            },
+          ),
+        )
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +144,10 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 onTap: () {
                   setState(() {
                     activeRide = !activeRide;
+                    if (activeRide) {
+                      CarController.startRide();
+                      showRouteStartedNotification();
+                    }
                   });
                 },
               ),
@@ -136,3 +158,4 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
     );
   }
 }
+

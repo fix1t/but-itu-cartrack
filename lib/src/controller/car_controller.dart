@@ -1,9 +1,11 @@
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+import 'package:itu_cartrack/src/model/ride.dart';
 
 class CarController {
   static final CarController _instance = CarController._internal();
   static Car activeCar = Car();
+  static Ride activeRide = Ride();
 
   factory CarController() {
     return _instance;
@@ -33,4 +35,13 @@ class CarController {
   Car getActiveCar() {
     return activeCar;
   }
+
+  static void startRide() {
+    activeRide.startedAt = DateTime.now();
+  }
+
+  static void finishRide() {
+    activeRide.finishedAt = DateTime.now();
+  }
+
 }

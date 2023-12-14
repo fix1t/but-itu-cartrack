@@ -11,10 +11,10 @@ class RotatingSteeringWheel extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RotatingSteeringWheelState createState() => _RotatingSteeringWheelState();
+  RotatingSteeringWheelState createState() => RotatingSteeringWheelState();
 }
 
-class _RotatingSteeringWheelState extends State<RotatingSteeringWheel>
+class RotatingSteeringWheelState extends State<RotatingSteeringWheel>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;

@@ -1,10 +1,10 @@
 class Ride {
-  final String id;
-  final String userId;
-  final DateTime startedAt;
-  final DateTime finishedAt;
-  final String rideType; // Ex: 'Business', 'Personal', etc.
-  final double distance; // Distance in kilometers
+  String id;
+  String userId;
+  DateTime startedAt;
+  DateTime finishedAt;
+  String rideType; // Ex: 'Business', 'Personal', etc.
+  double distance; // Distance in kilometers
 
   Ride({
     this.id = '',
