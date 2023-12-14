@@ -5,6 +5,7 @@ import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/user_model.dart';
+import 'package:itu_cartrack/src/view/car_home_help_screen.dart';
 import 'package:itu_cartrack/src/widgets/tab_manager.dart';
 import 'package:itu_cartrack/src/view/car_detail_screen.dart';
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
@@ -75,7 +76,7 @@ class MyApp extends StatelessWidget {
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
         // '/car/history/detail/edit': (context) => CarListScreen(), // edit ride details + add ride ??? needed?
         //
-        // '/car/home/help': (context) => CarListScreen(), // show help detail
+         '/car/home/help': (context) => HelpCallPage(), // show help detail
       },
     );
   }
