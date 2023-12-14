@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
-import 'package:itu_cartrack/src/view/car_detail.dart';
-import 'package:itu_cartrack/src/view/car_expense.dart';
+import 'package:itu_cartrack/src/view/car_detail_screen.dart';
+import 'package:itu_cartrack/src/view/car_expense_screen.dart';
 import 'package:itu_cartrack/src/view/car_notes_screen.dart';
-import 'package:itu_cartrack/src/view/car_history.dart';
+import 'package:itu_cartrack/src/view/car_history_screen.dart';
 
 class CarNavigationBase extends StatefulWidget {
   @override
@@ -78,7 +78,8 @@ class _CarNavigationBaseState extends State<CarNavigationBase> {
           Icons.speed,
           size: 30.0,
         ),
-        onPressed: () => _onNavItemTapped(0),
+        onPressed: () => _onNavItemTapped(0), // Enforce the circular shape by defining a CircleBorder
+        shape: CircleBorder(),
       ),
     );
   }
