@@ -12,9 +12,8 @@ class CarHomeScreen extends StatefulWidget {
 
 class _CarHomeScreenState extends State<CarHomeScreen> {
   final Car selectedCar = CarController.activeCar;
-
+  DateTime? rideStartTime;
   bool activeRide = false;
-  double rotationAngle = 0;
 
   void showRouteStartedNotification() {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -31,7 +30,6 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         )
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +116,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                           Text(
-                            '${selectedCar.odometerStatus} km',
+                            '${selectedCar.odometerStatus}',
                             style: TextStyle(
                                 decoration: TextDecoration.none,
                                 //TODO: change font to digital/monospace
@@ -129,8 +127,8 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           ),
                         ],
                       ),
-                    )),
-
+                    )
+                ),
               ],
             ),
           ),
@@ -147,6 +145,8 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     if (activeRide) {
                       CarController.startRide();
                       showRouteStartedNotification();
+                    } else {
+                      CarController.finishRide();
                     }
                   });
                 },
