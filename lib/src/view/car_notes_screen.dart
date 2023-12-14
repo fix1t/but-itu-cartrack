@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
+import 'package:itu_cartrack/src/controller/note_controller.dart';
+import 'package:itu_cartrack/src/model/note.dart';
+import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/model/car.dart';
 
 class CarNotesScreen extends StatelessWidget {
   final TextEditingController _messageController = TextEditingController();
+  final Car selectedCar = CarController.activeCar;
+  final String currentUserId = LoginController().getCurrentUserId();
+  NoteController noteController = NoteController();
+
+  CarNotesScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +22,26 @@ class CarNotesScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-              itemCount: notes.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(notes[index]),
-                );
+            child: StreamBuilder<List<Note>>(
+              stream: noteController.getNotes(selectedCar.id),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return Center(child: Text('No notes found'));
+                } else {
+                  List<Note> notes = snapshot.data!;
+                  return ListView.builder(
+                    itemCount: notes.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(notes[index].content),
+                      );
+                    },
+                  );
+                }
               },
             ),
           ),
@@ -53,6 +77,7 @@ class CarNotesScreen extends StatelessWidget {
               suffixIcon: IconButton(
                 onPressed: () {
                   String message = _messageController.text;
+                  noteController.addNote(Note(userId: currentUserId, content: message), selectedCar.id);
                   // TODO: Implement logic to send the message
                   _messageController.clear();
                 },
@@ -65,16 +90,3 @@ class CarNotesScreen extends StatelessWidget {
     );
   }
 }
-
-List<String> notes = [
-  'Note Message 1',
-  'Note Message 2',
-  'Note Message 3',
-  'Note Message 4',
-  'Note Message 5',
-  'Note Message 6',
-  'Note Message 7',
-  'Note Message 8',
-  'Note Message 9',
-  // Add more notes here
-];
