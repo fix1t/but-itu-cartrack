@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/note_controller.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
-//import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/note.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
@@ -42,7 +41,6 @@ class CarNotesScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final message = notes[index].content;
                       final senderId = notes[index].userId;
-                      //final Stream<User?> senderUserStream = userController.getUserById(senderId);
 
                       return Column(
                         crossAxisAlignment: (currentUserId == senderId)
@@ -79,7 +77,7 @@ class CarNotesScreen extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            notes[index].userId,
+                                            notes[index].userName,
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -143,7 +141,7 @@ class CarNotesScreen extends StatelessWidget {
                   onPressed: () {
                     String message = _messageController.text;
                     noteController.addNote(
-                        Note(userId: currentUserId, content: message),
+                        Note(userId: currentUserId, content: message, userName: currentUserName),
                         selectedCar.id);
                     _messageController.clear();
                   },
