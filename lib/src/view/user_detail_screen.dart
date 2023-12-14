@@ -21,7 +21,7 @@ class UserDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Detail Screen', style: TextStyle(color: theme.colorScheme.onSecondary)),
+        title: Text('User Detail', style: TextStyle(color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.primary,
       ),
       body: user == null
