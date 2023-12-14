@@ -18,5 +18,4 @@ class LoginController {
     Navigator.pop(context);
     print("Current: ${currentUser?.name ?? 'Unknown'}");
   }
-
 }
