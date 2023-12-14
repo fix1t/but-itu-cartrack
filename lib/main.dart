@@ -10,6 +10,7 @@ import 'package:itu_cartrack/src/view/car_home_screen.dart';
 import 'package:itu_cartrack/src/view/car_list_screen.dart';
 import 'package:itu_cartrack/src/view/login_screen.dart';
 import 'package:itu_cartrack/src/view/user_list_screen.dart';
+import 'package:itu_cartrack/src/view/notes_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -31,9 +32,7 @@ void main() async {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-
   MyApp();
 
   @override
@@ -41,8 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Car Track',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)),
       initialRoute: '/login',
       routes: {
         '/': (context) => TabManager(), // car list
@@ -57,7 +55,7 @@ class MyApp extends StatelessWidget {
 
         // IMPLEMENT AS BOTTOM NAVIGATION BAR
         //
-        '/car/home': (context) => CarHomeScreen(),  // car home screen
+        '/car/home': (context) => CarHomeScreen(), // car home screen
         // '/car/detail': (context) => CarListScreen(), // show car details
         // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
@@ -65,7 +63,7 @@ class MyApp extends StatelessWidget {
         // '/car/expense/detail': (context) => CarListScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
-        // '/car/notes': (context) => CarListScreen(), // list of notes + add note - chat like
+        '/car/notes': (context) => NotesScreen(), // list of notes + add note - chat like
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
