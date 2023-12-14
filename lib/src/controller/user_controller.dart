@@ -38,8 +38,4 @@ class UserController {
     await userModel.deleteUser(userId);
     userModel.getUsers();
   }
-
-  // Stream<User?> getUserById(String userId) {
-  //   return userModel.getUserById(userId);
-  // }
 }

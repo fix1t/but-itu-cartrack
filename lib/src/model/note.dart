@@ -3,6 +3,7 @@ class Note {
   final String userId;
   final String title;
   final String content;
+  final String userName;
   final DateTime createdAt;
 
   Note({
@@ -10,6 +11,7 @@ class Note {
     required this.userId,
     this.title = '',
     this.content = '',
+    this.userName = '',
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
 
@@ -19,6 +21,7 @@ class Note {
       userId: data['userId'] ?? '',
       title: data['title'] ?? '',
       content: data['content'] ?? '',
+      userName: data['userName'] ?? '',
       createdAt: DateTime.parse(data['createdAt'] ?? ''),
     );
   }
@@ -28,6 +31,7 @@ class Note {
       'userId': userId,
       'title': title,
       'content': content,
+      'userName': userName,
       'createdAt': createdAt.toIso8601String(),
     };
   }
