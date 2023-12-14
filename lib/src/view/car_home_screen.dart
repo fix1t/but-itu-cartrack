@@ -1,6 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+import 'package:itu_cartrack/src/model/ride.dart';
 import 'package:itu_cartrack/src/widgets/steering_wheel.dart';
 
 class CarHomeScreen extends StatefulWidget {
@@ -32,6 +37,156 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         ),
     );
   }
+
+  void showFinishRideDialog() {
+    String selectedRideType = ''; // Variable to hold selected ride type
+    int odometerStatus = int.parse(selectedCar.odometerStatus);
+    TextEditingController textEditingController =
+    TextEditingController(text: odometerStatus.toString());
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Text('One last thing...'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(height: 20),
+                  DropdownButtonFormField<RideType>(
+                    value: RideType.Business,
+                    decoration: InputDecoration(labelText: 'Ride Type'),
+                    items: RideType.values.map((type) {
+                      return DropdownMenuItem<RideType>(
+                        value: type,
+                        child: Text(type.toString().split('.').last),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedRideType = value.toString();
+                      });
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    controller: textEditingController,
+                    decoration: InputDecoration(labelText: 'Odometer Status'),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        odometerStatus = int.parse(value);
+                      }
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              odometerStatus += 1;
+                              textEditingController.text = odometerStatus.toString();
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                          ),
+                          child: Text('+1'),
+                        ),
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              odometerStatus += 5;
+                              textEditingController.text = odometerStatus.toString();
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                          ),
+                          child: Text('+5'),
+                        ),
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              odometerStatus += 10;
+                              textEditingController.text = odometerStatus.toString();
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                          ),
+                          child: Text('+10'),
+                        ),
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              odometerStatus += 50;
+                              textEditingController.text = odometerStatus.toString();
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                          ),
+                          child: Text('+50'),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                ],
+              ),
+              actions: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                  },
+                  child: Text('Cancel Ride'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (odometerStatus > int.parse(selectedCar.odometerStatus) &&
+                        selectedRideType.isNotEmpty) {
+                      // Handle finish ride logic here
+                      // Create a new Ride object or update the current ride
+                      Ride finishedRide = Ride(
+                        userId: LoginController.currentUser!.id,
+                        startedAt: CarController.activeRide.startedAt,
+                        finishedAt: DateTime.now(),
+                        rideType: selectedRideType,
+                        distance: 0, // Set distance as needed
+                      );
+
+                      // Close the dialog and update the activeRide status
+                      Navigator.of(context).pop();
+                      setState(() {
+                        activeRide = false;
+                        // Process finishedRide...
+                      });
+                    }
+                  },
+                  child: Text('Add Ride'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,7 +301,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                       CarController.startRide();
                       showRouteStartedNotification();
                     } else {
-                      CarController.finishRide();
+                      showFinishRideDialog();
                     }
                   });
                 },

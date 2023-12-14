@@ -3,7 +3,7 @@ class Ride {
   String userId;
   DateTime startedAt;
   DateTime finishedAt;
-  String rideType; // Ex: 'Business', 'Personal', etc.
+  String rideType; // Enum: 'Business', 'Personal', 'Other'
   double distance; // Distance in kilometers
 
   Ride({
@@ -37,4 +37,13 @@ class Ride {
       'distance': distance,
     };
   }
+}
+
+enum RideType {
+  Business,
+  Personal,
+  Commute,
+  Delivery,
+  Leisure,
+  Other,
 }
