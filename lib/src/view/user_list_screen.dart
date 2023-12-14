@@ -10,7 +10,8 @@ class UserListScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('User List'),
+        title: Text('User List', style: TextStyle(
+          color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<User>>(
