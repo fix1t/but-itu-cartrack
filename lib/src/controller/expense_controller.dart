@@ -18,13 +18,13 @@ class ExpenseController {
 
   // Add an expense to a specific car
   Future<void> addExpense(String carId, {
-    required String description,
+    required ExpenseType type,
     required double amount,
     required DateTime date,
   }) async {
     Expense expense = Expense(
       id: '',
-      description: description,
+      type: type,
       amount: amount,
       date: date,
     );
@@ -37,7 +37,7 @@ class ExpenseController {
     await expenseModel.deleteExpense(carId, expenseId);
   }
 
-// Update an expense for a specific car
+// Update an expense for a specific car (if needed)
 // Uncomment and modify if needed
 /*
   Future<void> updateExpense(String carId, String expenseId, Expense expense) async {

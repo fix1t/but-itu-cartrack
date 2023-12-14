@@ -16,12 +16,12 @@ class ExpenseModel {
   Future<void> deleteExpense(String carId, String expenseId) async {
     await databaseReference.child('cars').child(carId).child('expenses').child(expenseId).remove();
   }
-/* //maybe works, needs testing
-  // Update an expense for a specific car
+
+  // Update an expense for a specific car (if needed)
   Future<void> updateExpense(String carId, String expenseId, Expense expense) async {
     await databaseReference.child('cars').child(carId).child('expenses').child(expenseId).update(expense.toMap());
   }
-*/
+
   // Stream to get expenses for a specific car
   Stream<List<Expense>> getExpenses(String carId) {
     return databaseReference.child('cars').child(carId).child('expenses').onValue.map((event) {

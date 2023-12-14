@@ -7,7 +7,7 @@ import 'package:itu_cartrack/src/controller/car_controller.dart';
 class CarExpenseScreen extends StatelessWidget {
   final Car selectedCar = CarController.activeCar;
 
-  CarExpenseScreen(); // Empty body added here
+  CarExpenseScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class CarExpenseScreen extends StatelessWidget {
               itemCount: expenses.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text('${expenses[index].description} - ${expenses[index].amount}'),
+                  title: Text('${expenses[index].amount} Czk - ${expenses[index].type.name}'),
                   subtitle: Text('Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}'),
                   trailing: IconButton(
                     icon: Icon(Icons.delete_outline),
@@ -47,20 +47,17 @@ class CarExpenseScreen extends StatelessWidget {
           }
         },
       ),
-      // Uncomment and implement _showAddExpenseDialog if needed
-      // floatingActionButton: FloatingActionButton(
-      //     onPressed: () => _showAddExpenseDialog(context),
-      //     child: Icon(Icons.add),
-      //     heroTag: 'addExpenseFAB' // Unique heroTag
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showAddExpenseDialog(context),
+        child: Icon(Icons.add),
+        heroTag: 'addExpenseFAB',
+      ),
     );
   }
-}
-/*
+
   void _showAddExpenseDialog(BuildContext context) {
-    final descriptionController = TextEditingController();
     final amountController = TextEditingController();
-    // Additional controllers for other expense fields
+    ExpenseType selectedType = ExpenseType.fuel; // Default type
 
     showDialog(
       context: context,
@@ -70,9 +67,19 @@ class CarExpenseScreen extends StatelessWidget {
           content: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                TextField(
-                  controller: descriptionController,
-                  decoration: InputDecoration(labelText: 'Description'),
+                DropdownButton<ExpenseType>(
+                  value: selectedType,
+                  onChanged: (ExpenseType? newValue) {
+                    if (newValue != null) {
+                      selectedType = newValue;
+                    }
+                  },
+                  items: ExpenseType.values.map<DropdownMenuItem<ExpenseType>>((ExpenseType value) {
+                    return DropdownMenuItem<ExpenseType>(
+                      value: value,
+                      child: Text(expenseTypeToString(value)),
+                    );
+                  }).toList(),
                 ),
                 TextField(
                   controller: amountController,
@@ -86,18 +93,17 @@ class CarExpenseScreen extends StatelessWidget {
           actions: [
             ElevatedButton(
               onPressed: () {
-                final description = descriptionController.text.trim();
                 final amount = double.tryParse(amountController.text.trim()) ?? 0.0;
-                // Validation and parsing for other fields
 
-                if (description.isNotEmpty && amount > 0) {
+                if (amount > 0) {
                   Expense expense = Expense(
-                    description: description,
+                    id: '',
+                    type: selectedType,
                     amount: amount,
-                    // Set other fields of the Expense object
+                    date: DateTime.now(),
                   );
 
-                  ExpenseController().addExpense(selectedCar.id);
+                  ExpenseController().addExpense(selectedCar.id, type: selectedType, amount: amount, date: DateTime.now());
                   Navigator.of(context).pop();
                 }
               },
@@ -108,5 +114,4 @@ class CarExpenseScreen extends StatelessWidget {
       },
     );
   }
-*/
-
+}
