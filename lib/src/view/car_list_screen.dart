@@ -36,7 +36,7 @@ class CarListScreen extends StatelessWidget {
                   title: Text(cars[index].name),
                   onTap: () {
                     carController.setActiveCar(cars[index]);
-                    Navigator.pushNamed(context, '/car/home');
+                    Navigator.pushNamed(context, '/car-navigation');
                   },
                   trailing: IconButton(
                     icon: Icon(Icons.delete_outline),
@@ -66,6 +66,7 @@ class AddCarButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () => _showAddCarDialog(context),
       child: Icon(Icons.add),
+      heroTag: 'addCarFAB'    //needs to be unique, just to cancel Exception with using the same heroes
     );
   }
 

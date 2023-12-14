@@ -45,6 +45,7 @@ class UserListScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddUserDialog(context),
         child: Icon(Icons.add),
+        heroTag: 'addUserFAB' //needs to be unique, just to cancel Exception with using the same heroes
       ),
     );
   }
