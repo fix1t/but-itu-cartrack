@@ -42,11 +42,11 @@ class ExpenseController {
 
 // Update an expense for a specific car (if needed)
 // Uncomment and modify if needed
-/*
+
   Future<void> updateExpense(String carId, String expenseId, Expense expense) async {
     await expenseModel.updateExpense(carId, expenseId, expense);
   }
-  */
+
 
   // Set the active expense
   void setActiveExpense(Expense expense) {
