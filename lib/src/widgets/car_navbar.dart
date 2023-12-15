@@ -31,10 +31,10 @@ class _CarNavigationBaseState extends State<CarNavigationBase> {
         children: _pages,
       ),
       bottomNavigationBar: ConvexAppBar(
-        style: TabStyle.reactCircle,
+        style: TabStyle.react,
         backgroundColor: theme.colorScheme.secondary,
         items: [
-          TabItem(icon: Icons.directions_car, title: 'Home'),
+          TabItem(icon: Icons.directions_car, title: 'Detail'),
           TabItem(icon: Icons.attach_money, title: 'Expenses'),
           TabItem(icon: Icons.speed, title: 'Ride'),
           TabItem(icon: Icons.history, title: 'History'),
