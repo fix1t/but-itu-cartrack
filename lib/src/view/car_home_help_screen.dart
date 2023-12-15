@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HelpCallPage extends StatefulWidget {
   @override
@@ -140,6 +140,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
     } else {
       debugPrint('Could not launch dialer for $launchUri');
       // Show an error if needed
+
     }
   }
 }

@@ -1,14 +1,14 @@
 class Car {
-  final String id;
-  final String name;
-  final String fuelType;
-  final String licensePlate;
-  final String alias;
-  final String insurance;
-  final String insuranceContact;
-  final String odometerStatus;
-  final String responsiblePerson;
-  final String description;
+  String id;
+  String name;
+  String fuelType;
+  String licensePlate;
+  String alias;
+  String insurance;
+  String insuranceContact;
+  String odometerStatus;
+  String responsiblePerson;
+  String description;
 
   Car({
     this.id='',
