@@ -4,10 +4,81 @@ import 'package:itu_cartrack/src/model/expense.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 
-class CarExpenseScreen extends StatelessWidget {
+class CarExpenseScreen extends StatefulWidget {
   final Car selectedCar = CarController.activeCar;
 
   CarExpenseScreen();
+
+  @override
+  _CarExpenseScreenState createState() => _CarExpenseScreenState();
+}
+
+class _CarExpenseScreenState extends State<CarExpenseScreen> {
+  final Car selectedCar = CarController.activeCar;
+  ExpenseType selectedType = ExpenseType.fuel; // Default type
+
+  void _showAddExpenseDialog(BuildContext context) {
+    final amountController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          // This is used to set state within the dialog
+          builder: (context, setModalState) {
+            return AlertDialog(
+              title: Text('Add Expense'),
+              content: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    DropdownButton<ExpenseType>(
+                      value: selectedType,
+                      onChanged: (ExpenseType? newValue) {
+                        setModalState(() {
+                          // This will rebuild the modal with the new value
+                          selectedType = newValue!;
+                        });
+                      },
+                      items: ExpenseType.values
+                          .map<DropdownMenuItem<ExpenseType>>(
+                              (ExpenseType value) {
+                            return DropdownMenuItem<ExpenseType>(
+                              value: value,
+                              child: Text(expenseTypeToString(value)),
+                            );
+                          }).toList(),
+                    ),
+                    TextField(
+                      controller: amountController,
+                      decoration: InputDecoration(labelText: 'Amount'),
+                      keyboardType:
+                      TextInputType.numberWithOptions(decimal: true),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    final amount =
+                        double.tryParse(amountController.text.trim()) ?? 0.0;
+                    if (amount > 0) {
+                      ExpenseController().addExpense(widget.selectedCar.id,
+                          type: selectedType,
+                          amount: amount,
+                          date: DateTime.now());
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +103,16 @@ class CarExpenseScreen extends StatelessWidget {
               itemCount: expenses.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text('${expenses[index].amount} Czk - ${expenses[index].type.name}'),
-                  subtitle: Text('Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}'),
+                  title: Text(
+                      '${expenses[index].amount} Czk - ${expenses[index].type.name}'),
+                  subtitle: Text(
+                      'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}'),
                   trailing: IconButton(
                     icon: Icon(Icons.delete_outline),
                     color: theme.colorScheme.primary,
                     onPressed: () {
-                      ExpenseController().deleteExpense(selectedCar.id, expenses[index].id);
+                      ExpenseController()
+                          .deleteExpense(selectedCar.id, expenses[index].id);
                     },
                   ),
                 );
@@ -52,66 +126,6 @@ class CarExpenseScreen extends StatelessWidget {
         child: Icon(Icons.add),
         heroTag: 'addExpenseFAB',
       ),
-    );
-  }
-
-  void _showAddExpenseDialog(BuildContext context) {
-    final amountController = TextEditingController();
-    ExpenseType selectedType = ExpenseType.fuel; // Default type
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Add Expense'),
-          content: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                DropdownButton<ExpenseType>(
-                  value: selectedType,
-                  onChanged: (ExpenseType? newValue) {
-                    if (newValue != null) {
-                      selectedType = newValue;
-                    }
-                  },
-                  items: ExpenseType.values.map<DropdownMenuItem<ExpenseType>>((ExpenseType value) {
-                    return DropdownMenuItem<ExpenseType>(
-                      value: value,
-                      child: Text(expenseTypeToString(value)),
-                    );
-                  }).toList(),
-                ),
-                TextField(
-                  controller: amountController,
-                  decoration: InputDecoration(labelText: 'Amount'),
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
-                ),
-                // Additional TextFields for other expense fields
-              ],
-            ),
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                final amount = double.tryParse(amountController.text.trim()) ?? 0.0;
-
-                if (amount > 0) {
-                  Expense expense = Expense(
-                    id: '',
-                    type: selectedType,
-                    amount: amount,
-                    date: DateTime.now(),
-                  );
-
-                  ExpenseController().addExpense(selectedCar.id, type: selectedType, amount: amount, date: DateTime.now());
-                  Navigator.of(context).pop();
-                }
-              },
-              child: Text('Submit'),
-            ),
-          ],
-        );
-      },
     );
   }
 }
