@@ -295,10 +295,11 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
               children: [
                 // help button
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.04,
+                  height: MediaQuery.of(context).size.height * 0.07,
                   child: IconButton(
                       icon: Icon(Icons.car_crash_rounded),
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Theme.of(context).colorScheme.error,
+                      iconSize: 50,
                       onPressed: () {
                         Navigator.pushNamed(context, '/car/home/help');
                       }),
