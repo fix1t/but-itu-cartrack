@@ -23,8 +23,14 @@ class CarController {
 
   Stream<List<Car>> get cars => carModel.getCars();
 
-  Future<void> addCar(String name, String alias, String fuelType,
-      String licensePlate, String insuranceContact, String odometerStatus, String description) async {
+  Future<void> addCar(
+      String name,
+      String alias,
+      String fuelType,
+      String licensePlate,
+      String insuranceContact,
+      String odometerStatus,
+      String description) async {
     Car newCar = Car(
         name: name,
         alias: alias,
@@ -34,6 +40,28 @@ class CarController {
         odometerStatus: odometerStatus,
         description: description);
     await carModel.addCar(newCar);
+  }
+
+  Future<void> updateCar(
+      String carId,
+      String name,
+      String alias,
+      String fuelType,
+      String licensePlate,
+      String insurance,
+      String insuranceContact,
+      String odometerStatus,
+      String description) async {
+    Car updatedCar = Car(
+        name: name,
+        alias: alias,
+        fuelType: fuelType,
+        licensePlate: licensePlate,
+        insurance: insurance,
+        insuranceContact: insuranceContact,
+        odometerStatus: odometerStatus,
+        description: description);
+    await carModel.updateCar(carId, updatedCar);
   }
 
   Future<void> deleteCar(String carId) async {

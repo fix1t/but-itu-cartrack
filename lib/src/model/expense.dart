@@ -6,7 +6,14 @@ enum ExpenseType {
   other,
 }
 
+// used for view
 String expenseTypeToString(ExpenseType type) {
+  String typeString = type.toString().split('.').last;
+  return typeString.substring(0, 1).toUpperCase() + typeString.substring(1);
+}
+
+// used for controller
+String expenseTypeToStr(ExpenseType type) {
   return type.toString().split('.').last;
 }
 
