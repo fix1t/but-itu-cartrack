@@ -1,10 +1,14 @@
+import 'package:firebase_database/firebase_database.dart';
+
 class Ride {
+  final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+
   String id;
   String userId;
   DateTime startedAt;
   DateTime finishedAt;
-  String rideType; // Enum: 'Business', 'Personal', 'Other'
-  double distance; // Distance in kilometers
+  String rideType; // Enum: 'Business', 'Personal', 'Other' ...
+  int distance; // Distance in kilometers
 
   Ride({
     this.id = '',
@@ -12,7 +16,7 @@ class Ride {
     DateTime? startedAt,
     DateTime? finishedAt,
     this.rideType = '',
-    this.distance = 0.0,
+    this.distance = 0,
   })   : startedAt = startedAt ?? DateTime.now(),
         finishedAt = finishedAt ?? DateTime.now();
 
@@ -24,7 +28,7 @@ class Ride {
       startedAt: DateTime.parse(data['startedAt'] ?? ''),
       finishedAt: DateTime.parse(data['finishedAt'] ?? ''),
       rideType: data['rideType'] ?? '',
-      distance: (data['distance'] ?? 0.0).toDouble(),
+      distance: (data['distance'] ?? 0)
     );
   }
 
@@ -36,6 +40,15 @@ class Ride {
       'rideType': rideType,
       'distance': distance,
     };
+  }
+
+  void save(carId) {
+    // saves new if id is empty & updates if id is not empty
+    if (id.isEmpty) {
+      databaseReference.child('cars').child(carId).child('rides').push().set(toMap());
+    } else {
+      databaseReference.child('cars').child(carId).child('rides').child(id).set(toMap());
+    }
   }
 }
 

@@ -19,4 +19,8 @@ class LoginController {
     print("Current: ${currentUser?.name ?? 'Unknown'}");
   }
 
+  getActiveUser() {
+    return currentUser;
+  }
+
 }

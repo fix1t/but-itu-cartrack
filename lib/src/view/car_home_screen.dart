@@ -16,9 +16,27 @@ class CarHomeScreen extends StatefulWidget {
 }
 
 class _CarHomeScreenState extends State<CarHomeScreen> {
-  final Car selectedCar = CarController.activeCar;
+  Car selectedCar = CarController.activeCar;
+  String odometer = CarController.activeCar.odometerStatus;
   DateTime? rideStartTime;
   bool activeRide = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Register the callback to update the selectedCar
+    CarController.onOdometerChange = () {
+      setState(() {
+        selectedCar = CarController.activeCar;
+      });
+    };
+  }
+
+  @override
+  void dispose() {
+    CarController.onOdometerChange = null; // Unregister the callback to prevent memory leaks
+    super.dispose();
+  }
 
   void showRouteStartedNotification() {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -39,7 +57,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   }
 
   void showFinishRideDialog() {
-    String selectedRideType = ''; // Variable to hold selected ride type
+    String selectedRideType = 'Business'; // Variable to hold selected ride type
     int odometerStatus = int.parse(selectedCar.odometerStatus);
     TextEditingController textEditingController =
     TextEditingController(text: odometerStatus.toString());
@@ -157,24 +175,30 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (odometerStatus > int.parse(selectedCar.odometerStatus) &&
-                        selectedRideType.isNotEmpty) {
-                      // Handle finish ride logic here
-                      // Create a new Ride object or update the current ride
-                      Ride finishedRide = Ride(
-                        userId: LoginController.currentUser!.id,
-                        startedAt: CarController.activeRide.startedAt,
-                        finishedAt: DateTime.now(),
-                        rideType: selectedRideType,
-                        distance: 0, // Set distance as needed
-                      );
-
-                      // Close the dialog and update the activeRide status
-                      Navigator.of(context).pop();
+                    if(CarController.isCorrectRideInput(
+                    odometerStatus: odometerStatus, rideType: selectedRideType )){
                       setState(() {
-                        activeRide = false;
-                        // Process finishedRide...
+                              odometer = CarController.activeCar.odometerStatus;
+                              activeRide = false;
                       });
+                      CarController.finishRide();
+                      Navigator.of(context).pop(); // Close the dialog
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text('Please fill in all fields!'),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: () {
+                                setState(() {
+                                  activeRide = false;
+                                });
+                              },
+                            ),
+                            behavior: SnackBarBehavior.floating,
+                            margin: EdgeInsets.zero,
+                          ),
+                      );
                     }
                   },
                   child: Text('Add Ride'),
