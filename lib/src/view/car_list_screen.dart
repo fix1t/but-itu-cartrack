@@ -32,26 +32,70 @@ class CarListScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: cars.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(cars[index].name),
-                  onTap: () {
-                    carController.setActiveCar(cars[index]);
-                    Navigator.pushNamed(context, '/car-navigation');
-                  },
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete_outline),
-                    color: theme.colorScheme.primary,
-                    onPressed: () {
-                      carController.deleteCar(cars[index].id);
-                    },
-                  ),
-                );
+                return CarTitle(cars, index, context, theme);
               },
             );
           }
         },
       ),
       floatingActionButton: AddCarButton(),
+    );
+  }
+
+  Container CarTitle(
+      List<Car> cars, int index, BuildContext context, ThemeData theme) {
+    return Container(
+      margin: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondaryContainer,
+        borderRadius: BorderRadius.circular(16.0),
+        border: Border.all(color: Theme.of(context).colorScheme.primary),
+      ),
+      child: ListTile(
+        leading: Icon(Icons.directions_car_filled_rounded,
+            color: theme.colorScheme.secondary, size: 36.0),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              cars[index].name,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+                color: theme.colorScheme
+                    .onSecondaryContainer, // set text color to match background
+              ),
+            ),
+            Text(
+              cars[index].licensePlate,
+              style: TextStyle(
+                fontSize: 14.0,
+                color: theme.colorScheme
+                    .onSecondaryContainer, // set text color to match background
+              ),
+            ),
+          ],
+        ),
+        onTap: () {
+          carController.setActiveCar(cars[index]);
+          Navigator.pushNamed(context, '/car-navigation');
+        },
+        trailing: IconButton(
+          icon: Icon(Icons.favorite_outline, size: 28.0),
+          color: theme.colorScheme.primary,
+          // color: isFavorite
+          //     ? Colors.pink
+          //     : Colors
+          //         .grey, // Set favorite icon color based on condition
+          onPressed: () {
+            // Toggle the favorite status or perform your favorite logic
+            // setState(() {
+            //   isFavorite = !isFavorite;
+            // });
+          },
+        ),
+      ),
     );
   }
 }
