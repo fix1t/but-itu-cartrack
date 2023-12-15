@@ -28,8 +28,8 @@ class _TabManagerState extends State<TabManager> {
       body: IndexedStack(
         index: _currentIndex,
         children: <Widget>[
-          CarListScreen(),
           UserListScreen(),
+          CarListScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
