@@ -10,7 +10,12 @@ class CarHistoryScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car History'),
+        title: Text(
+          'Car History',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
+        ),
         backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<Ride>>(
@@ -27,23 +32,36 @@ class CarHistoryScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: rides.length,
               itemBuilder: (context, index) {
-                String formattedDate = '${rides[index].finishedAt.day.toString().padLeft(2, '0')}.${rides[index].finishedAt.month.toString().padLeft(2, '0')}.${rides[index].finishedAt.year.toString().substring(2)}';
+                String formattedDate =
+                    '${rides[index].finishedAt.day.toString().padLeft(2, '0')}.${rides[index].finishedAt.month.toString().padLeft(2, '0')}.${rides[index].finishedAt.year.toString().substring(2)}';
                 return ListTile(
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${formattedDate}'),
-                      Text('${rides[index].userName}'),
-                      Text('${rides[index].distance} km'),
+                      Expanded(
+                        child: Text(
+                          '$formattedDate',
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          '${rides[index].userName}',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          '${rides[index].distance} km',
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
                     ],
                   ),
-                  onTap: () {
-                    // Add logic to view ride details
-                  },
+                  onTap: () {},
                 );
               },
             );
-
           }
         },
       ),
@@ -62,7 +80,8 @@ class AddRideButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () => _showAddRideDialog(context),
       child: Icon(Icons.add),
-      heroTag: 'addRideFAB', // Needs to be unique, just to cancel Exception with using the same heroes
+      heroTag:
+          'addRideFAB', // Needs to be unique, just to cancel Exception with using the same heroes
     );
   }
 

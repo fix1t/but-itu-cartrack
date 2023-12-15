@@ -215,7 +215,12 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${selectedCar.name}'),
+        title: Text('${selectedCar.name}',
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.onSecondary,
+            ),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Column(
         children: [
