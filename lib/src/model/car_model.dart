@@ -11,6 +11,11 @@ class CarModel {
     await carRef.child('detail').set(car.toMap());
   }
 
+  Future<void> updateCar(String carId, Car updatedCar) async {
+    DatabaseReference carRef = databaseReference.child('cars').child(carId);
+    await carRef.child('detail').update(updatedCar.toMap());
+  }
+
   Future<void> deleteCar(String carId) async {
     await databaseReference.child('cars').child(carId).remove();
   }
