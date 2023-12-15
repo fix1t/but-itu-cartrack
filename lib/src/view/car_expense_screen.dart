@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/expense_controller.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
@@ -15,6 +16,7 @@ class CarExpenseScreen extends StatefulWidget {
 
 class _CarExpenseScreenState extends State<CarExpenseScreen> {
   final Car selectedCar = CarController.activeCar;
+  final String currentUserId = LoginController().getCurrentUserId();
   ExpenseType selectedType = ExpenseType.fuel; // Default type
 
   void _showAddExpenseDialog(BuildContext context) {
@@ -65,6 +67,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                     if (amount > 0) {
                       ExpenseController().addExpense(widget.selectedCar.id,
                           type: selectedType,
+                          userID: currentUserId,
                           amount: amount,
                           date: DateTime.now());
                       Navigator.of(context).pop();

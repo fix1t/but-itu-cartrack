@@ -19,11 +19,13 @@ class ExpenseController {
   // Add an expense to a specific car
   Future<void> addExpense(String carId, {
     required ExpenseType type,
+    required String userID,
     required double amount,
     required DateTime date,
   }) async {
     Expense expense = Expense(
       id: '',
+      userId: userID,
       type: type,
       amount: amount,
       date: date,
