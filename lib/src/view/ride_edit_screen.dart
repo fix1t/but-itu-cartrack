@@ -50,7 +50,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
     bool distanceChanged = _distanceController.text != widget.ride.distance.toString();
     print(distanceChanged);
 
-    if (distanceChanged) {
+    if (distanceChanged && widget.ride.id.isNotEmpty) {
       print('distance changed -> show dialog');
       Future.delayed(Duration.zero, () {
         showDialog(
