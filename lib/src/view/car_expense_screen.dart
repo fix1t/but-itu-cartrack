@@ -20,6 +20,14 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
   final String currentUserId = LoginController().getCurrentUserId();
   ExpenseType selectedType = ExpenseType.fuel; // Default type
 
+  final Map<ExpenseType, IconData> _expenseTypeIcons = {
+    ExpenseType.fuel: Icons.local_gas_station,
+    ExpenseType.maintenance: Icons.build,
+    ExpenseType.repair: Icons.handyman,
+    ExpenseType.insurance: Icons.shield,
+    ExpenseType.other: Icons.more_horiz,
+  };
+
   void _showAddExpenseDialog(BuildContext context) {
     final amountController = TextEditingController();
 
@@ -116,19 +124,22 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                   },
                   child: ListTile(
                     title: Text(
-                      '${expenses[index].amount} Czk - ${expenses[index].type.name}',
+                      '${expenses[index].amount.toStringAsFixed(2)} CZK - ${expenses[index].type.name}',
+                      style: TextStyle(fontSize: 18),
                     ),
                     subtitle: Text(
                       'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}',
+                      style: TextStyle(color: Colors.grey),
                     ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete_outline),
+                    leading: Icon(
+                      _expenseTypeIcons[expenses[index].type], // Get the icon based on the expense type
                       color: theme.colorScheme.primary,
-                      onPressed: () {
-                        ExpenseController()
-                            .deleteExpense(selectedCar.id, expenses[index].id);
-                      },
                     ),
+                    onTap: () {
+                      // Handle the tap event, for example, navigate to the expense details
+                      ExpenseController().setActiveExpense(expenses[index]);
+                      Navigator.pushNamed(context, '/car/expense/detail');
+                    },
                   ),
                 );
               },
