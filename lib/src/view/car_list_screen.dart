@@ -15,10 +15,18 @@ class CarListScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car List',
-            style: TextStyle(color: theme.colorScheme.onSecondary)),
-        backgroundColor: theme.colorScheme.secondary,
-      ),
+            title: Text('Car List'),
+            backgroundColor: theme.colorScheme.secondary,
+            actions: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.settings, color: theme.colorScheme.onSecondary),
+                    onPressed: () {
+                      // Navigate to UserDetailScreen when the button is pressed
+                      Navigator.pushNamed(context, '/user/detail');
+                    },
+                ),
+            ],
+        ),
       body: StreamBuilder<List<Car>>(
         stream: carController.cars,
         builder: (context, snapshot) {
