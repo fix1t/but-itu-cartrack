@@ -6,7 +6,6 @@ import 'package:itu_cartrack/src/model/car.dart';
 class CarListScreen extends StatelessWidget {
   final UserController userController = UserController();
   final CarController carController = CarController();
-  final TextEditingController _nameController = TextEditingController();
 
   CarListScreen();
 
@@ -78,108 +77,153 @@ class _AddCarButtonState extends State<AddCarButton> {
   String selectedFuelType = 'Gasoline';
 
   @override
-    Widget build(BuildContext context) {
-      return FloatingActionButton(
-        onPressed: () => _showAddCarDialog(context),
-        child: Icon(Icons.add),
-        heroTag: 'addCarFAB',
-      );
-    }
-
-    void _showAddCarDialog(BuildContext context) {
-      final nameController = TextEditingController();
-      final aliasController = TextEditingController();
-      final licensePlateController = TextEditingController();
-      final insuranceContactController = TextEditingController();
-      final odometerStatusController = TextEditingController();
-      final descriptionController = TextEditingController();
-
-      showDialog(
-        context: context,
-        builder: (context) {
-          return StatefulBuilder(
-            builder: (context, setState) {
-              return AlertDialog(
-                title: Text('Add Car'),
-                content: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextField(
-                        controller: nameController,
-                        decoration: InputDecoration(labelText: 'Name'),
-                      ),
-                      TextField(
-                        controller: aliasController,
-                        decoration: InputDecoration(labelText: 'Alias'),
-                      ),
-                      FuelTypeDropdown(
-                        selectedFuelType: selectedFuelType,
-                        fuelTypes: fuelTypes,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedFuelType = newValue!;
-                          });
-                        },
-                      ),
-                      TextField(
-                        controller: licensePlateController,
-                        decoration: InputDecoration(labelText: 'License Plate'),
-                      ),
-                      TextField(
-                        controller: insuranceContactController,
-                        decoration: InputDecoration(labelText: 'Insurance Contact'),
-                      ),
-                      TextField(
-                        controller: odometerStatusController,
-                        decoration: InputDecoration(labelText: 'Odometer Status'),
-                      ),
-                      TextField(
-                        controller: descriptionController,
-                        decoration: InputDecoration(labelText: 'Description'),
-                      ),
-                    ],
-                  ),
-                ),
-                actions: [
-                  ElevatedButton(
-                    onPressed: () {
-                      final name = nameController.text.trim();
-                      final alias = aliasController.text.trim();
-                      final fuelType = selectedFuelType;
-                      final licensePlate = licensePlateController.text.trim();
-                      final insuranceContact =
-                          insuranceContactController.text.trim();
-                      final odometerStatus =
-                          odometerStatusController.text.trim();
-                      final description = descriptionController.text.trim();
-                      if (name.isNotEmpty &&
-                          fuelType.isNotEmpty &&
-                          licensePlate.isNotEmpty &&
-                          insuranceContact.isNotEmpty &&
-                          odometerStatus.isNotEmpty) {
-                        carController.addCar(
-                          name,
-                          alias,
-                          fuelType,
-                          licensePlate,
-                          insuranceContact,
-                          odometerStatus,
-                          description,
-                        );
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    child: Text('Submit'),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-      );
-    }
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () => _showAddCarDialog(context),
+      child: Icon(Icons.add),
+      heroTag: 'addCarFAB',
+    );
   }
+
+  void _showAddCarDialog(BuildContext context) {
+    final nameController = TextEditingController();
+    final aliasController = TextEditingController();
+    final licensePlateController = TextEditingController();
+    final insuranceContactController = TextEditingController();
+    final odometerStatusController = TextEditingController();
+    final descriptionController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Text('Add Car'),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(labelText: 'Name *'),
+                    ),
+                    TextField(
+                      controller: aliasController,
+                      decoration: InputDecoration(labelText: 'Alias *'),
+                    ),
+                    FuelTypeDropdown(
+                      selectedFuelType: selectedFuelType,
+                      fuelTypes: fuelTypes,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedFuelType = newValue!;
+                        });
+                      },
+                    ),
+                    TextField(
+                      controller: licensePlateController,
+                      decoration: InputDecoration(labelText: 'License Plate *'),
+                    ),
+                    TextField(
+                      controller: insuranceContactController,
+                      decoration:
+                          InputDecoration(labelText: 'Insurance Contact *'),
+                    ),
+                    TextField(
+                      controller: odometerStatusController,
+                      decoration:
+                          InputDecoration(labelText: 'Odometer Status *'),
+                      keyboardType:
+                          TextInputType.numberWithOptions(decimal: true),
+                    ),
+                    TextField(
+                      controller: descriptionController,
+                      decoration: InputDecoration(labelText: 'Description'),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    final name = nameController.text.trim();
+                    final alias = aliasController.text.trim();
+                    final fuelType = selectedFuelType;
+                    final licensePlate = licensePlateController.text.trim();
+                    final insuranceContact =
+                        insuranceContactController.text.trim();
+                    final odometerStatus = odometerStatusController.text.trim();
+                    final description = descriptionController.text.trim();
+                    if (name.isNotEmpty &&
+                        fuelType.isNotEmpty &&
+                        licensePlate.isNotEmpty &&
+                        insuranceContact.isNotEmpty &&
+                        odometerStatus.isNotEmpty) {
+                      carController.addCar(
+                        name,
+                        alias,
+                        fuelType,
+                        licensePlate,
+                        insuranceContact,
+                        odometerStatus,
+                        description,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Car ${name} Created'),
+                        ),
+                      );
+                      Navigator.of(context).pop();
+                    } else {
+                      _showCustomSnackBar(context);
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  void _showCustomSnackBar(BuildContext context) {
+    OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).size.height *
+            0.8, // Adjust the position as needed
+        width: MediaQuery.of(context).size.width,
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            alignment: Alignment.center,
+            child: Card(
+              elevation: 10.0, // Adjust the elevation as needed
+              color: Theme.of(context).colorScheme.secondary,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Please fill out all fields',
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    Overlay.of(context).insert(overlayEntry);
+
+    Future.delayed(Duration(seconds: 2), () {
+      overlayEntry.remove();
+    });
+  }
+}
 
 class FuelTypeDropdown extends StatelessWidget {
   final String selectedFuelType;
