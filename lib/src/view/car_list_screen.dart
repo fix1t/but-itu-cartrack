@@ -109,43 +109,45 @@ class _AddCarButtonState extends State<AddCarButton> {
             builder: (context, setState) {
               return AlertDialog(
                 title: Text('Add Car'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextField(
-                      controller: nameController,
-                      decoration: InputDecoration(labelText: 'Name'),
-                    ),
-                    TextField(
-                      controller: aliasController,
-                      decoration: InputDecoration(labelText: 'Alias'),
-                    ),
-                    FuelTypeDropdown(
-                      selectedFuelType: selectedFuelType,
-                      fuelTypes: fuelTypes,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedFuelType = newValue!;
-                        });
-                      },
-                    ),
-                    TextField(
-                      controller: licensePlateController,
-                      decoration: InputDecoration(labelText: 'License Plate'),
-                    ),
-                    TextField(
-                      controller: insuranceContactController,
-                      decoration: InputDecoration(labelText: 'Insurance Contact'),
-                    ),
-                    TextField(
-                      controller: odometerStatusController,
-                      decoration: InputDecoration(labelText: 'Odometer Status'),
-                    ),
-                    TextField(
-                      controller: descriptionController,
-                      decoration: InputDecoration(labelText: 'Description'),
-                    ),
-                  ],
+                content: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextField(
+                        controller: nameController,
+                        decoration: InputDecoration(labelText: 'Name'),
+                      ),
+                      TextField(
+                        controller: aliasController,
+                        decoration: InputDecoration(labelText: 'Alias'),
+                      ),
+                      FuelTypeDropdown(
+                        selectedFuelType: selectedFuelType,
+                        fuelTypes: fuelTypes,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedFuelType = newValue!;
+                          });
+                        },
+                      ),
+                      TextField(
+                        controller: licensePlateController,
+                        decoration: InputDecoration(labelText: 'License Plate'),
+                      ),
+                      TextField(
+                        controller: insuranceContactController,
+                        decoration: InputDecoration(labelText: 'Insurance Contact'),
+                      ),
+                      TextField(
+                        controller: odometerStatusController,
+                        decoration: InputDecoration(labelText: 'Odometer Status'),
+                      ),
+                      TextField(
+                        controller: descriptionController,
+                        decoration: InputDecoration(labelText: 'Description'),
+                      ),
+                    ],
+                  ),
                 ),
                 actions: [
                   ElevatedButton(
