@@ -21,6 +21,12 @@ class LoginController {
     log("Current Logged User: ${currentUser?.name ?? 'Unknown'}");
   }
 
+  void logout(BuildContext context) {
+    currentUser = null; // Reset the current user to null
+    Navigator.pop(context);
+    Navigator.of(context).pushNamed('/login'); // Navigate to login screen and remove all routes below
+  }
+
   getActiveUser() {
     return currentUser;
   }
