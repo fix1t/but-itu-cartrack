@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:itu_cartrack/src/widgets/theme_provider.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
-import 'package:itu_cartrack/src/model/car.dart';
+import 'package:itu_cartrack/src/model/ride.dart';
 import 'package:itu_cartrack/src/model/user_model.dart';
 import 'package:itu_cartrack/src/view/car_home_help_screen.dart';
+import 'package:itu_cartrack/src/view/ride_edit_screen.dart';
 import 'package:itu_cartrack/src/widgets/tab_manager.dart';
 import 'package:itu_cartrack/src/view/car_detail_screen.dart';
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
@@ -53,34 +53,49 @@ class MyApp extends StatelessWidget {
       theme: themeProvider.themeData,
       initialRoute: '/login',
       routes: {
-        '/': (context) => TabManager(), // car list
+        '/': (context) => TabManager(),
+        // car list
 
-        '/login': (context) => LoginScreen(), // company link + choose user
+        '/login': (context) => LoginScreen(),
+        // company link + choose user
 
         // '/user/list': (context) => UserListScreen(), // list of users ??? needed?
          '/user/detail': (context) => UserDetailScreen(), // show user details
         // '/user/edit': (context) => UserListScreen(), // edit user details + add user
         //
-        '/car': (context) => CarListScreen(), // LIST of cars + mark favorite!
+        '/car': (context) => CarListScreen(),
+        // LIST of cars + mark favorite!
 
         // IMPLEMENT AS BOTTOM NAVIGATION BAR
         //
         '/car-navigation': (context) => CarNavigationBase(),
-        '/car/home': (context) => CarHomeScreen(),  // car home screen
-        '/car/detail': (context) => CarDetailScreen(), // show car details
+        '/car/home': (context) => CarHomeScreen(),
+        // car home screen
+        '/car/detail': (context) => CarDetailScreen(),
+        // show car details
         // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
-         '/car/expense': (context) => CarExpenseScreen(), // LIST of expenses
+        '/car/expense': (context) => CarExpenseScreen(),
+        // LIST of expenses
         // '/car/expense/detail': (context) => CarListScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
+
         '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
-        // '/car/history/detail/edit': (context) => CarListScreen(), // edit ride details + add ride ??? needed?
-        //
-         '/car/home/help': (context) => HelpCallPage(), // show help detail
+        '/car/history/detail': (context) {
+          //arguments: RideDetailArguments(ride: ride),
+          final ride = ModalRoute
+              .of(context)!
+              .settings
+              .arguments as Ride;
+          return RideEditScreen(ride: ride);
+        },
+        // edit ride details + add ride ??? needed?
+        '/car/home/help': (context) => HelpCallPage(),
+        // show help detail
       },
     );
   }

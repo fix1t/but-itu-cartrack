@@ -5,7 +5,7 @@ import 'package:itu_cartrack/src/model/user.dart';
 
 class LoginController {
   // Private constructor for the Singleton pattern
-  User? currentUser;  // Global variable to store the current user
+  static User? currentUser;  // Global variable to store the current user
   LoginController._private();
 
   static final LoginController _instance = LoginController._private();
@@ -21,6 +21,9 @@ class LoginController {
     log("Current Logged User: ${currentUser?.name ?? 'Unknown'}");
   }
 
+  getActiveUser() {
+    return currentUser;
+  }
   User? getCurrentUser() {
     return currentUser;
   }
