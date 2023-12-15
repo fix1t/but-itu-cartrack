@@ -78,4 +78,13 @@ class CarController {
   Stream<List<Ride>> getActiveCarRides() {
     return Ride().getRides(activeCar.id);
   }
+
+  static void deleteRide(Ride ride) {
+    ride.delete(activeCar.id);
+  }
+
+  static void saveOrUpdateRide(Ride ride) {
+    print(ride);
+    ride.save(activeCar.id);
+  }
 }

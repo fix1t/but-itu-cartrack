@@ -80,6 +80,9 @@ class Ride {
     });
   }
 
+  void delete(String id) {
+    databaseReference.child('cars').child(id).child('rides').child(this.id).remove();
+  }
 }
 
 enum RideType {
@@ -90,3 +93,24 @@ enum RideType {
   Leisure,
   Other,
 }
+
+// Function to convert string to RideType enum
+RideType stringToRideType(String rideTypeString) {
+  switch (rideTypeString.toLowerCase()) {
+    case 'business':
+      return RideType.Business;
+    case 'personal':
+      return RideType.Personal;
+    case 'commute':
+      return RideType.Commute;
+    case 'delivery':
+      return RideType.Delivery;
+    case 'leisure':
+      return RideType.Leisure;
+    case 'other':
+      return RideType.Other;
+    default:
+      return RideType.Other; // Default value or handle accordingly
+  }
+}
+

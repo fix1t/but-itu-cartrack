@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
 
 class CarHistoryScreen extends StatelessWidget {
@@ -58,7 +59,15 @@ class CarHistoryScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    // Implement the logic to show the ride details
+                    Navigator.pushNamed(
+                      context,
+                      '/car/history/detail',
+                      arguments: rides[index],
+
+                    );
+                  },
                 );
               },
             );
@@ -78,14 +87,17 @@ class AddRideButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => _showAddRideDialog(context),
+      onPressed: () {
+        // Implement the logic to add a new ride
+        Navigator.pushNamed(
+          context,
+          '/car/history/detail',
+          arguments: Ride(userId: LoginController().getActiveUser().id, userName: LoginController().getActiveUser().name),
+        );
+      },
       child: Icon(Icons.add),
       heroTag:
           'addRideFAB', // Needs to be unique, just to cancel Exception with using the same heroes
     );
-  }
-
-  void _showAddRideDialog(BuildContext context) {
-    // Implement the logic to show the dialog for adding a ride
   }
 }

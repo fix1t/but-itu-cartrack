@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
-        '/car/history/detail/edit': (context) {
+        '/car/history/detail': (context) {
           //arguments: RideDetailArguments(ride: ride),
           final ride = ModalRoute
               .of(context)!
@@ -90,7 +90,6 @@ class MyApp extends StatelessWidget {
           return RideEditScreen(ride: ride);
         },
         // edit ride details + add ride ??? needed?
-        //
         '/car/home/help': (context) => HelpCallPage(),
         // show help detail
       },
