@@ -296,13 +296,22 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 // help button
                 Container(
                   height: MediaQuery.of(context).size.height * 0.07,
-                  child: IconButton(
-                      icon: Icon(Icons.car_crash_rounded),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
                       color: Theme.of(context).colorScheme.error,
-                      iconSize: 50,
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/car/home/help');
-                      }),
+                      width: 2, // Adjust border width as needed
+                    ),
+                  ),
+                  child: IconButton(
+                    icon: Icon(Icons.car_crash_rounded),
+                    color: Theme.of(context).colorScheme.error,
+                    iconSize: 40,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/car/home/help');
+                    },
+                  ),
                 ),
                 // odometer + odometer status
                 Container(
@@ -340,7 +349,6 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
