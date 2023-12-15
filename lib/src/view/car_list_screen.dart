@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
+import '../model/user.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+
 
 class CarListScreen extends StatefulWidget {
   CarListScreen({Key? key}) : super(key: key);
-  final currentUser = LoginController().getCurrentUser();
 
   @override
   _CarListScreenState createState() => _CarListScreenState();
@@ -18,14 +19,15 @@ class _CarListScreenState extends State<CarListScreen> {
   final UserController userController = UserController();
   final CarController carController = CarController();
 
-  final currentUser = LoginController().getCurrentUser();
+  User? currentUser;
+
   @override
   void initState() {
-    final currentUser = LoginController().getCurrentUser();
     super.initState();
   }
 
   void _toggleFavorite(String carId) async {
+    currentUser = LoginController().getCurrentUser();
 
     if (currentUser != null) {
       if (userController.isFavoriteCar(currentUser!, carId)) {
@@ -33,7 +35,6 @@ class _CarListScreenState extends State<CarListScreen> {
       } else {
         userController.addFavoriteCar(currentUser!, carId);
       }
-      // Update user's favorites in the database
       await userController.updateUserFavorites(currentUser!.id, currentUser!.favoriteCars);
       setState(() {});  // Trigger a rebuild to update the UI
     }
