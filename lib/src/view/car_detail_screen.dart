@@ -10,17 +10,28 @@ class CarDetailScreen extends StatefulWidget {
 class _CarDetailScreenState extends State<CarDetailScreen> {
   final CarController carController = CarController();
   Car activeCar = CarController.activeCar;
-  bool isEditing = false;
   TextEditingController nameController = TextEditingController();
   TextEditingController aliasController = TextEditingController();
+  TextEditingController fuelTypeController = TextEditingController();
   TextEditingController licensePlateController = TextEditingController();
+  TextEditingController insuranceController = TextEditingController();
+  TextEditingController insuranceContactController = TextEditingController();
+  TextEditingController odometerStatusController = TextEditingController();
+  TextEditingController responsiblePersonController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     nameController.text = activeCar.name;
     aliasController.text = activeCar.alias;
+    fuelTypeController.text = activeCar.fuelType;
     licensePlateController.text = activeCar.licensePlate;
+    insuranceController.text = activeCar.insurance;
+    insuranceContactController.text = activeCar.insuranceContact;
+    odometerStatusController.text = activeCar.odometerStatus;
+    responsiblePersonController.text = activeCar.responsiblePerson;
+    descriptionController.text = activeCar.description;
   }
 
   @override
@@ -35,7 +46,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 16),
-            TextFormField(
+                        TextFormField(
               controller: nameController,
               decoration: InputDecoration(labelText: 'Car Name'),
             ),
@@ -44,8 +55,35 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
               decoration: InputDecoration(labelText: 'Car Alias'),
             ),
             TextFormField(
+              controller: fuelTypeController,
+              decoration: InputDecoration(
+                labelText: 'Car Fuel Type',
+              ),
+              enabled: false,
+            ),
+            TextFormField(
               controller: licensePlateController,
               decoration: InputDecoration(labelText: 'Car License Plate'),
+            ),
+            TextFormField(
+              controller: insuranceController,
+              decoration: InputDecoration(labelText: 'Insurance'),
+            ),
+            TextFormField(
+              controller: insuranceContactController,
+              decoration: InputDecoration(labelText: 'Insurance Contact'),
+            ),
+            TextFormField(
+              controller: odometerStatusController,
+              decoration: InputDecoration(labelText: 'Odometer Status (km)'),
+            ),
+            TextFormField(
+              controller: responsiblePersonController,
+              decoration: InputDecoration(labelText: 'Responsible Person'),
+            ),
+            TextFormField(
+              controller: descriptionController,
+              decoration: InputDecoration(labelText: 'Description'),
             ),
             SizedBox(height: 16),
             Row(
@@ -66,6 +104,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
+                          //backgroundColor: Theme.of(context).colorScheme.error.withOpacity(0.8),
                           title: Text('Are you sure?'),
                           content: Text('Do you want to delete this car?'),
                           actions: [
@@ -90,7 +129,12 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                       },
                     );
                   },
-                  child: Text('Delete Car'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Theme.of(context).colorScheme.error.withOpacity(0.8)),
+                  child: Text('Delete Car',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.onError)),
                 ),
               ],
             ),

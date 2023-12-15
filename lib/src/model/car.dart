@@ -1,9 +1,9 @@
 class Car {
   final String id;
-  late final String name;
+  final String name;
   final String fuelType;
-  late final String licensePlate;
-  late final String alias;
+  final String licensePlate;
+  final String alias;
   final String insurance;
   final String insuranceContact;
   final String odometerStatus;
