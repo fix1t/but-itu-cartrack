@@ -63,17 +63,15 @@ class MyApp extends StatelessWidget {
         // '/user/edit': (context) => UserListScreen(), // edit user details + add user
         //
         '/car': (context) => CarListScreen(), // LIST of cars + mark favorite!
-
+        //
         // IMPLEMENT AS BOTTOM NAVIGATION BAR
         //
         '/car-navigation': (context) => CarNavigationBase(),
         '/car/home': (context) => CarHomeScreen(),  // car home screen
         '/car/detail': (context) => CarDetailScreen(), // show car details
-        // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
-         '/car/expense': (context) => CarExpenseScreen(), // LIST of expenses
-         '/car/expense/detail': (context) => CarExpenseDetailScreen(), // show expense details
-        // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
+        '/car/expense': (context) => CarExpenseScreen(), // LIST of expenses
+        '/car/expense/detail': (context) => CarExpenseDetailScreen(), // show expense details
         //
         '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like
         //

@@ -15,7 +15,6 @@ class UserModel {
     await databaseReference.child('users').child(userId).remove();
   }
 
-
   Stream<List<User>> getUsers() {
     return databaseReference.child('users').onValue.map((event) {
       var snapshot = event.snapshot;
@@ -32,5 +31,14 @@ class UserModel {
       }
       return [];
     });
+  }
+
+  Future<User?> getUserById(String userId) async {
+    DataSnapshot snapshot = await databaseReference.child('users').child(userId).get();
+    if (snapshot.exists && snapshot.value is Map) {
+      Map<String, dynamic> userMap = Map<String, dynamic>.from(snapshot.value as Map);
+      return User.fromMap(userId, userMap);
+    }
+    return null;
   }
 }
