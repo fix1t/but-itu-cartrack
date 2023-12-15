@@ -17,7 +17,6 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   TextEditingController insuranceController = TextEditingController();
   TextEditingController insuranceContactController = TextEditingController();
   TextEditingController odometerStatusController = TextEditingController();
-  TextEditingController responsiblePersonController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
   @override
@@ -30,7 +29,6 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     insuranceController.text = activeCar.insurance;
     insuranceContactController.text = activeCar.insuranceContact;
     odometerStatusController.text = activeCar.odometerStatus;
-    responsiblePersonController.text = activeCar.responsiblePerson;
     descriptionController.text = activeCar.description;
   }
 
@@ -46,7 +44,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 16),
-                        TextFormField(
+            TextFormField(
               controller: nameController,
               decoration: InputDecoration(labelText: 'Car Name'),
             ),
@@ -54,12 +52,28 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
               controller: aliasController,
               decoration: InputDecoration(labelText: 'Car Alias'),
             ),
-            TextFormField(
-              controller: fuelTypeController,
-              decoration: InputDecoration(
-                labelText: 'Car Fuel Type',
-              ),
-              enabled: false,
+            DropdownButtonFormField<String>(
+              value: fuelTypeController.text,
+              onChanged: (newValue) {
+                setState(() {
+                  fuelTypeController.text = newValue!;
+                });
+              },
+              items: <String>[
+                'Gasoline',
+                'Diesel',
+                'Electric',
+                'Hybrid',
+                'LPG',
+                'CNG',
+                'Other'
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              decoration: InputDecoration(labelText: 'Fuel Type'),
             ),
             TextFormField(
               controller: licensePlateController,
@@ -78,10 +92,6 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
               decoration: InputDecoration(labelText: 'Odometer Status (km)'),
             ),
             TextFormField(
-              controller: responsiblePersonController,
-              decoration: InputDecoration(labelText: 'Responsible Person'),
-            ),
-            TextFormField(
               controller: descriptionController,
               decoration: InputDecoration(labelText: 'Description'),
             ),
@@ -92,7 +102,16 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      //CarController.updateCar(activeCar.id, nameController.text, aliasController.text, licensePlateController.text);
+                      carController.updateCar(
+                          activeCar.id,
+                          nameController.text,
+                          aliasController.text,
+                          fuelTypeController.text,
+                          licensePlateController.text,
+                          insuranceController.text,
+                          insuranceContactController.text,
+                          odometerStatusController.text,
+                          descriptionController.text);
                     });
                   },
                   child: Text('Update Car Info'),

@@ -14,18 +14,21 @@ class CarListScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-            title: Text('Car List', style: TextStyle(color: theme.colorScheme.onSecondary),),
-            backgroundColor: theme.colorScheme.secondary,
-            actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.settings, color: theme.colorScheme.onSecondary),
-                    onPressed: () {
-                      // Navigate to UserDetailScreen when the button is pressed
-                      Navigator.pushNamed(context, '/user/detail');
-                    },
-                ),
-            ],
+        title: Text(
+          'Car List',
+          style: TextStyle(color: theme.colorScheme.onSecondary),
         ),
+        backgroundColor: theme.colorScheme.secondary,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings, color: theme.colorScheme.onSecondary),
+            onPressed: () {
+              // Navigate to UserDetailScreen when the button is pressed
+              Navigator.pushNamed(context, '/user/detail');
+            },
+          ),
+        ],
+      ),
       body: StreamBuilder<List<Car>>(
         stream: carController.cars,
         builder: (context, snapshot) {
@@ -290,18 +293,21 @@ class FuelTypeDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity, // Set width to full width
-      child: DropdownButton<String>(
-        hint: const Text('Select fuel type for the car'),
-        value: selectedFuelType,
-        onChanged: onChanged,
-        items: fuelTypes.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
+    return InputDecorator(
+      decoration: const InputDecoration(
+        labelText: 'Fuel Type',
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: selectedFuelType,
+          onChanged: onChanged,
+          items: fuelTypes.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
