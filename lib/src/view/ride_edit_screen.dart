@@ -47,7 +47,8 @@ class _RideEditScreenState extends State<RideEditScreen> {
   }
 
   void saveOrUpdateRide() {
-    bool distanceChanged = _distanceController.text != widget.ride.distance.toString();
+    bool distanceChanged =
+        _distanceController.text != widget.ride.distance.toString();
     print(distanceChanged);
 
     if (distanceChanged && widget.ride.id.isNotEmpty) {
@@ -58,7 +59,8 @@ class _RideEditScreenState extends State<RideEditScreen> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('Confirmation'),
-              content: Text('Changing the distance will impact other rides. Are you sure to proceed?'),
+              content: Text(
+                  'Changing the distance will impact other rides. Are you sure to proceed?'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -85,8 +87,10 @@ class _RideEditScreenState extends State<RideEditScreen> {
     }
   }
 
-  Future<void> _selectDateTime(BuildContext context, bool isStartDateTime) async {
-    final initialDate = isStartDateTime ? _selectedStartDateTime : _selectedFinishDateTime;
+  Future<void> _selectDateTime(
+      BuildContext context, bool isStartDateTime) async {
+    final initialDate =
+        isStartDateTime ? _selectedStartDateTime : _selectedFinishDateTime;
     final selectedDate = await showDatePicker(
       context: context,
       initialDate: initialDate ?? DateTime.now(),
@@ -94,7 +98,8 @@ class _RideEditScreenState extends State<RideEditScreen> {
       lastDate: DateTime(2100),
     );
     if (selectedDate != null) {
-      final initialTime = isStartDateTime ? _selectedStartDateTime : _selectedFinishDateTime;
+      final initialTime =
+          isStartDateTime ? _selectedStartDateTime : _selectedFinishDateTime;
       final selectedTime = await showTimePicker(
         context: context,
         initialTime: TimeOfDay.fromDateTime(initialTime ?? DateTime.now()),
@@ -138,7 +143,8 @@ class _RideEditScreenState extends State<RideEditScreen> {
             ),
             SizedBox(height: 16.0),
             DropdownButtonFormField<RideType>(
-              value: _selectedRideType, // Set the default value or the value from your model
+              value: _selectedRideType,
+              // Set the default value or the value from your model
               decoration: InputDecoration(labelText: 'Ride Type'),
               items: RideType.values.map((type) {
                 return DropdownMenuItem<RideType>(
@@ -207,11 +213,17 @@ class _RideEditScreenState extends State<RideEditScreen> {
                     //displaySnackBar(context, 'Ride deleted');
                     showSnackBar(context, 'Ride deleted');
                   },
-                  child: Text('Delete'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Theme.of(context).colorScheme.error.withOpacity(0.8)),
+                  child: Text(
+                    'Delete',
+                    style:
+                        TextStyle(color: Theme.of(context).colorScheme.onError),
+                  ),
                 ),
               ],
             )
-
           ],
         ),
       ),

@@ -31,25 +31,26 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
 
   @override
   void dispose() {
-    CarController.onOdometerChange = null; // Unregister the callback to prevent memory leaks
+    CarController.onOdometerChange =
+        null; // Unregister the callback to prevent memory leaks
     super.dispose();
   }
 
   void showRouteStartedNotification() {
     ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Your route has been started!'),
-          action: SnackBarAction(
-            label: 'Undo',
-            onPressed: () {
-              setState(() {
-                activeRide = false;
-              });
-            },
-          ),
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.zero,
+      SnackBar(
+        content: const Text('Your route has been started!'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              activeRide = false;
+            });
+          },
         ),
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.zero,
+      ),
     );
   }
 
@@ -57,7 +58,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
     String selectedRideType = 'Business'; // Variable to hold selected ride type
     int odometerStatus = int.parse(selectedCar.odometerStatus);
     TextEditingController textEditingController =
-    TextEditingController(text: odometerStatus.toString());
+        TextEditingController(text: odometerStatus.toString());
 
     showDialog(
       context: context,
@@ -107,11 +108,14 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           onPressed: () {
                             setState(() {
                               odometerStatus += 1;
-                              textEditingController.text = odometerStatus.toString();
+                              textEditingController.text =
+                                  odometerStatus.toString();
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12,
+                                horizontal: 8), // Adjust the padding here
                           ),
                           child: Text('+1'),
                         ),
@@ -121,11 +125,14 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           onPressed: () {
                             setState(() {
                               odometerStatus += 5;
-                              textEditingController.text = odometerStatus.toString();
+                              textEditingController.text =
+                                  odometerStatus.toString();
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12,
+                                horizontal: 8), // Adjust the padding here
                           ),
                           child: Text('+5'),
                         ),
@@ -135,11 +142,14 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           onPressed: () {
                             setState(() {
                               odometerStatus += 10;
-                              textEditingController.text = odometerStatus.toString();
+                              textEditingController.text =
+                                  odometerStatus.toString();
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12,
+                                horizontal: 8), // Adjust the padding here
                           ),
                           child: Text('+10'),
                         ),
@@ -149,18 +159,20 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           onPressed: () {
                             setState(() {
                               odometerStatus += 50;
-                              textEditingController.text = odometerStatus.toString();
+                              textEditingController.text =
+                                  odometerStatus.toString();
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Adjust the padding here
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12,
+                                horizontal: 8), // Adjust the padding here
                           ),
                           child: Text('+50'),
                         ),
                       ),
                     ],
                   ),
-
                 ],
               ),
               actions: <Widget>[
@@ -172,29 +184,30 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if(CarController.isCorrectRideInput(
-                    odometerStatus: odometerStatus, rideType: selectedRideType )){
+                    if (CarController.isCorrectRideInput(
+                        odometerStatus: odometerStatus,
+                        rideType: selectedRideType)) {
                       setState(() {
-                              odometer = CarController.activeCar.odometerStatus;
-                              activeRide = false;
+                        odometer = CarController.activeCar.odometerStatus;
+                        activeRide = false;
                       });
                       CarController.finishRide();
                       Navigator.of(context).pop(); // Close the dialog
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('Please fill in all fields!'),
-                            action: SnackBarAction(
-                              label: 'Undo',
-                              onPressed: () {
-                                setState(() {
-                                  activeRide = false;
-                                });
-                              },
-                            ),
-                            behavior: SnackBarBehavior.floating,
-                            margin: EdgeInsets.zero,
+                        SnackBar(
+                          content: const Text('Please fill in all fields!'),
+                          action: SnackBarAction(
+                            label: 'Undo',
+                            onPressed: () {
+                              setState(() {
+                                activeRide = false;
+                              });
+                            },
                           ),
+                          behavior: SnackBarBehavior.floating,
+                          margin: EdgeInsets.zero,
+                        ),
                       );
                     }
                   },
@@ -212,10 +225,11 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${selectedCar.name}',
+        title: Text(
+          '${selectedCar.name}',
           style: TextStyle(
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
@@ -223,7 +237,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         children: [
           // Car Name + License Plate + Icon
           Container(
-            height: MediaQuery.of(context).size.height * 0.20,
+            height: MediaQuery.of(context).size.height * 0.15,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
             child: Row(
               children: [
@@ -273,7 +287,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
           ),
           // Dashboard Image + Odometer Status
           Container(
-            height: MediaQuery.of(context).size.height * 0.33,
+            height: MediaQuery.of(context).size.height * 0.35,
             // padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -281,7 +295,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
               children: [
                 // help button
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.05,
+                  height: MediaQuery.of(context).size.height * 0.04,
                   child: IconButton(
                       icon: Icon(Icons.car_crash_rounded),
                       color: Theme.of(context).colorScheme.secondary,
@@ -291,30 +305,41 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 ),
                 // odometer + odometer status
                 Container(
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Image(
-                            image: AssetImage('assets/images/o2.png'),
-                            fit: BoxFit.contain,
-                            color: Theme.of(context).colorScheme.primary,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/o2.png'),
+                          fit: BoxFit.contain,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 3,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          Text(
+                          child: Text(
                             '${selectedCar.odometerStatus}',
                             style: TextStyle(
-                                decoration: TextDecoration.none,
-                                //TODO: change font to digital/monospace
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.primary,
-                                fontFamily: 'RobotoMono'),
+                              decoration: TextDecoration.none,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary,
+                              fontFamily: 'RobotoMono',
+                            ),
                           ),
-                        ],
-                      ),
-                    )
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
+
               ],
             ),
           ),
