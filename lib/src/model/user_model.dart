@@ -15,6 +15,11 @@ class UserModel {
     await databaseReference.child('users').child(userId).remove();
   }
 
+  // Update the favorite cars for a user in the database
+  Future<void> updateUserFavorites(String userId, List<String> favoriteCars) async {
+    await databaseReference.child('users').child(userId).update({'favoriteCars': favoriteCars});
+  }
+
 
   Stream<List<User>> getUsers() {
     return databaseReference.child('users').onValue.map((event) {

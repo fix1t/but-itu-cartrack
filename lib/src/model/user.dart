@@ -4,6 +4,7 @@ class User {
   final String login;
   final String email;
   final String phoneNumber;
+  List<String> favoriteCars;
 
   User({
     this.id = '',
@@ -11,7 +12,8 @@ class User {
     this.login = '',
     this.email = '',
     this.phoneNumber = '',
-  });
+    List<String>? favoriteCars, // Use a nullable list for the initializer
+  }) : favoriteCars = favoriteCars ?? []; // Default to an empty list if null
 
   factory User.fromMap(String id, Map<String, dynamic> data) {
     return User(
@@ -20,6 +22,7 @@ class User {
       login: data['login'] ?? '',
       email: data['email'] ?? '',
       phoneNumber: data['phoneNumber'] ?? '',
+      favoriteCars: List<String>.from(data['favoriteCars'] ?? []),
     );
   }
 
@@ -29,6 +32,7 @@ class User {
       'login': login,
       'email': email,
       'phoneNumber': phoneNumber,
+      'favoriteCars': favoriteCars,
     };
   }
 }

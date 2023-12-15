@@ -1,31 +1,60 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
-class CarListScreen extends StatelessWidget {
+class CarListScreen extends StatefulWidget {
+  CarListScreen({Key? key}) : super(key: key);
+  final currentUser = LoginController().getCurrentUser();
+
+  @override
+  _CarListScreenState createState() => _CarListScreenState();
+}
+
+class _CarListScreenState extends State<CarListScreen> {
   final UserController userController = UserController();
   final CarController carController = CarController();
 
-  CarListScreen();
+  final currentUser = LoginController().getCurrentUser();
+  @override
+  void initState() {
+    final currentUser = LoginController().getCurrentUser();
+    super.initState();
+  }
+
+  void _toggleFavorite(String carId) async {
+
+    if (currentUser != null) {
+      if (userController.isFavoriteCar(currentUser!, carId)) {
+        userController.removeFavoriteCar(currentUser!, carId);
+      } else {
+        userController.addFavoriteCar(currentUser!, carId);
+      }
+      // Update user's favorites in the database
+      await userController.updateUserFavorites(currentUser!.id, currentUser!.favoriteCars);
+      setState(() {});  // Trigger a rebuild to update the UI
+    }
+  }
+
+  Icon _getFavoriteIcon(String carId) {
+    bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, carId);
+    return isFavorite ? Icon(Icons.favorite, color: Colors.red) : Icon(Icons.favorite_border);
+  }
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Car List',
-          style: TextStyle(color: theme.colorScheme.onSecondary),
-        ),
+        title: Text('Car List', style: TextStyle(color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings, color: theme.colorScheme.onSecondary),
-            onPressed: () {
-              // Navigate to UserDetailScreen when the button is pressed
-              Navigator.pushNamed(context, '/user/detail');
-            },
+            onPressed: () => Navigator.pushNamed(context, '/user/detail'),
           ),
         ],
       ),
@@ -43,7 +72,7 @@ class CarListScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: cars.length,
               itemBuilder: (context, index) {
-                return CarTitle(cars, index, context, theme);
+                return _buildCarTile(cars[index], context, theme);
               },
             );
           }
@@ -53,58 +82,31 @@ class CarListScreen extends StatelessWidget {
     );
   }
 
-  Container CarTitle(
-      List<Car> cars, int index, BuildContext context, ThemeData theme) {
+  Widget _buildCarTile(Car car, BuildContext context, ThemeData theme) {
     return Container(
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondaryContainer,
+        color: theme.colorScheme.secondaryContainer,
         borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(color: Theme.of(context).colorScheme.primary),
+        border: Border.all(color: theme.colorScheme.primary),
       ),
       child: ListTile(
-        leading: Icon(Icons.directions_car_filled_rounded,
-            color: theme.colorScheme.secondary, size: 36.0),
+        leading: Icon(Icons.directions_car_filled_rounded, color: theme.colorScheme.secondary, size: 36.0),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              cars[index].name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                color: theme.colorScheme
-                    .onSecondaryContainer, // set text color to match background
-              ),
-            ),
-            Text(
-              cars[index].licensePlate,
-              style: TextStyle(
-                fontSize: 14.0,
-                color: theme.colorScheme
-                    .onSecondaryContainer, // set text color to match background
-              ),
-            ),
+            Text(car.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, color: theme.colorScheme.onSecondaryContainer)),
+            Text(car.licensePlate, style: TextStyle(fontSize: 14.0, color: theme.colorScheme.onSecondaryContainer)),
           ],
         ),
         onTap: () {
-          carController.setActiveCar(cars[index]);
+          carController.setActiveCar(car);
           Navigator.pushNamed(context, '/car-navigation');
         },
         trailing: IconButton(
-          icon: Icon(Icons.favorite_outline, size: 28.0),
-          color: theme.colorScheme.primary,
-          // color: isFavorite
-          //     ? Colors.pink
-          //     : Colors
-          //         .grey, // Set favorite icon color based on condition
-          onPressed: () {
-            // Toggle the favorite status or perform your favorite logic
-            // setState(() {
-            //   isFavorite = !isFavorite;
-            // });
-          },
+          icon: _getFavoriteIcon(car.id),
+          onPressed: () => _toggleFavorite(car.id),
         ),
       ),
     );
