@@ -65,6 +65,7 @@ class CarController {
       activeRide.distance = odometerStatus - odometerStatusInt;
       activeRide.finishedAt = DateTime.now();
       activeRide.userId = LoginController().getActiveUser().id;
+      activeRide.userName = LoginController().getActiveUser().name;
       activeRide.save(activeCar.id);
       updateOdometer(odometerStatus);
       return true;
@@ -72,5 +73,9 @@ class CarController {
       print('Ride not finished!');
       return false;
     }
+  }
+
+  Stream<List<Ride>> getActiveCarRides() {
+    return Ride().getRides(activeCar.id);
   }
 }

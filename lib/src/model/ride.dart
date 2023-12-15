@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_database/firebase_database.dart';
 
 class Ride {
@@ -5,6 +7,7 @@ class Ride {
 
   String id;
   String userId;
+  String userName;
   DateTime startedAt;
   DateTime finishedAt;
   String rideType; // Enum: 'Business', 'Personal', 'Other' ...
@@ -13,6 +16,7 @@ class Ride {
   Ride({
     this.id = '',
     this.userId = '',
+    this.userName = '',
     DateTime? startedAt,
     DateTime? finishedAt,
     this.rideType = '',
@@ -25,6 +29,7 @@ class Ride {
     return Ride(
       id: id,
       userId: data['userId'] ?? '',
+      userName: data['userName'] ?? '',
       startedAt: DateTime.parse(data['startedAt'] ?? ''),
       finishedAt: DateTime.parse(data['finishedAt'] ?? ''),
       rideType: data['rideType'] ?? '',
@@ -35,6 +40,7 @@ class Ride {
   Map<String, dynamic> toMap() {
     return {
       'userId': userId,
+      'userName': userName,
       'startedAt': startedAt.toIso8601String(),
       'finishedAt': finishedAt.toIso8601String(),
       'rideType': rideType,
@@ -50,6 +56,30 @@ class Ride {
       databaseReference.child('cars').child(carId).child('rides').child(id).set(toMap());
     }
   }
+
+  Stream<List<Ride>> getRides(String carId) {
+    DatabaseReference ridesRef = databaseReference.child('cars').child(carId).child('rides');
+    return ridesRef.onValue.map((event) {
+      var snapshot = event.snapshot;
+      var data = snapshot.value as Map<dynamic, dynamic>?;
+
+      List<Ride> ridesList = [];
+
+      if (data != null) {
+        data.forEach((key, value) {
+          print(value);
+          if (value is Map<Object?, Object?>) {
+            Ride ride = Ride.fromMap(key, value.cast<String, dynamic>());
+            ridesList.add(ride);
+          }
+        });
+        // Sort ridesList based on startedAt date
+        ridesList.sort((a, b) => b.startedAt.compareTo(a.startedAt));
+      }
+      return ridesList;
+    });
+  }
+
 }
 
 enum RideType {
