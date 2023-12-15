@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
-import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
 import 'package:itu_cartrack/src/widgets/steering_wheel.dart';
@@ -230,48 +227,53 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
             child: Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${selectedCar.name}',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${selectedCar.name}',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      '${selectedCar.licensePlate}',
-                      style: TextStyle(
+                      SizedBox(height: 8),
+                      Text(
+                        '${selectedCar.licensePlate}',
+                        style: TextStyle(
                           fontSize: 20,
                           color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(width: 30),
-                // TODO: Add car image
-                // Car image
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.directions_car,
-                      size: 100,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ],
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.directions_car,
+                        size: 100,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
           // Dashboard Image + Odometer Status
           Container(
-            height: MediaQuery.of(context).size.height * 0.30,
+            height: MediaQuery.of(context).size.height * 0.33,
             // padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -289,7 +291,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 ),
                 // odometer + odometer status
                 Container(
-                    width: MediaQuery.of(context).size.width * 0.6,
+                    width: MediaQuery.of(context).size.width * 0.7,
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -297,7 +299,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           Image(
                             image: AssetImage('assets/images/o2.png'),
                             fit: BoxFit.contain,
-                            color: Theme.of(context).colorScheme.secondary,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           Text(
                             '${selectedCar.odometerStatus}',

@@ -78,7 +78,7 @@ class RotatingSteeringWheelState extends State<RotatingSteeringWheel>
             shape: BoxShape.circle,
             color: widget.isActive
                 ? Theme.of(context).colorScheme.primary
-                : Theme.of(context).colorScheme.secondary,
+                : Theme.of(context).colorScheme.secondary.withOpacity(0.5),
           ),
           child: Image.asset(
             'assets/images/steering-wheel.png',
