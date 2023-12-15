@@ -124,7 +124,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                   },
                   child: ListTile(
                     title: Text(
-                      '${expenses[index].amount.toStringAsFixed(2)} CZK - ${expenses[index].type.name}',
+                      '${expenses[index].amount.toStringAsFixed(2)} CZK - ${expenses[index].type.name.substring(0, 1).toUpperCase() + expenses[index].type.name.substring(1)}',
                       style: TextStyle(fontSize: 18),
                     ),
                     subtitle: Text(

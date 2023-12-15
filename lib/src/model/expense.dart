@@ -50,7 +50,7 @@ class Expense {
 
   Map<String, dynamic> toMap() {
     return {
-      'type': expenseTypeToString(type),
+      'type': expenseTypeToStr(type),
       'userId': userId,
       'amount': amount,
       'date': date.toIso8601String(),

@@ -169,7 +169,7 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
         Text('Created by: ${_userNameController.text}',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         SizedBox(height: 20),
-        Text('Type: ${expense?.type.name}',
+        Text('Type: ${expense!.type.name.substring(0, 1).toUpperCase() + expense!.type.name.substring(1)}',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         SizedBox(height: 20),
       ],
