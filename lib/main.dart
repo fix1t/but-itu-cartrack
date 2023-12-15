@@ -7,6 +7,7 @@ import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/user_model.dart';
+import 'package:itu_cartrack/src/view/car_expense_detail_screen.dart';
 import 'package:itu_cartrack/src/view/car_home_help_screen.dart';
 import 'package:itu_cartrack/src/widgets/tab_manager.dart';
 import 'package:itu_cartrack/src/view/car_detail_screen.dart';
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
         // '/car/detail/edit': (context) => CarListScreen(), // edit car details + add car
         //
          '/car/expense': (context) => CarExpenseScreen(), // LIST of expenses
-        // '/car/expense/detail': (context) => CarListScreen(), // show expense details
+         '/car/expense/detail': (context) => CarExpenseDetailScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
         '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like

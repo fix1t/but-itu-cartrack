@@ -3,6 +3,7 @@ import 'package:itu_cartrack/src/controller/expense_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+import 'package:itu_cartrack/src/view/car_expense_detail_screen.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 
 class CarExpenseScreen extends StatefulWidget {
@@ -105,18 +106,29 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
             return ListView.builder(
               itemCount: expenses.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                      '${expenses[index].amount} Czk - ${expenses[index].type.name}'),
-                  subtitle: Text(
-                      'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}'),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete_outline),
-                    color: theme.colorScheme.primary,
-                    onPressed: () {
-                      ExpenseController()
-                          .deleteExpense(selectedCar.id, expenses[index].id);
-                    },
+                return GestureDetector(
+                  onTap: () {
+                    // Set the active expense when tapped
+                    ExpenseController().setActiveExpense(expenses[index]);
+
+                    // Navigate to the expense details screen
+                    Navigator.pushNamed(context, '/car/expense/detail');
+                  },
+                  child: ListTile(
+                    title: Text(
+                      '${expenses[index].amount} Czk - ${expenses[index].type.name}',
+                    ),
+                    subtitle: Text(
+                      'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}',
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete_outline),
+                      color: theme.colorScheme.primary,
+                      onPressed: () {
+                        ExpenseController()
+                            .deleteExpense(selectedCar.id, expenses[index].id);
+                      },
+                    ),
                   ),
                 );
               },

@@ -19,7 +19,6 @@ class CarController {
 
   Future<void> addCar(String name, String alias, String fuelType,
       String licensePlate, String insuranceContact, String odometerStatus, String description) async {
-    // TODO: implement addCar
     Car newCar = Car(
         name: name,
         alias: alias,

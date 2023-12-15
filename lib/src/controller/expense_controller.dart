@@ -3,6 +3,7 @@ import 'package:itu_cartrack/src/model/expense.dart';
 
 class ExpenseController {
   final ExpenseModel expenseModel;
+  Expense? activeExpense; // Variable to hold the active expense
 
   // Private constructor for the Singleton pattern
   ExpenseController._private(this.expenseModel);
@@ -46,4 +47,14 @@ class ExpenseController {
     await expenseModel.updateExpense(carId, expenseId, expense);
   }
   */
+
+  // Set the active expense
+  void setActiveExpense(Expense expense) {
+    activeExpense = expense;
+  }
+
+  // Get the active expense
+  Expense? getActiveExpense() {
+    return activeExpense;
+  }
 }
