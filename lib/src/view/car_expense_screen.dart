@@ -104,7 +104,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(
-                      '${expenses[index].amount} Czk - ${expenses[index].type.name}'),
+                      '${expenses[index].amount} Czk - ${expenses[index].type.name.substring(0, 1).toUpperCase() + expenses[index].type.name.substring(1)}'),
                   subtitle: Text(
                       'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}'),
                   trailing: IconButton(

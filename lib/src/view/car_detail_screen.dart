@@ -53,7 +53,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
               decoration: InputDecoration(labelText: 'Car Alias'),
             ),
             DropdownButtonFormField<String>(
-              value: fuelTypeController.text,
+                value: fuelTypeController.text.isNotEmpty ? fuelTypeController.text : 'Gasoline', // anti null
               onChanged: (newValue) {
                 setState(() {
                   fuelTypeController.text = newValue!;
