@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
@@ -16,11 +18,20 @@ class LoginController {
     currentUser = selectedUser;  // Storing the current user in the global variable
 
     Navigator.pop(context);
-    print("Current: ${currentUser?.name ?? 'Unknown'}");
+    log("Current Logged User: ${currentUser?.name ?? 'Unknown'}");
   }
 
   getActiveUser() {
     return currentUser;
   }
+  User? getCurrentUser() {
+    return currentUser;
+  }
+  String getCurrentUserId() {
+    return currentUser!.id;
+  }
 
+  String getCurrentUserName() {
+    return currentUser!.name;
+  }
 }

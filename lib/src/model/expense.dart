@@ -1,29 +1,46 @@
+enum ExpenseType {
+  fuel,
+  maintenance,
+  repair,
+  insurance,
+  other,
+}
+
+String expenseTypeToString(ExpenseType type) {
+  return type.toString().split('.').last;
+}
+
+ExpenseType expenseTypeFromString(String typeString) {
+  return ExpenseType.values.firstWhere(
+        (e) => e.toString().split('.').last == typeString,
+    orElse: () => ExpenseType.other, // Default value if not found
+  );
+}
 class Expense {
   final String id;
-  final String description;
+  final ExpenseType type;
   final double amount;
   final DateTime date;
 
   Expense({
     this.id = '',
-    this.description = '',
+    required this.type,
     this.amount = 0.0,
     DateTime? date,
   }) : date = date ?? DateTime.now();
 
-
   factory Expense.fromMap(String id, Map<String, dynamic> data) {
     return Expense(
       id: id,
-      description: data['description'] ?? '',
+      type: expenseTypeFromString(data['type'] ?? 'Other'),
       amount: (data['amount'] ?? 0.0).toDouble(),
-      date: DateTime.parse(data['date'] ?? ''),
+      date: DateTime.tryParse(data['date'] ?? '') ?? DateTime.now(),
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'description': description,
+      'type': expenseTypeToString(type),
       'amount': amount,
       'date': date.toIso8601String(),
     };

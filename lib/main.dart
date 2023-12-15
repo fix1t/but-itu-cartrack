@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:itu_cartrack/src/widgets/theme_provider.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
@@ -14,6 +16,7 @@ import 'package:itu_cartrack/src/view/login_screen.dart';
 import 'package:itu_cartrack/src/view/car_expense_screen.dart';
 import 'package:itu_cartrack/src/widgets/car_navbar.dart';
 import 'package:itu_cartrack/src/view/car_notes_screen.dart';
+import 'package:itu_cartrack/src/view/user_detail_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -32,21 +35,22 @@ void main() async {
   final UserController userController = UserController();
   final LoginController loginController = LoginController();
 
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProvider(
+      ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue)),
+    ),
+    child: MyApp(),
+  ));
 }
 
-
 class MyApp extends StatelessWidget {
-
-  MyApp();
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       title: 'Car Track',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: themeProvider.themeData,
       initialRoute: '/login',
       routes: {
         '/': (context) => TabManager(),
@@ -56,7 +60,7 @@ class MyApp extends StatelessWidget {
         // company link + choose user
 
         // '/user/list': (context) => UserListScreen(), // list of users ??? needed?
-        // '/user/detail': (context) => UserListScreen(), // show user details
+         '/user/detail': (context) => UserDetailScreen(), // show user details
         // '/user/edit': (context) => UserListScreen(), // edit user details + add user
         //
         '/car': (context) => CarListScreen(),
@@ -76,8 +80,8 @@ class MyApp extends StatelessWidget {
         // '/car/expense/detail': (context) => CarListScreen(), // show expense details
         // '/car/expense/detail/edit': (context) => CarListScreen(), // edit expense details + add expense
         //
-        '/car/notes': (context) => CarNotesScreen(),
-        // list of notes + add note - chat like + (photo?)
+
+        '/car/notes': (context) => CarNotesScreen(), // list of notes + add note - chat like
         //
         // '/car/history': (context) => CarListScreen(), // LIST of rides
         // '/car/history/detail': (context) => CarListScreen(), // show ride detail ??? needed?
