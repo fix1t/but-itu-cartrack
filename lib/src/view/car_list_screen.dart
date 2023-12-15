@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import '../model/user.dart';
+import '../model/car.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
-import '../model/user.dart';
-import 'package:itu_cartrack/src/model/car.dart';
 
 
 class CarListScreen extends StatefulWidget {
@@ -18,7 +18,6 @@ class CarListScreen extends StatefulWidget {
 class _CarListScreenState extends State<CarListScreen> {
   final UserController userController = UserController();
   final CarController carController = CarController();
-
   User? currentUser;
 
   @override
@@ -28,7 +27,6 @@ class _CarListScreenState extends State<CarListScreen> {
 
   void _toggleFavorite(String carId) async {
     currentUser = LoginController().getCurrentUser();
-
     if (currentUser != null) {
       if (userController.isFavoriteCar(currentUser!, carId)) {
         userController.removeFavoriteCar(currentUser!, carId);
@@ -47,6 +45,7 @@ class _CarListScreenState extends State<CarListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    currentUser = LoginController().getCurrentUser();
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -73,7 +72,10 @@ class _CarListScreenState extends State<CarListScreen> {
             return ListView.builder(
               itemCount: cars.length,
               itemBuilder: (context, index) {
-                return _buildCarTile(cars[index], context, theme);
+                Car car = cars[index];
+                bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, car.id);
+
+                return _buildCarTile(cars[index], context, theme, isFavorite);
               },
             );
           }
@@ -83,7 +85,7 @@ class _CarListScreenState extends State<CarListScreen> {
     );
   }
 
-  Widget _buildCarTile(Car car, BuildContext context, ThemeData theme) {
+  Widget _buildCarTile(Car car, BuildContext context, ThemeData theme, bool isFavorite) {
     return Container(
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(12.0),
@@ -106,7 +108,7 @@ class _CarListScreenState extends State<CarListScreen> {
           Navigator.pushNamed(context, '/car-navigation');
         },
         trailing: IconButton(
-          icon: _getFavoriteIcon(car.id),
+          icon: isFavorite ? Icon(Icons.favorite, color: Colors.red) : Icon(Icons.favorite_border),
           onPressed: () => _toggleFavorite(car.id),
         ),
       ),
