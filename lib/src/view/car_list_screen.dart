@@ -14,7 +14,7 @@ class CarListScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-            title: Text('Car List'),
+            title: Text('Car List', style: TextStyle(color: theme.colorScheme.onSecondary),),
             backgroundColor: theme.colorScheme.secondary,
             actions: <Widget>[
                 IconButton(
@@ -162,7 +162,7 @@ class _AddCarButtonState extends State<AddCarButton> {
                     ),
                     TextField(
                       controller: aliasController,
-                      decoration: InputDecoration(labelText: 'Alias *'),
+                      decoration: InputDecoration(labelText: 'Alias'),
                     ),
                     FuelTypeDropdown(
                       selectedFuelType: selectedFuelType,

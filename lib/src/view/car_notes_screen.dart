@@ -11,7 +11,6 @@ class CarNotesScreen extends StatelessWidget {
   final Car selectedCar = CarController.activeCar;
   final String currentUserId = LoginController().getCurrentUserId();
   final String currentUserName = LoginController().getCurrentUserName();
-  //UserController userController = UserController();
   NoteController noteController = NoteController();
 
   CarNotesScreen();
