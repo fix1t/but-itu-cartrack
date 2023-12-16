@@ -38,9 +38,34 @@ class UserController {
     await userModel.deleteUser(userId);
     userModel.getUsers();
   }
-
+  
   Future<User?> getUserById(String userId) async {
     // Call the UserModel to query the database
     return userModel.getUserById(userId);
+  }
+
+  // Adds a car to the user's list of favorites
+  Future<void> addFavoriteCar(User user, String carId) async {
+    if (!user.favoriteCars.contains(carId)) {
+      user.favoriteCars.add(carId);
+      await userModel.updateUserFavorites(user.id, user.favoriteCars);
+    }
+  }
+  // Update user's favorite cars in the database
+  Future<void> updateUserFavorites(String userId, List<String> favoriteCars) async {
+    await userModel.updateUserFavorites(userId, favoriteCars);
+  }
+
+  // Removes a car from the user's list of favorites
+  Future<void> removeFavoriteCar(User user, String carId) async {
+    if (user.favoriteCars.contains(carId)) {
+      user.favoriteCars.remove(carId);
+      await userModel.updateUserFavorites(user.id, user.favoriteCars);
+    }
+  }
+
+  // Checks if a car is in the user's list of favorites
+  bool isFavoriteCar(User user, String carId) {
+    return user.favoriteCars.contains(carId);
   }
 }
