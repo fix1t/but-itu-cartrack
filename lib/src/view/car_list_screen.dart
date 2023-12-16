@@ -7,7 +7,6 @@ import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 
-
 class CarListScreen extends StatefulWidget {
   CarListScreen({Key? key}) : super(key: key);
 
@@ -38,15 +37,10 @@ class _CarListScreenState extends State<CarListScreen> {
     }
   }
 
-  Icon _getFavoriteIcon(String carId) {
-    bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, carId);
-    return isFavorite ? Icon(Icons.favorite, color: Colors.red) : Icon(Icons.favorite_border);
-  }
-
   @override
   Widget build(BuildContext context) {
-    currentUser = LoginController().getCurrentUser();
     var theme = Theme.of(context);
+    currentUser = LoginController().getCurrentUser();
     return Scaffold(
       appBar: AppBar(
         title: Text('Car List', style: TextStyle(color: theme.colorScheme.onSecondary)),
@@ -69,13 +63,23 @@ class _CarListScreenState extends State<CarListScreen> {
             return Center(child: Text('No cars found'));
           } else {
             List<Car> cars = snapshot.data!;
-            return ListView.builder(
-              itemCount: cars.length,
-              itemBuilder: (context, index) {
-                Car car = cars[index];
-                bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, car.id);
+            // Check which cars are favorites
+            List<Car> favoriteCars = [];
+            List<Car> otherCars = [];
+            for (var car in cars) {
+              if (currentUser != null && userController.isFavoriteCar(currentUser!, car.id)) {
+                favoriteCars.add(car);
+              } else {
+                otherCars.add(car);
+              }
+            }
+            // Combine lists so favorites are first
+            List<Car> sortedCars = favoriteCars..addAll(otherCars);
 
-                return _buildCarTile(cars[index], context, theme, isFavorite);
+            return ListView.builder(
+              itemCount: sortedCars.length,
+              itemBuilder: (context, index) {
+                return _buildCarTile(sortedCars[index], context, theme);
               },
             );
           }
@@ -85,7 +89,8 @@ class _CarListScreenState extends State<CarListScreen> {
     );
   }
 
-  Widget _buildCarTile(Car car, BuildContext context, ThemeData theme, bool isFavorite) {
+  Widget _buildCarTile(Car car, BuildContext context, ThemeData theme) {
+    bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, car.id);
     return Container(
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(12.0),
