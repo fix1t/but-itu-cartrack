@@ -73,12 +73,6 @@ class _CarListScreenState extends State<CarListScreen> {
                 otherCars.add(car);
               }
             }
-            for (var car in favoriteCars) {
-              log('${car.name}, ${car.id}');
-            }
-            for (var car in otherCars) {
-              log('other${car.name}, ${car.id}');
-            }
             // Combine lists so favorites are first
             List<Car> sortedCars = favoriteCars..addAll(otherCars);
 
