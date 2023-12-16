@@ -1,3 +1,8 @@
+/// Screen to display the notes of a car (chat-like)
+///     - user can add a note
+///     - user can choose from a list of quick messages
+/// @author: Jakub Mikysek xmikys03
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';

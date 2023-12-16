@@ -1,3 +1,8 @@
+/// CarModel is a class that handles all the CRUD operations for the Car model.
+/// It is a Singleton class that uses Firebase Realtime Database to store the data.
+/// @author: Gabriel Biel xbielg00
+/// @modified: Jakub Mikysek xmikys03
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 

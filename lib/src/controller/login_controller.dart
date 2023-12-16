@@ -1,3 +1,7 @@
+/// LoginController is a Singleton class that handles the login process
+/// and stores the current user in a global variable.
+/// @author: Jakub Mikysek xmikys03
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';

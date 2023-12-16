@@ -1,3 +1,5 @@
+/// Note Controller
+/// @author: Jakub Mikysek xmikys03
 import 'dart:developer';
 
 import 'package:itu_cartrack/src/model/note_model.dart';

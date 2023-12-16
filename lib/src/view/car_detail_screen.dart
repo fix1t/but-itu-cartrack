@@ -1,3 +1,6 @@
+/// This file contains the screen for the car detail page.
+/// @author: Jakub Mikysek xmikys03
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';

@@ -1,3 +1,6 @@
+/// CarController is a singleton class that handles all the logic related to the car.
+/// @author: Jakub Mikysek xmikys03
+/// @author: Gabriel Biel  xbielg00
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';

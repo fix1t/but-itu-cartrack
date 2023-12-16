@@ -1,3 +1,7 @@
+/// Car model
+/// @author: Jakub Mikysek xmikys03
+/// @author: Gabriel Biel  xbielg00
+
 class Car {
   String id;
   String name;

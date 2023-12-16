@@ -1,3 +1,7 @@
+/// This file contains the CarListScreen widget which displays a list of cars
+/// @author: Jakub Mikysek xmikys03
+/// @modified: Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import '../model/user.dart';
 import '../model/car.dart';

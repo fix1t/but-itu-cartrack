@@ -1,3 +1,7 @@
+/// This file contains the LoginScreen widget, which is the first screen that the user sees.
+/// The user can select a user from the dropdown and then press the login button to continue.
+/// @author: Jakub Mikysek xmikys03
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
