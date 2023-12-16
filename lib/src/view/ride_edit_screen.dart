@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
 
@@ -47,6 +48,11 @@ class _RideEditScreenState extends State<RideEditScreen> {
   }
 
   void saveOrUpdateRide() {
+    // Check if both start and finish times are selected
+    if (!isValidTime() || !isValidDistance()) {
+      return;
+    }
+
     bool distanceChanged =
         _distanceController.text != widget.ride.distance.toString();
     print(distanceChanged);
@@ -177,7 +183,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
                 Expanded(
                   child: ListTile(
                     title: Text(
-                      'Start: ${_selectedStartDateTime?.toString() ?? ''}',
+                      'Start\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
                     ),
                     onTap: () => _selectDateTime(context, true),
                   ),
@@ -185,7 +191,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
                 Expanded(
                   child: ListTile(
                     title: Text(
-                      'Finish: ${_selectedFinishDateTime?.toString() ?? ''}',
+                      'Finish\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedFinishDateTime!) : ''}',
                     ),
                     onTap: () => _selectDateTime(context, false),
                   ),
@@ -254,5 +260,77 @@ class _RideEditScreenState extends State<RideEditScreen> {
       distance: int.parse(_distanceController.text),
     );
     return updatedRide;
+  }
+
+  bool isValidTime() {
+    if (_selectedStartDateTime != null && _selectedFinishDateTime != null) {
+      // Check if the start time is greater than the finish time or vice versa
+      if (_selectedStartDateTime!.isAfter(_selectedFinishDateTime!) ||
+          _selectedFinishDateTime!.isBefore(_selectedStartDateTime!)) {
+        // Show error dialog if the selected times are invalid
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Invalid Time Selection'),
+              content: Text('Please select valid start and finish times.'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+        return false;
+      }
+      return true;
+    }
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Invalid Time Selection'),
+          content: Text('Please select valid start and finish times.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+    return false;
+  }
+
+  bool isValidDistance() {
+    if (_distanceController.text.isNotEmpty &&
+        int.parse(_distanceController.text) > 0) {
+      return true;
+    }
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Invalid Distance'),
+          content: Text('Please enter a valid distance.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+    return false;
   }
 }
