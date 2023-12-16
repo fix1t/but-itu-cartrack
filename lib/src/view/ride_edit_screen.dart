@@ -177,19 +177,38 @@ class _RideEditScreenState extends State<RideEditScreen> {
             Row(
               children: [
                 Expanded(
-                  child: ListTile(
-                    title: Text(
-                      'Start\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, // Choose your border color
+                        width: 1, // Set border width
+                      ),
+                      borderRadius: BorderRadius.circular(8), // Adjust border radius as needed
                     ),
-                    onTap: () => _selectDateTime(context, true),
+                    child: ListTile(
+                      title: Text(
+                        'Started at\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                      ),
+                      onTap: () => _selectDateTime(context, true),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ListTile(
-                    title: Text(
-                      'Finish\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedFinishDateTime!) : ''}',
+                ),Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, // Choose your border color
+                        width: 1, // Set border width
+                      ),
+                      borderRadius: BorderRadius.circular(8), // Adjust border radius as needed
                     ),
-                    onTap: () => _selectDateTime(context, false),
+                    child: ListTile(
+                      title: Text(
+                        'Finished at\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                      ),
+                      onTap: () => _selectDateTime(context, false),
+                    ),
                   ),
                 ),
               ],
