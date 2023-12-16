@@ -26,7 +26,6 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
   bool _isEditing = false;
   String? amountError;
 
-
   // Icons for each expense type using Material Icons
   final Map<ExpenseType, IconData> _expenseIcons = {
     ExpenseType.fuel: Icons.local_gas_station,
@@ -71,7 +70,6 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
     });
   }
 
-
   void _deleteExpense() {
     // Delete the expense
     ExpenseController().deleteExpense(selectedCar.id, expense!.id);
@@ -115,8 +113,6 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -159,7 +155,13 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
           items: ExpenseType.values.map((type) {
             return DropdownMenuItem(
               value: type,
-              child: Text(type.toString().split('.').last.substring(0, 1).toUpperCase() + type.toString().split('.').last.substring(1)),
+              child: Text(type
+                      .toString()
+                      .split('.')
+                      .last
+                      .substring(0, 1)
+                      .toUpperCase() +
+                  type.toString().split('.').last.substring(1)),
             );
           }).toList(),
         ),
@@ -212,7 +214,8 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
         Text('Created by: ${_userNameController.text}',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         SizedBox(height: 20),
-        Text('Type: ${expense!.type.name.substring(0, 1).toUpperCase() + expense!.type.name.substring(1)}',
+        Text(
+            'Type: ${expense!.type.name.substring(0, 1).toUpperCase() + expense!.type.name.substring(1)}',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         SizedBox(height: 20),
       ],

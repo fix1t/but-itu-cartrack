@@ -115,8 +115,7 @@ class UserDetailScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     LoginController().logout(context);
-                    Navigator.of(context).pushReplacementNamed(
-                        '/login');
+                    Navigator.of(context).pushReplacementNamed('/login');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:

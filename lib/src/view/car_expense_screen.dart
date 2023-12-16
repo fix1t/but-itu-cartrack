@@ -71,7 +71,8 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                           borderSide: BorderSide(color: Colors.red, width: 2.0),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        errorText: amountError, // Using local state variable for error text
+                        errorText:
+                            amountError, // Using local state variable for error text
                       ),
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
@@ -98,7 +99,8 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
               actions: [
                 ElevatedButton(
                   onPressed: () {
-                    final amount = double.tryParse(amountController.text.trim()) ?? 0.0;
+                    final amount =
+                        double.tryParse(amountController.text.trim()) ?? 0.0;
                     if (amount > 0) {
                       ExpenseController().addExpense(widget.selectedCar.id,
                           type: selectedType,
@@ -118,7 +120,6 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -129,9 +130,11 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
         backgroundColor: theme.colorScheme.primary,
       ),
       body: StreamBuilder<List<Expense>>(
+        // StreamBuilder to get the expenses for the selected car
         stream: ExpenseController().getExpenses(selectedCar.id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
+            // Show a loading indicator while waiting for the data
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
@@ -151,6 +154,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                     Navigator.pushNamed(context, '/car/expense/detail');
                   },
                   child: ListTile(
+                    // ListTile to display the expense
                     title: Text(
                       '${expenses[index].amount.toStringAsFixed(2)} CZK - ${expenses[index].type.name.substring(0, 1).toUpperCase() + expenses[index].type.name.substring(1)}',
                       style: TextStyle(fontSize: 18),
