@@ -26,7 +26,7 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
   final Map<ExpenseType, IconData> _expenseIcons = {
     ExpenseType.fuel: Icons.local_gas_station,
     ExpenseType.maintenance: Icons.build,
-    ExpenseType.repair: Icons.build_circle,
+    ExpenseType.repair: Icons.handyman,
     ExpenseType.insurance: Icons.shield,
     ExpenseType.other: Icons.more_vert,
   };
