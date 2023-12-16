@@ -28,19 +28,20 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   @override
   void initState() {
     super.initState();
+    nameController.text = CarController.activeCar.name;
+    aliasController.text = CarController.activeCar.alias;
+    fuelTypeController.text = CarController.activeCar.fuelType;
+    licensePlateController.text = CarController.activeCar.licensePlate;
+    insuranceController.text = CarController.activeCar.insurance;
+    insuranceContactController.text = CarController.activeCar.insuranceContact;
+    odometerStatusController.text = CarController.activeCar.odometerStatus;
+    descriptionController.text = CarController.activeCar.description;
+    selectedCarIcon = activeCar.icon;
     _carStreamSubscription = CarController.carStream.listen((Car updatedCar) {
       setState(() {
         print("[CarDetailScreen] odometer changed");
-        CarController.activeCar = updatedCar;
-        nameController.text = CarController.activeCar.name;
-        aliasController.text = CarController.activeCar.alias;
-        fuelTypeController.text = CarController.activeCar.fuelType;
-        licensePlateController.text = CarController.activeCar.licensePlate;
-        insuranceController.text = CarController.activeCar.insurance;
-        insuranceContactController.text = CarController.activeCar.insuranceContact;
+
         odometerStatusController.text = CarController.activeCar.odometerStatus;
-        descriptionController.text = CarController.activeCar.description;
-        selectedCarIcon = activeCar.icon;
       });
     });
   }
@@ -108,43 +109,42 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                 decoration: InputDecoration(labelText: 'Fuel Type'),
               ),
               InputDecorator(
-                      decoration:
-                          InputDecoration(labelText: 'Select Car Icon:'),
-                      child: Row(
-                        children: [
-                          Radio(
-                            value: 0,
-                            groupValue: selectedCarIcon,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedCarIcon = value as int;
-                              });
-                            },
-                          ),
-                          Icon(Icons.directions_car),
-                          Radio(
-                            value: 1,
-                            groupValue: selectedCarIcon,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedCarIcon = value as int;
-                              });
-                            },
-                          ),
-                          Icon(Icons.directions_bus),
-                          Radio(
-                            value: 2,
-                            groupValue: selectedCarIcon,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedCarIcon = value as int;
-                              });
-                            },
-                          ),
-                          Icon(Icons.local_shipping),
-                        ],
-                      ),
+                decoration: InputDecoration(labelText: 'Select Car Icon:'),
+                child: Row(
+                  children: [
+                    Radio(
+                      value: 0,
+                      groupValue: selectedCarIcon,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedCarIcon = value as int;
+                        });
+                      },
                     ),
+                    Icon(Icons.directions_car),
+                    Radio(
+                      value: 1,
+                      groupValue: selectedCarIcon,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedCarIcon = value as int;
+                        });
+                      },
+                    ),
+                    Icon(Icons.directions_bus),
+                    Radio(
+                      value: 2,
+                      groupValue: selectedCarIcon,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedCarIcon = value as int;
+                        });
+                      },
+                    ),
+                    Icon(Icons.local_shipping),
+                  ],
+                ),
+              ),
               TextFormField(
                 controller: licensePlateController,
                 decoration: InputDecoration(labelText: 'Car License Plate'),
@@ -186,7 +186,8 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                       });
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Center(child: Text('Car Successfully Updated')),
+                          content:
+                              Center(child: Text('Car Successfully Updated')),
                         ),
                       );
                     },
