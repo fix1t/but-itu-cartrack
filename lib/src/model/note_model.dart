@@ -1,3 +1,6 @@
+/// Note model - database queries
+/// @author: Jakub Mikysek xmikys03
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:itu_cartrack/src/model/note.dart';
 

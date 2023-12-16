@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Car Track',
       theme: themeProvider.themeData,
+      debugShowCheckedModeBanner: false,
       initialRoute: '/login',
       routes: {
         '/': (context) => TabManager(),
