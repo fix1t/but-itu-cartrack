@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
@@ -18,21 +20,25 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   DateTime? rideStartTime;
   bool activeRide = false;
 
+  late StreamSubscription<Car> _carStreamSubscription;
+
   @override
   void initState() {
     super.initState();
-    // Register the callback to update the selectedCar
-    CarController.onOdometerChange = () {
+    // Listen to the carStream
+    _carStreamSubscription = CarController.carStream.listen((Car updatedCar) {
       setState(() {
+        print("[CarHomeScreen] odometer changed");
+        CarController.activeCar = updatedCar;
         selectedCar = CarController.activeCar;
+        odometer = CarController.activeCar.odometerStatus;
       });
-    };
+    });
   }
 
   @override
   void dispose() {
-    CarController.onOdometerChange =
-        null; // Unregister the callback to prevent memory leaks
+    _carStreamSubscription.cancel();
     super.dispose();
   }
 
@@ -82,93 +88,120 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     }).toList(),
                     onChanged: (value) {
                       setState(() {
-                        selectedRideType = value.toString();
+                        selectedRideType = value.toString().split('.').last;
                       });
                     },
                   ),
                   SizedBox(height: 20),
                   TextFormField(
                     controller: textEditingController,
-                    decoration: InputDecoration(labelText: 'Odometer Status'),
+                    decoration: InputDecoration(
+                      labelText: 'Odometer Status',
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red, width: 2.0),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorText: (int.parse(selectedCar.odometerStatus) >= odometerStatus)
+                          ? 'New distance should be greater than current'
+                          : null,
+                    ),
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly
                     ],
                     onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        odometerStatus = int.parse(value);
-                      }
+                      setState(() {
+                        if (value.isNotEmpty) {
+                          odometerStatus = int.parse(value);
+                        }
+                      });
                     },
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 1;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                        child: Container(
+                          margin: EdgeInsets.all(3), // Margin of 1px around the button
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 1;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
                                 vertical: 12,
-                                horizontal: 8), // Adjust the padding here
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+1'),
                           ),
-                          child: Text('+1'),
+                        ),
+                      ),
+                          Expanded(
+                        child: Container(
+                          margin: EdgeInsets.all(3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 5;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 12,
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+5'),
+                          ),
                         ),
                       ),
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 5;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                        child: Container(
+                          margin: EdgeInsets.all(3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 10;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
                                 vertical: 12,
-                                horizontal: 8), // Adjust the padding here
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+10'),
                           ),
-                          child: Text('+5'),
                         ),
                       ),
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 10;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                        child: Container(
+                          margin: EdgeInsets.all(3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 50;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
                                 vertical: 12,
-                                horizontal: 8), // Adjust the padding here
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+50'),
                           ),
-                          child: Text('+10'),
-                        ),
-                      ),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 50;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 12,
-                                horizontal: 8), // Adjust the padding here
-                          ),
-                          child: Text('+50'),
                         ),
                       ),
                     ],
@@ -184,7 +217,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (CarController.isCorrectRideInput(
+                    if (CarController.isCorrectRideInputAndSave(
                         odometerStatus: odometerStatus,
                         rideType: selectedRideType)) {
                       setState(() {

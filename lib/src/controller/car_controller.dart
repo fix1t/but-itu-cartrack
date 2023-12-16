@@ -2,6 +2,7 @@
 /// @author: Jakub Mikysek xmikys03
 /// @author: Gabriel Biel  xbielg00
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
@@ -20,9 +21,15 @@ class CarController {
 
   CarController._internal();
 
+  // Shared stream for detail & home screens
+  static StreamController<Car> _carStreamController = StreamController<Car>.broadcast();
+  static Stream<Car> get carStream => _carStreamController.stream;
+
   static updateOdometer(int newOdometer) {
     activeCar.odometerStatus = newOdometer.toString();
-    onOdometerChange?.call(); // Trigger the callback
+    // Emit the updated car object through the stream
+    _carStreamController.add(activeCar);
+    carModel.saveCar(activeCar);
   }
 
   Stream<List<Car>> get cars => carModel.getCars();
@@ -70,6 +77,7 @@ class CarController {
         description: description,
         icon: selectedCarIcon);
     await carModel.updateCar(carId, updatedCar);
+    updateOdometer(int.parse(odometerStatus));
   }
 
   Future<void> deleteCar(String carId) async {
@@ -93,7 +101,7 @@ class CarController {
     activeRide.finishedAt = DateTime.now();
   }
 
-  static bool isCorrectRideInput({required int odometerStatus, required String rideType}) {
+  static bool isCorrectRideInputAndSave({required int odometerStatus, required String rideType}) {
     print('Ride finished!  ${rideType}, ${odometerStatus} <- ${activeCar.odometerStatus}');
     int odometerStatusInt = int.parse(activeCar.odometerStatus);
 
@@ -101,7 +109,6 @@ class CarController {
         rideType.isNotEmpty) {
       // update car
       activeCar.odometerStatus = odometerStatus.toString();
-      carModel.saveCar(activeCar);
       // create ride
       activeRide.rideType = rideType;
       activeRide.distance = odometerStatus - odometerStatusInt;
@@ -121,13 +128,22 @@ class CarController {
     return Ride().getRides(activeCar.id);
   }
 
-  static void deleteRide(Ride ride) {
+  static void deleteRide(Ride ride, {bool updateOdo = false}) {
+    if (updateOdo) {
+      int odometerStatusChange = ride.distance;
+      int newOdometerStatus = int.parse(activeCar.odometerStatus) - odometerStatusChange;
+      updateOdometer(newOdometerStatus);
+    }
     ride.delete(activeCar.id);
   }
 
-  static void saveOrUpdateRide(Ride ride) {
-    print(ride);
+  static void saveOrUpdateRide(Ride ride, {int? odometerStatusChange}) {
     ride.save(activeCar.id);
+    if (odometerStatusChange != null) {
+      int newOdometerStatus = int.parse(activeCar.odometerStatus) + odometerStatusChange;
+      activeCar.odometerStatus = newOdometerStatus.toString();
+      updateOdometer(newOdometerStatus);
+    }
   }
 
   IconData getIconFromInt(int value) {

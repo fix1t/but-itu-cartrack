@@ -1,5 +1,6 @@
 /// This file contains the screen for the car detail page.
 /// @author: Jakub Mikysek xmikys03
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
@@ -22,19 +23,40 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   TextEditingController odometerStatusController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   int selectedCarIcon = 0;
+  late StreamSubscription<Car> _carStreamSubscription;
 
   @override
   void initState() {
     super.initState();
-    nameController.text = activeCar.name;
-    aliasController.text = activeCar.alias;
-    fuelTypeController.text = activeCar.fuelType;
-    licensePlateController.text = activeCar.licensePlate;
-    insuranceController.text = activeCar.insurance;
-    insuranceContactController.text = activeCar.insuranceContact;
-    odometerStatusController.text = activeCar.odometerStatus;
-    descriptionController.text = activeCar.description;
-    selectedCarIcon = activeCar.icon;
+    _carStreamSubscription = CarController.carStream.listen((Car updatedCar) {
+      setState(() {
+        print("[CarDetailScreen] odometer changed");
+        CarController.activeCar = updatedCar;
+        nameController.text = CarController.activeCar.name;
+        aliasController.text = CarController.activeCar.alias;
+        fuelTypeController.text = CarController.activeCar.fuelType;
+        licensePlateController.text = CarController.activeCar.licensePlate;
+        insuranceController.text = CarController.activeCar.insurance;
+        insuranceContactController.text = CarController.activeCar.insuranceContact;
+        odometerStatusController.text = CarController.activeCar.odometerStatus;
+        descriptionController.text = CarController.activeCar.description;
+        selectedCarIcon = activeCar.icon;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    aliasController.dispose();
+    fuelTypeController.dispose();
+    licensePlateController.dispose();
+    insuranceController.dispose();
+    insuranceContactController.dispose();
+    odometerStatusController.dispose();
+    descriptionController.dispose();
+    _carStreamSubscription.cancel();
+    super.dispose();
   }
 
   @override
