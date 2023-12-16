@@ -134,7 +134,7 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
           items: ExpenseType.values.map((type) {
             return DropdownMenuItem(
               value: type,
-              child: Text(type.toString().split('.').last),
+              child: Text(type.toString().split('.').last.substring(0, 1).toUpperCase() + type.toString().split('.').last.substring(1)),
             );
           }).toList(),
         ),
