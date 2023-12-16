@@ -38,130 +38,135 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Car Detail',
-        style: TextStyle(color: theme.colorScheme.onPrimary)
-        ),
+            style: TextStyle(color: theme.colorScheme.onPrimary)),
         backgroundColor: theme.colorScheme.primary,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: 16),
-            TextFormField(
-              controller: nameController,
-              decoration: InputDecoration(labelText: 'Car Name'),
-            ),
-            TextFormField(
-              controller: aliasController,
-              decoration: InputDecoration(labelText: 'Car Alias'),
-            ),
-            DropdownButtonFormField<String>(
-                value: fuelTypeController.text.isNotEmpty ? fuelTypeController.text : 'Gasoline', // anti null
-              onChanged: (newValue) {
-                setState(() {
-                  fuelTypeController.text = newValue!;
-                });
-              },
-              items: <String>[
-                'Gasoline',
-                'Diesel',
-                'Electric',
-                'Hybrid',
-                'LPG',
-                'CNG',
-                'Other'
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              decoration: InputDecoration(labelText: 'Fuel Type'),
-            ),
-            TextFormField(
-              controller: licensePlateController,
-              decoration: InputDecoration(labelText: 'Car License Plate'),
-            ),
-            TextFormField(
-              controller: insuranceController,
-              decoration: InputDecoration(labelText: 'Insurance'),
-            ),
-            TextFormField(
-              controller: insuranceContactController,
-              decoration: InputDecoration(labelText: 'Insurance Contact'),
-            ),
-            TextFormField(
-              controller: odometerStatusController,
-              decoration: InputDecoration(labelText: 'Odometer Status (km)'),
-            ),
-            TextFormField(
-              controller: descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
-            ),
-            SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      carController.updateCar(
-                          activeCar.id,
-                          nameController.text,
-                          aliasController.text,
-                          fuelTypeController.text,
-                          licensePlateController.text,
-                          insuranceController.text,
-                          insuranceContactController.text,
-                          odometerStatusController.text,
-                          descriptionController.text);
-                    });
-                  },
-                  child: Text('Update Car Info'),
-                ),
-                SizedBox(width: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          //backgroundColor: Theme.of(context).colorScheme.error.withOpacity(0.8),
-                          title: Text('Are you sure?'),
-                          content: Text('Do you want to delete this car?'),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Cancel'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  carController.deleteCar(activeCar.id);
-                                });
-                                Navigator.of(context).pop();
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Delete'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Theme.of(context).colorScheme.error.withOpacity(0.8)),
-                  child: Text('Delete Car',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.onError)),
-                ),
-              ],
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: 'Car Name'),
+              ),
+              TextFormField(
+                controller: aliasController,
+                decoration: InputDecoration(labelText: 'Car Alias'),
+              ),
+              DropdownButtonFormField<String>(
+                value: fuelTypeController.text.isNotEmpty
+                    ? fuelTypeController.text
+                    : 'Gasoline', // anti null
+                onChanged: (newValue) {
+                  setState(() {
+                    fuelTypeController.text = newValue!;
+                  });
+                },
+                items: <String>[
+                  'Gasoline',
+                  'Diesel',
+                  'Electric',
+                  'Hybrid',
+                  'LPG',
+                  'CNG',
+                  'Other'
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                decoration: InputDecoration(labelText: 'Fuel Type'),
+              ),
+              TextFormField(
+                controller: licensePlateController,
+                decoration: InputDecoration(labelText: 'Car License Plate'),
+              ),
+              TextFormField(
+                controller: insuranceController,
+                decoration: InputDecoration(labelText: 'Insurance'),
+              ),
+              TextFormField(
+                controller: insuranceContactController,
+                decoration: InputDecoration(labelText: 'Insurance Contact'),
+              ),
+              TextFormField(
+                controller: odometerStatusController,
+                decoration: InputDecoration(labelText: 'Odometer Status (km)'),
+              ),
+              TextFormField(
+                controller: descriptionController,
+                decoration: InputDecoration(labelText: 'Description'),
+              ),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        carController.updateCar(
+                            activeCar.id,
+                            nameController.text,
+                            aliasController.text,
+                            fuelTypeController.text,
+                            licensePlateController.text,
+                            insuranceController.text,
+                            insuranceContactController.text,
+                            odometerStatusController.text,
+                            descriptionController.text);
+                      });
+                    },
+                    child: Text('Update Car Info'),
+                  ),
+                  SizedBox(width: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            //backgroundColor: Theme.of(context).colorScheme.error.withOpacity(0.8),
+                            title: Text('Are you sure?'),
+                            content: Text('Do you want to delete this car?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('Cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    carController.deleteCar(activeCar.id);
+                                  });
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('Delete'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .error
+                            .withOpacity(0.8)),
+                    child: Text('Delete Car',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onError)),
+                  ),
+                ],
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.13)
+            ],
+          ),
         ),
       ),
     );
