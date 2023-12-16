@@ -104,71 +104,87 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 1;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                        child: Container(
+                          margin: EdgeInsets.all(3), // Margin of 1px around the button
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 1;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
                                 vertical: 12,
-                                horizontal: 8), // Adjust the padding here
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+1'),
                           ),
-                          child: Text('+1'),
+                        ),
+                      ),
+                          Expanded(
+                        child: Container(
+                          margin: EdgeInsets.all(3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 5;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 12,
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+5'),
+                          ),
                         ),
                       ),
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 5;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                        child: Container(
+                          margin: EdgeInsets.all(3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 10;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
                                 vertical: 12,
-                                horizontal: 8), // Adjust the padding here
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+10'),
                           ),
-                          child: Text('+5'),
                         ),
                       ),
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 10;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                        child: Container(
+                          margin: EdgeInsets.all(3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                odometerStatus += 50;
+                                textEditingController.text =
+                                    odometerStatus.toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
                                 vertical: 12,
-                                horizontal: 8), // Adjust the padding here
+                                horizontal: 8,
+                              ),
+                            ),
+                            child: Text('+50'),
                           ),
-                          child: Text('+10'),
-                        ),
-                      ),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              odometerStatus += 50;
-                              textEditingController.text =
-                                  odometerStatus.toString();
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 12,
-                                horizontal: 8), // Adjust the padding here
-                          ),
-                          child: Text('+50'),
                         ),
                       ),
                     ],
