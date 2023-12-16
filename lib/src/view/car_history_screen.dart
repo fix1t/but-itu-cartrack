@@ -14,10 +14,10 @@ class CarHistoryScreen extends StatelessWidget {
         title: Text(
           'Car History',
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        backgroundColor: theme.colorScheme.secondary,
+        backgroundColor: theme.colorScheme.primary,
       ),
       body: StreamBuilder<List<Ride>>(
         stream: carController.getActiveCarRides(),

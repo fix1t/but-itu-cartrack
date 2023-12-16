@@ -16,7 +16,7 @@ class CarListScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Car List',
-          style: TextStyle(color: theme.colorScheme.onSecondary),
+          style: TextStyle(color: theme.colorScheme.onSecondary)
         ),
         backgroundColor: theme.colorScheme.secondary,
         actions: <Widget>[
