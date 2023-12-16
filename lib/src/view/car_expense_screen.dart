@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/expense_controller.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+import 'package:itu_cartrack/src/view/car_expense_detail_screen.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 
 class CarExpenseScreen extends StatefulWidget {
@@ -15,7 +17,16 @@ class CarExpenseScreen extends StatefulWidget {
 
 class _CarExpenseScreenState extends State<CarExpenseScreen> {
   final Car selectedCar = CarController.activeCar;
+  final String currentUserId = LoginController().getCurrentUserId();
   ExpenseType selectedType = ExpenseType.fuel; // Default type
+
+  final Map<ExpenseType, IconData> _expenseTypeIcons = {
+    ExpenseType.fuel: Icons.local_gas_station,
+    ExpenseType.maintenance: Icons.build,
+    ExpenseType.repair: Icons.handyman,
+    ExpenseType.insurance: Icons.shield,
+    ExpenseType.other: Icons.more_horiz,
+  };
 
   void _showAddExpenseDialog(BuildContext context) {
     final amountController = TextEditingController();
@@ -65,6 +76,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                     if (amount > 0) {
                       ExpenseController().addExpense(widget.selectedCar.id,
                           type: selectedType,
+                          userID: currentUserId,
                           amount: amount,
                           date: DateTime.now());
                       Navigator.of(context).pop();
@@ -85,7 +97,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Expense List'),
+        title: Text('Expense List', style: TextStyle(color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
       ),
       body: StreamBuilder<List<Expense>>(
@@ -102,17 +114,31 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
             return ListView.builder(
               itemCount: expenses.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                      '${expenses[index].amount} Czk - ${expenses[index].type.name.substring(0, 1).toUpperCase() + expenses[index].type.name.substring(1)}'),
-                  subtitle: Text(
-                      'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}'),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete_outline),
-                    color: theme.colorScheme.primary,
-                    onPressed: () {
-                      ExpenseController()
-                          .deleteExpense(selectedCar.id, expenses[index].id);
+                return GestureDetector(
+                  onTap: () {
+                    // Set the active expense when tapped
+                    ExpenseController().setActiveExpense(expenses[index]);
+
+                    // Navigate to the expense details screen
+                    Navigator.pushNamed(context, '/car/expense/detail');
+                  },
+                  child: ListTile(
+                    title: Text(
+                      '${expenses[index].amount.toStringAsFixed(2)} CZK - ${expenses[index].type.name.substring(0, 1).toUpperCase() + expenses[index].type.name.substring(1)}',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    subtitle: Text(
+                      'Date: ${expenses[index].date.toLocal().toString().split(' ')[0]}',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    leading: Icon(
+                      _expenseTypeIcons[expenses[index].type], // Get the icon based on the expense type
+                      color: theme.colorScheme.primary,
+                    ),
+                    onTap: () {
+                      // Handle the tap event, for example, navigate to the expense details
+                      ExpenseController().setActiveExpense(expenses[index]);
+                      Navigator.pushNamed(context, '/car/expense/detail');
                     },
                   ),
                 );

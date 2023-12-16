@@ -38,4 +38,9 @@ class UserController {
     await userModel.deleteUser(userId);
     userModel.getUsers();
   }
+
+  Future<User?> getUserById(String userId) async {
+    // Call the UserModel to query the database
+    return userModel.getUserById(userId);
+  }
 }
