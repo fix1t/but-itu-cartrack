@@ -125,9 +125,13 @@ class _RideEditScreenState extends State<RideEditScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.ride.id.isEmpty ? 'Create Ride' : 'Edit Ride'),
+        title: Text(widget.ride.id.isEmpty ? 'Create Ride' : 'Edit Ride',
+        style: TextStyle(color: theme.colorScheme.onSecondary)
+        ),
+        backgroundColor: theme.colorScheme.secondary,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

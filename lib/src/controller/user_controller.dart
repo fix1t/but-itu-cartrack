@@ -38,6 +38,12 @@ class UserController {
     await userModel.deleteUser(userId);
     userModel.getUsers();
   }
+  
+  Future<User?> getUserById(String userId) async {
+    // Call the UserModel to query the database
+    return userModel.getUserById(userId);
+  }
+
   // Adds a car to the user's list of favorites
   Future<void> addFavoriteCar(User user, String carId) async {
     if (!user.favoriteCars.contains(carId)) {

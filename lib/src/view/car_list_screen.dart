@@ -43,7 +43,10 @@ class _CarListScreenState extends State<CarListScreen> {
     currentUser = LoginController().getCurrentUser();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car List', style: TextStyle(color: theme.colorScheme.onSecondary)),
+        title: Text(
+          'Car List',
+          style: TextStyle(color: theme.colorScheme.onSecondary)
+        ),
         backgroundColor: theme.colorScheme.secondary,
         actions: <Widget>[
           IconButton(

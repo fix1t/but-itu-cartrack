@@ -17,9 +17,13 @@ class CarNotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notes'),
+        backgroundColor: theme.colorScheme.primary,
+        title: Text('Notes',
+          style: TextStyle(color: theme.colorScheme.onPrimary),
+        ),
       ),
       body: Column(
         children: [
