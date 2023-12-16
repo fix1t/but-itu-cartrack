@@ -286,9 +286,8 @@ class _RideEditScreenState extends State<RideEditScreen> {
                 SizedBox(width: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    CarController.deleteRide(widget.ride, );
+                    CarController.deleteRide(widget.ride, updateOdo: updateOdometer);
                     Navigator.pop(context);
-                    //displaySnackBar(context, 'Ride deleted');
                     showSnackBar(context, 'Ride deleted');
                   },
                   style: ElevatedButton.styleFrom(

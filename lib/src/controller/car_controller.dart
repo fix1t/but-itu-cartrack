@@ -32,6 +32,7 @@ class CarController {
   static updateOdometer(int newOdometer) {
     activeCar.odometerStatus = newOdometer.toString();
     _carStreamController.add(activeCar); // Emit the updated car object through the stream
+    carModel.saveCar(activeCar);
   }
 
   Stream<List<Car>> get cars => carModel.getCars();
@@ -107,7 +108,6 @@ class CarController {
         rideType.isNotEmpty) {
       // update car
       activeCar.odometerStatus = odometerStatus.toString();
-      carModel.saveCar(activeCar);
       // create ride
       activeRide.rideType = rideType;
       activeRide.distance = odometerStatus - odometerStatusInt;
@@ -127,7 +127,12 @@ class CarController {
     return Ride().getRides(activeCar.id);
   }
 
-  static void deleteRide(Ride ride) {
+  static void deleteRide(Ride ride, {bool updateOdo = false}) {
+    if (updateOdo) {
+      int odometerStatusChange = ride.distance;
+      int newOdometerStatus = int.parse(activeCar.odometerStatus) - odometerStatusChange;
+      updateOdometer(newOdometerStatus);
+    }
     ride.delete(activeCar.id);
   }
 
@@ -136,7 +141,6 @@ class CarController {
     if (odometerStatusChange != null) {
       int newOdometerStatus = int.parse(activeCar.odometerStatus) + odometerStatusChange;
       activeCar.odometerStatus = newOdometerStatus.toString();
-      carModel.saveCar(activeCar);
       updateOdometer(newOdometerStatus);
     }
   }
