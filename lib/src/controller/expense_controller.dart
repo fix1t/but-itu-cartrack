@@ -3,6 +3,7 @@ import 'package:itu_cartrack/src/model/expense.dart';
 
 class ExpenseController {
   final ExpenseModel expenseModel;
+  Expense? activeExpense; // Variable to hold the active expense
 
   // Private constructor for the Singleton pattern
   ExpenseController._private(this.expenseModel);
@@ -19,11 +20,13 @@ class ExpenseController {
   // Add an expense to a specific car
   Future<void> addExpense(String carId, {
     required ExpenseType type,
+    required String userID,
     required double amount,
     required DateTime date,
   }) async {
     Expense expense = Expense(
       id: '',
+      userId: userID,
       type: type,
       amount: amount,
       date: date,
@@ -39,9 +42,19 @@ class ExpenseController {
 
 // Update an expense for a specific car (if needed)
 // Uncomment and modify if needed
-/*
+
   Future<void> updateExpense(String carId, String expenseId, Expense expense) async {
     await expenseModel.updateExpense(carId, expenseId, expense);
   }
-  */
+
+
+  // Set the active expense
+  void setActiveExpense(Expense expense) {
+    activeExpense = expense;
+  }
+
+  // Get the active expense
+  Expense? getActiveExpense() {
+    return activeExpense;
+  }
 }
