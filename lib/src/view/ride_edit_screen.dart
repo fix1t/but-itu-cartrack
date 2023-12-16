@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
@@ -24,6 +25,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
   DateTime? _selectedFinishDateTime;
 
   RideType? _selectedRideType;
+  bool updateOdometer = false;
 
   @override
   void initState() {
@@ -59,34 +61,41 @@ class _RideEditScreenState extends State<RideEditScreen> {
 
     if (distanceChanged && widget.ride.id.isNotEmpty) {
       print('distance changed -> show dialog');
-      Future.delayed(Duration.zero, () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Confirmation'),
-              content: Text(
-                  'Changing the distance will impact other rides. Are you sure to proceed?'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    CarController.saveOrUpdateRide(createUpdatedRide());
-                    Navigator.pop(context);
-                    showSnackBar(context, 'Ride saved');
-                  },
-                  child: Text('Yes'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('No'),
-                ),
-              ],
-            );
-          },
-        );
-      });
+      if (updateOdometer) {
+        Future.delayed(Duration.zero, () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Confirmation'),
+                content: Text(
+                    'Changing the distance will impact other rides. Are you sure to proceed?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      CarController.saveOrUpdateRide(createUpdatedRide());
+                      CarController.updateOdometer(
+                          int.parse(CarController.activeCar.odometerStatus + _distanceController.text));
+                      Navigator.pop(context);
+                      showSnackBar(context, 'Ride saved');
+                    },
+                    child: Text('Yes'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('No'),
+                  ),
+                ],
+              );
+            },
+          );
+        });
+      } else {
+        CarController.saveOrUpdateRide(createUpdatedRide());
+        showSnackBar(context, 'Ride saved');
+      }
     } else {
       CarController.saveOrUpdateRide(createUpdatedRide());
       showSnackBar(context, 'Ride saved');
@@ -148,6 +157,49 @@ class _RideEditScreenState extends State<RideEditScreen> {
               ),
             ),
             SizedBox(height: 16.0),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, // Choose your border color
+                        width: 1, // Set border width
+                      ),
+                      borderRadius: BorderRadius.circular(
+                          8), // Adjust border radius as needed
+                    ),
+                    child: ListTile(
+                      title: Text(
+                        'Started at\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                      ),
+                      onTap: () => _selectDateTime(context, true),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey, // Choose your border color
+                        width: 1, // Set border width
+                      ),
+                      borderRadius: BorderRadius.circular(
+                          8), // Adjust border radius as needed
+                    ),
+                    child: ListTile(
+                      title: Text(
+                        'Finished at\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                      ),
+                      onTap: () => _selectDateTime(context, false),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16.0),
             DropdownButtonFormField<RideType>(
               value: _selectedRideType,
               // Set the default value or the value from your model
@@ -168,50 +220,36 @@ class _RideEditScreenState extends State<RideEditScreen> {
             SizedBox(height: 16.0),
             TextFormField(
               controller: _distanceController,
-              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'Distance (km)',
+                errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red, width: 2.0),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                errorText: (int.parse(_distanceController.text) <= 0)
+                    ? 'New distance should be greater than current'
+                    : null,
               ),
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              onChanged: (value) {
+                setState(() {
+                  _distanceController.text = value;
+                });
+              },
             ),
             SizedBox(height: 16.0),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey, // Choose your border color
-                        width: 1, // Set border width
-                      ),
-                      borderRadius: BorderRadius.circular(8), // Adjust border radius as needed
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Started at\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
-                      ),
-                      onTap: () => _selectDateTime(context, true),
-                    ),
-                  ),
-                ),Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey, // Choose your border color
-                        width: 1, // Set border width
-                      ),
-                      borderRadius: BorderRadius.circular(8), // Adjust border radius as needed
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Finished at\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
-                      ),
-                      onTap: () => _selectDateTime(context, false),
-                    ),
-                  ),
-                ),
-              ],
+            SwitchListTile(
+              title: Text('Update Odometer'),
+              subtitle: Text('Toggle to update odometer status'),
+              value: updateOdometer,
+              onChanged: (value) {
+                setState(() {
+                  updateOdometer = value;
+                });
+              },
             ),
             SizedBox(height: 16.0),
             Row(
@@ -248,7 +286,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -325,10 +363,15 @@ class _RideEditScreenState extends State<RideEditScreen> {
   }
 
   bool isValidDistance() {
-    if (_distanceController.text.isNotEmpty &&
-        int.parse(_distanceController.text) > 0) {
-      return true;
+    try {
+      int distance = int.parse(_distanceController.text);
+      if (distance > 0) {
+        return true;
+      }
+    } catch (e) {
+      _distanceController.text = '0';
     }
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
