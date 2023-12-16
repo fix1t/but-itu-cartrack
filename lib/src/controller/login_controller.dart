@@ -5,6 +5,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:itu_cartrack/src/widgets/tab_manager.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
 class LoginController {
@@ -21,8 +22,8 @@ class LoginController {
   void handleLoginPressed(BuildContext context, User? selectedUser) {
     currentUser = selectedUser;  // Storing the current user in the global variable
 
-    Navigator.pop(context);
-    log("Current Logged User: ${currentUser?.name ?? 'Unknown'}");
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => TabManager()));
   }
 
   void logout(BuildContext context) {
