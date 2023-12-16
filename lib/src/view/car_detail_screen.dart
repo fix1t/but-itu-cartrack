@@ -21,6 +21,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   TextEditingController insuranceContactController = TextEditingController();
   TextEditingController odometerStatusController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  int selectedCarIcon = 0;
 
   @override
   void initState() {
@@ -33,6 +34,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     insuranceContactController.text = activeCar.insuranceContact;
     odometerStatusController.text = activeCar.odometerStatus;
     descriptionController.text = activeCar.description;
+    selectedCarIcon = activeCar.icon;
   }
 
   @override
@@ -83,6 +85,44 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                 }).toList(),
                 decoration: InputDecoration(labelText: 'Fuel Type'),
               ),
+              InputDecorator(
+                      decoration:
+                          InputDecoration(labelText: 'Select Car Icon:'),
+                      child: Row(
+                        children: [
+                          Radio(
+                            value: 0,
+                            groupValue: selectedCarIcon,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCarIcon = value as int;
+                              });
+                            },
+                          ),
+                          Icon(Icons.directions_car),
+                          Radio(
+                            value: 1,
+                            groupValue: selectedCarIcon,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCarIcon = value as int;
+                              });
+                            },
+                          ),
+                          Icon(Icons.directions_bus),
+                          Radio(
+                            value: 2,
+                            groupValue: selectedCarIcon,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCarIcon = value as int;
+                              });
+                            },
+                          ),
+                          Icon(Icons.local_shipping),
+                        ],
+                      ),
+                    ),
               TextFormField(
                 controller: licensePlateController,
                 decoration: InputDecoration(labelText: 'Car License Plate'),
@@ -119,7 +159,8 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                             insuranceController.text,
                             insuranceContactController.text,
                             odometerStatusController.text,
-                            descriptionController.text);
+                            descriptionController.text,
+                            selectedCarIcon);
                       });
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

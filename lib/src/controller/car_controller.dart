@@ -57,7 +57,8 @@ class CarController {
       String insurance,
       String insuranceContact,
       String odometerStatus,
-      String description) async {
+      String description,
+      int selectedCarIcon) async {
     Car updatedCar = Car(
         name: name,
         alias: alias,
@@ -66,7 +67,8 @@ class CarController {
         insurance: insurance,
         insuranceContact: insuranceContact,
         odometerStatus: odometerStatus,
-        description: description);
+        description: description,
+        icon: selectedCarIcon);
     await carModel.updateCar(carId, updatedCar);
   }
 

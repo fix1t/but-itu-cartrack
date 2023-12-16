@@ -223,6 +223,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    CarController carController = CarController();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -275,7 +276,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.directions_car,
+                        carController.getIconFromInt(selectedCar.icon),
                         size: 100,
                         color: Theme.of(context).colorScheme.secondary,
                       ),
