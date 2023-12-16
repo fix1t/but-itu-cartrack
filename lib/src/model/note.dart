@@ -1,3 +1,6 @@
+/// Note model
+/// @author: Jakub Mikysek xmikys03
+
 class Note {
   final String id;
   final String userId;
