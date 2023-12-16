@@ -21,6 +21,8 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
   final TextEditingController _userNameController = TextEditingController();
   ExpenseType? _selectedType;
   bool _isEditing = false;
+  String? amountError;
+
 
   // Icons for each expense type using Material Icons
   final Map<ExpenseType, IconData> _expenseIcons = {
@@ -53,10 +55,19 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
   }
 
   void _toggleEditing() {
+    if (_isEditing) {
+      // Reset the controllers to the original values if editing is canceled
+      if (expense != null) {
+        _amountController.text = expense!.amount.toStringAsFixed(2);
+        _selectedType = expense!.type;
+      }
+    }
+
     setState(() {
       _isEditing = !_isEditing;
     });
   }
+
 
   void _deleteExpense() {
     // Delete the expense
@@ -66,10 +77,18 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
 
   void _saveChanges() async {
     if (_isEditing) {
-      double updatedAmount = double.tryParse(_amountController.text) ?? 0.0;
+      double? updatedAmount = double.tryParse(_amountController.text);
       ExpenseType updatedType = _selectedType ?? ExpenseType.other;
 
-      // Perform save logic, update the expense, etc.
+      // Validation: Check if the amount is a positive number
+      if (updatedAmount == null || updatedAmount <= 0) {
+        setState(() {
+          amountError = 'Amount must be greater than 0';
+        });
+        return; // Do not proceed with saving if validation fails
+      }
+
+      // Proceed with save logic only if validation passes
       Expense updatedExpense = Expense(
         id: expense!.id,
         userId: expense!.userId,
@@ -85,12 +104,15 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
       // Update the local state to reflect the changes
       setState(() {
         expense = updatedExpense; // Update the expense in the state
-        _amountController.text = updatedAmount.toStringAsFixed(2);
         _selectedType = updatedType;
+        amountError = null; // Clear any existing error message
       });
+
+      _toggleEditing(); // Exit editing mode
     }
-    _toggleEditing(); // Exit editing mode
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -140,9 +162,27 @@ class _CarExpenseDetailScreenState extends State<CarExpenseDetailScreen> {
         ),
         TextField(
           controller: _amountController,
-          decoration: InputDecoration(labelText: 'Amount (CZK)'),
+          decoration: InputDecoration(
+            labelText: 'Amount (CZK)',
+            errorText: amountError,
+          ),
           keyboardType: TextInputType.numberWithOptions(decimal: true),
+          onChanged: (value) {
+            String? newError;
+            if (value.isNotEmpty) {
+              final number = double.tryParse(value);
+              if (number == null || number <= 0) {
+                newError = 'Amount must be greater than 0 and a valid number';
+              }
+            }
+            if (newError != amountError) {
+              setState(() {
+                amountError = newError;
+              });
+            }
+          },
         ),
+        SizedBox(height: 10),
       ],
     );
   }
