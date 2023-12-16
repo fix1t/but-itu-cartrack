@@ -20,6 +20,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
   final Car selectedCar = CarController.activeCar;
   final String currentUserId = LoginController().getCurrentUserId();
   ExpenseType selectedType = ExpenseType.fuel; // Default type
+  String? amountError; // Local state variable for amount error message
 
   final Map<ExpenseType, IconData> _expenseTypeIcons = {
     ExpenseType.fuel: Icons.local_gas_station,
@@ -36,7 +37,6 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
       context: context,
       builder: (context) {
         return StatefulBuilder(
-          // This is used to set state within the dialog
           builder: (context, setModalState) {
             return AlertDialog(
               title: Text('Add Expense'),
@@ -68,30 +68,34 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                           borderSide: BorderSide(color: Colors.red, width: 2.0),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        errorText: amountController.text.isNotEmpty &&
-                            (int.tryParse(amountController.text) == null ||
-                                int.parse(amountController.text) <= 0)
-                            ? 'Amount must be greater than 0'
-                            : null,
+                        errorText: amountError, // Using local state variable for error text
                       ),
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
+                        FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        setState(() {
-                          // This will trigger a UI update for errorText
-                        });
+                        String? newError;
+                        if (value.isNotEmpty) {
+                          final number = int.tryParse(value);
+                          if (number == null || number <= 0) {
+                            newError = 'Amount must be greater than 0';
+                          }
+                        }
+                        if (newError != amountError) {
+                          setModalState(() {
+                            amountError = newError;
+                          });
+                        }
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
               actions: [
                 ElevatedButton(
                   onPressed: () {
-                    final amount =
-                        double.tryParse(amountController.text.trim()) ?? 0.0;
+                    final amount = double.tryParse(amountController.text.trim()) ?? 0.0;
                     if (amount > 0) {
                       ExpenseController().addExpense(widget.selectedCar.id,
                           type: selectedType,
@@ -110,6 +114,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +162,6 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                       color: theme.colorScheme.primary,
                     ),
                     onTap: () {
-                      // Handle the tap event, for example, navigate to the expense details
                       ExpenseController().setActiveExpense(expenses[index]);
                       Navigator.pushNamed(context, '/car/expense/detail');
                     },
