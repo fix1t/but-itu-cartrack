@@ -21,7 +21,7 @@ class LoginController {
 
   void handleLoginPressed(BuildContext context, User? selectedUser) {
     currentUser = selectedUser;  // Storing the current user in the global variable
-
+    Navigator.pop(context);
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => TabManager()));
   }
