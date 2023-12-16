@@ -18,20 +18,14 @@ class CarController {
 
   CarController._internal();
 
-  // static updateOdometer(int newOdometer) {
-  //   print("[updateOdometer]: newOdometer $newOdometer");
-  //   activeCar.odometerStatus = newOdometer.toString();
-  //   carModel.saveCar(activeCar);
-  //   onOdometerChange?.call(); // Trigger the callback
-  // }
-// Create a StreamController
+  // Shared stream for detail & home screens
   static StreamController<Car> _carStreamController = StreamController<Car>.broadcast();
-
   static Stream<Car> get carStream => _carStreamController.stream;
 
   static updateOdometer(int newOdometer) {
     activeCar.odometerStatus = newOdometer.toString();
-    _carStreamController.add(activeCar); // Emit the updated car object through the stream
+    // Emit the updated car object through the stream
+    _carStreamController.add(activeCar);
     carModel.saveCar(activeCar);
   }
 

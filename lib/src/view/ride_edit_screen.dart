@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
-import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
 
 class RideEditScreen extends StatefulWidget {
