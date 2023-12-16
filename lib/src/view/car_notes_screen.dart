@@ -12,6 +12,7 @@ class CarNotesScreen extends StatelessWidget {
   final String currentUserId = LoginController().getCurrentUserId();
   final String currentUserName = LoginController().getCurrentUserName();
   NoteController noteController = NoteController();
+  final ScrollController _scrollController = ScrollController();
 
   CarNotesScreen();
 
@@ -21,7 +22,8 @@ class CarNotesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.colorScheme.primary,
-        title: Text('Notes',
+        title: Text(
+          'Notes',
           style: TextStyle(color: theme.colorScheme.onPrimary),
         ),
       ),
@@ -40,10 +42,12 @@ class CarNotesScreen extends StatelessWidget {
                 } else {
                   List<Note> notes = snapshot.data!;
                   return ListView.builder(
+                    controller: _scrollController,
                     itemCount: notes.length,
                     itemBuilder: (context, index) {
                       final message = notes[index].content;
                       final senderId = notes[index].userId;
+                      ScrollToBottom(20);
 
                       return Column(
                         crossAxisAlignment: (currentUserId == senderId)
@@ -52,7 +56,8 @@ class CarNotesScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
+                                const EdgeInsets.symmetric(horizontal: 4.0) +
+                                    const EdgeInsets.only(top: 8.0),
                             child: Row(
                               mainAxisAlignment: (currentUserId == senderId)
                                   ? MainAxisAlignment.end
@@ -116,15 +121,15 @@ class CarNotesScreen extends StatelessWidget {
   Row noteInputField(BuildContext context) {
     return Row(
       children: [
-        // Padding(
-        //   padding: const EdgeInsets.only(bottom: 12.0),
-        //   child: IconButton(
-        //     onPressed: () {
-        //       // TODO: Send an image
-        //     },
-        //     icon: Icon(Icons.attach_file),
-        //   ),
-        // ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: IconButton(
+            onPressed: () {
+              _insertQuickMessage(context);
+            },
+            icon: Icon(Icons.message_outlined),
+          ),
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
@@ -143,10 +148,17 @@ class CarNotesScreen extends StatelessWidget {
                 suffixIcon: IconButton(
                   onPressed: () {
                     String message = _messageController.text;
-                    noteController.addNote(
-                        Note(userId: currentUserId, content: message, userName: currentUserName),
-                        selectedCar.id);
-                    _messageController.clear();
+                    if (message.isNotEmpty) {
+                      // Add your logic here to handle the message
+                      noteController.addNote(
+                          Note(
+                              userId: currentUserId,
+                              content: message,
+                              userName: currentUserName),
+                          selectedCar.id);
+                      _messageController.clear();
+                    }
+                    ScrollToBottom(300);
                   },
                   icon: Icon(Icons.send),
                 ),
@@ -156,6 +168,73 @@ class CarNotesScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  // Function to insert quick messages using AlertDialog
+  void _insertQuickMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Choose a Quick Message'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  _insertQuickMessageContent('Low on fuel, need to refuel');
+                  Navigator.of(context).pop();
+                  ScrollToBottom(300);
+                },
+                child: Text('Low on fuel, need to refuel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _insertQuickMessageContent('Need to change oil');
+                  Navigator.of(context).pop();
+                  ScrollToBottom(300);
+                },
+                child: Text('Need to change oil'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _insertQuickMessageContent('Puncture, need to change tires');
+                  Navigator.of(context).pop();
+                  ScrollToBottom(300);
+                },
+                child: Text('Puncture, need to change tires'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _insertQuickMessageContent('Tire pressure is low');
+                  Navigator.of(context).pop();
+                  ScrollToBottom(300);
+                },
+                child: Text('Tire pressure is low'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // Function to handle the insertion of quick messages
+  void _insertQuickMessageContent(String message) {
+    noteController.addNote(
+        Note(
+            userId: currentUserId, content: message, userName: currentUserName),
+        selectedCar.id);
+  }
+
+  Future<Null> ScrollToBottom(int time) {
+    return Future.delayed(Duration(milliseconds: 100), () {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: Duration(milliseconds: time),
+      curve: Curves.easeOut,
+    );
+  });
   }
 }
 
