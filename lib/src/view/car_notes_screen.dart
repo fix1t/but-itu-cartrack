@@ -162,8 +162,8 @@ class CarNotesScreen extends StatelessWidget {
                               userName: currentUserName),
                           selectedCar.id);
                       _messageController.clear();
+                      ScrollToBottom(300);
                     }
-                    ScrollToBottom(300);
                   },
                   icon: Icon(Icons.send),
                 ),

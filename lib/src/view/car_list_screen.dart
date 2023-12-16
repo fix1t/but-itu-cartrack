@@ -205,7 +205,7 @@ class _AddCarButtonState extends State<AddCarButton> {
                     ),
                     InputDecorator(
                       decoration:
-                          InputDecoration(labelText: 'Select Car Icon:'),
+                          InputDecoration(labelText: 'Car Icon'),
                       child: Row(
                         children: [
                           Radio(
@@ -248,7 +248,7 @@ class _AddCarButtonState extends State<AddCarButton> {
                     TextField(
                       controller: insuranceContactController,
                       decoration:
-                          InputDecoration(labelText: 'Insurance Contact *'),
+                          InputDecoration(labelText: 'Insurance Contact Number *'),
                     ),
                     TextField(
                       controller: odometerStatusController,
