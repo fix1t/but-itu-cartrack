@@ -11,7 +11,6 @@ class HelpCallPage extends StatefulWidget {
 class _HelpCallPageState extends State<HelpCallPage> {
   final Car selectedCar = CarController.activeCar;
   double _slideValue = 0.28;
-  final double _sliderHeight = 100;
 
   @override
   Widget build(BuildContext context) {
