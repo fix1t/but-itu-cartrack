@@ -89,15 +89,26 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                   SizedBox(height: 20),
                   TextFormField(
                     controller: textEditingController,
-                    decoration: InputDecoration(labelText: 'Odometer Status'),
+                    decoration: InputDecoration(
+                      labelText: 'Odometer Status',
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red, width: 2.0),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorText: (int.parse(selectedCar.odometerStatus) >= odometerStatus)
+                          ? 'New distance should be greater than current'
+                          : null,
+                    ),
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly
                     ],
                     onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        odometerStatus = int.parse(value);
-                      }
+                      setState(() {
+                        if (value.isNotEmpty) {
+                          odometerStatus = int.parse(value);
+                        }
+                      });
                     },
                   ),
                   Row(
