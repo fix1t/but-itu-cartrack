@@ -84,13 +84,13 @@ class _RideEditScreenState extends State<RideEditScreen> {
                       Navigator.pop(context);
                       showSnackBar(context, 'Ride saved');
                     },
-                    child: Text('Yes'),
+                    child: Text('Change it!'),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('No'),
+                    child: Text('Cancel'),
                   ),
                 ],
               );
@@ -288,25 +288,22 @@ class _RideEditScreenState extends State<RideEditScreen> {
                     child: Text('Save'),
                   ),
                   SizedBox(width: 16.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      CarController.deleteRide(widget.ride,
-                          updateOdo: updateOdometer);
-                      Navigator.pop(context);
-                      showSnackBar(context, 'Ride deleted');
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context)
-                            .colorScheme
-                            .error
-                            .withOpacity(0.8)),
-                    child: Text(
-                      'Delete',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.onError),
+                  if (widget.ride.id.isNotEmpty)
+                    ElevatedButton(
+                      onPressed: () {
+                        CarController.deleteRide(widget.ride, updateOdo: updateOdometer);
+                        Navigator.pop(context);
+                        showSnackBar(context, 'Ride deleted');
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.error.withOpacity(0.8)),
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(color: Theme.of(context).colorScheme.onError),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
               ),
             ],
           ),
