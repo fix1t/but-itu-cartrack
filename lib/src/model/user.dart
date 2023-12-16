@@ -1,3 +1,8 @@
+/// User model class that handles all the CRUD operations for the User handling.
+/// It is a Singleton class that uses Firebase Realtime Database to store the data.
+/// @author: Gabriel Biel xbielg00
+/// @modified: Adam Gabrys xgabry01 -- added favoriteCars
+
 class User {
   final String id;
   final String name;

@@ -1,3 +1,6 @@
+/// Ride model class that represents a ride of a car
+/// @autor: Gabriel Biel xbielg00
+
 import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';

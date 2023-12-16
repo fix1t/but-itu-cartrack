@@ -1,3 +1,6 @@
+/// This widget is responsible for managing the tabs and the navigation between users and cars
+/// @Author:  Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/view/user_list_screen.dart';
 import 'package:itu_cartrack/src/view/car_list_screen.dart';

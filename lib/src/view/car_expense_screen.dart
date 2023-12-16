@@ -1,3 +1,6 @@
+/// Purpose: Screen for displaying the list of expenses for a car, allows adding new expenses and navigating to the expense details screen
+/// @Author:  Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/expense_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';

@@ -1,3 +1,8 @@
+/// This widget is used to display a steering wheel that rotates when the user
+/// taps on it. It is used in the CarHomeHelpScreen to show the user how to
+/// navigate to the CarExpenseScreen.
+/// @Author: Gabriel Biel, xbielg00
+
 import 'package:flutter/material.dart';
 
 class RotatingSteeringWheel extends StatefulWidget {

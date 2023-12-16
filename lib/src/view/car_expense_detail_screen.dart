@@ -1,3 +1,6 @@
+/// Purpose: CarExpenseDetailScreen class which displays the details of a car expense, allows editing and deleting the expense
+/// @Author:  Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';

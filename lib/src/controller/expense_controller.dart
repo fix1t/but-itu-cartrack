@@ -1,3 +1,6 @@
+/// The controller for the expenses, which is used to add, delete and update expenses.
+/// @Author: Adam Gabrys xgabry01
+
 import 'package:itu_cartrack/src/model/expense_model.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 

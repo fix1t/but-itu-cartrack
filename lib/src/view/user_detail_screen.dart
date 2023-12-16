@@ -1,3 +1,5 @@
+///Screen for displaying current user details and changing theme color throughout the app, also allows user logging out
+///@Author: Adam Gabrys xgabry01
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';

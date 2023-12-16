@@ -1,3 +1,6 @@
+/// This file contains the theme provider class
+/// @Author:  Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier {

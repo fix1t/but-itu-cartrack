@@ -1,3 +1,6 @@
+/// This screen shows a list of users and allows the user to add and delete users.
+/// @Author: Gabriel Biel xbielg00
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/user_controller.dart';
 import 'package:itu_cartrack/src/model/user.dart';

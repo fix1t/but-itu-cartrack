@@ -1,3 +1,6 @@
+/// contains the help screen for the car home page, which shows the user option to call the assistance service in the event of an accident
+/// @Author: Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';

@@ -1,3 +1,6 @@
+/// This file contains the CarHomeScreen widget which is the main screen of the app, where the user can start a ride, see the odometer status and the car details, go to the help screen and finish the ride
+/// @Author:  Gabriel Biel xbielg00
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';

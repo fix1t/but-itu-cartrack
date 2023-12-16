@@ -1,6 +1,6 @@
 /// This file contains the CarListScreen widget which displays a list of cars
-/// @author: Jakub Mikysek xmikys03
-/// @modified: Adam Gabrys xgabry01
+/// @author: Jakub Mikysek xmikys03 -- added all functionality except: functionality, that is related to setting favorite cars by specific user
+/// @co-author: Adam Gabrys xgabry01 -- added functionality, that is related to setting favorite cars by specific user
 
 import 'package:flutter/material.dart';
 import '../model/user.dart';

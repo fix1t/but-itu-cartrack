@@ -1,3 +1,6 @@
+/// This file contains the CarHistoryScreen widget, which is used to display the history of rides, add new ones + go to the detail of a ride
+/// @Author:  Gabriel Biel xbielg00
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';

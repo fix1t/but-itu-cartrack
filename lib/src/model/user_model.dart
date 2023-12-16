@@ -1,3 +1,8 @@
+/// This class is responsible for all CRUD operations related to the Car model.
+/// It is a Singleton class that uses Firebase Realtime Database to store the data.
+/// @Author: Gabriel Biel xbielg00
+/// @modified: Adam Gabrys xgabry01 -- added updateUserFavorites() and getUserById()
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
