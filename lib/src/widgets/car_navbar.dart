@@ -32,7 +32,7 @@ class _CarNavigationBaseState extends State<CarNavigationBase> {
       ),
       bottomNavigationBar: ConvexAppBar(
         style: TabStyle.react,
-        backgroundColor: theme.colorScheme.secondary,
+        backgroundColor: theme.colorScheme.inversePrimary,
         items: [
           TabItem(icon: Icons.directions_car, title: 'Detail'),
           TabItem(icon: Icons.attach_money, title: 'Expenses'),
@@ -46,6 +46,7 @@ class _CarNavigationBaseState extends State<CarNavigationBase> {
             _currentIndex = i;
           });
         },
+        color: Theme.of(context).colorScheme.onTertiaryContainer,
       ),
     );
   }

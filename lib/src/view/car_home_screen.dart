@@ -228,10 +228,10 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         title: Text(
           '${selectedCar.name}',
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Column(
         children: [

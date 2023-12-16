@@ -20,9 +20,9 @@ class CarNotesScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: theme.colorScheme.secondary,
+        backgroundColor: theme.colorScheme.primary,
         title: Text('Notes',
-          style: TextStyle(color: theme.colorScheme.onSecondary)
+          style: TextStyle(color: theme.colorScheme.onPrimary),
         ),
       ),
       body: Column(

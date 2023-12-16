@@ -38,9 +38,9 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Car Detail',
-        style: TextStyle(color: theme.colorScheme.onSecondary)
+        style: TextStyle(color: theme.colorScheme.onPrimary)
         ),
-        backgroundColor: theme.colorScheme.secondary,
+        backgroundColor: theme.colorScheme.primary,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),

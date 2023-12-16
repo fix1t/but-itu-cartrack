@@ -86,9 +86,9 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Expense List',
-        style: TextStyle(color: theme.colorScheme.onSecondary)
+        style: TextStyle(color: theme.colorScheme.onPrimary)
         ),
-        backgroundColor: theme.colorScheme.secondary,
+        backgroundColor: theme.colorScheme.primary,
       ),
       body: StreamBuilder<List<Expense>>(
         stream: ExpenseController().getExpenses(selectedCar.id),
