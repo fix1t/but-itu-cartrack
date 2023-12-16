@@ -28,8 +28,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     _carStreamSubscription = CarController.carStream.listen((Car updatedCar) {
       setState(() {
         print("[CarDetailScreen] odometer changed");
-        CarController.activeCar = updatedCar; // Update activeCar in CarController
-        // Update your controllers with the new data
+        CarController.activeCar = updatedCar;
         nameController.text = CarController.activeCar.name;
         aliasController.text = CarController.activeCar.alias;
         fuelTypeController.text = CarController.activeCar.fuelType;
