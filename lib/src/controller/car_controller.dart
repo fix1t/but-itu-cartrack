@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
@@ -16,9 +18,20 @@ class CarController {
 
   CarController._internal();
 
+  // static updateOdometer(int newOdometer) {
+  //   print("[updateOdometer]: newOdometer $newOdometer");
+  //   activeCar.odometerStatus = newOdometer.toString();
+  //   carModel.saveCar(activeCar);
+  //   onOdometerChange?.call(); // Trigger the callback
+  // }
+// Create a StreamController
+  static StreamController<Car> _carStreamController = StreamController<Car>.broadcast();
+
+  static Stream<Car> get carStream => _carStreamController.stream;
+
   static updateOdometer(int newOdometer) {
     activeCar.odometerStatus = newOdometer.toString();
-    onOdometerChange?.call(); // Trigger the callback
+    _carStreamController.add(activeCar); // Emit the updated car object through the stream
   }
 
   Stream<List<Car>> get cars => carModel.getCars();
@@ -62,6 +75,7 @@ class CarController {
         odometerStatus: odometerStatus,
         description: description);
     await carModel.updateCar(carId, updatedCar);
+    updateOdometer(int.parse(odometerStatus));
   }
 
   Future<void> deleteCar(String carId) async {
@@ -85,7 +99,7 @@ class CarController {
     activeRide.finishedAt = DateTime.now();
   }
 
-  static bool isCorrectRideInput({required int odometerStatus, required String rideType}) {
+  static bool isCorrectRideInputAndSave({required int odometerStatus, required String rideType}) {
     print('Ride finished!  ${rideType}, ${odometerStatus} <- ${activeCar.odometerStatus}');
     int odometerStatusInt = int.parse(activeCar.odometerStatus);
 
@@ -117,8 +131,14 @@ class CarController {
     ride.delete(activeCar.id);
   }
 
-  static void saveOrUpdateRide(Ride ride) {
-    print(ride);
+  static void saveOrUpdateRide(Ride ride, {int? odometerStatusChange}) {
     ride.save(activeCar.id);
+    if (odometerStatusChange != null) {
+      int newOdometerStatus = int.parse(activeCar.odometerStatus) + odometerStatusChange;
+      activeCar.odometerStatus = newOdometerStatus.toString();
+      carModel.saveCar(activeCar);
+      updateOdometer(newOdometerStatus);
+    }
   }
+
 }

@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
@@ -18,21 +21,25 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   DateTime? rideStartTime;
   bool activeRide = false;
 
+  late StreamSubscription<Car> _carStreamSubscription;
+
   @override
   void initState() {
     super.initState();
-    // Register the callback to update the selectedCar
-    CarController.onOdometerChange = () {
+    // Listen to the carStream
+    _carStreamSubscription = CarController.carStream.listen((Car updatedCar) {
       setState(() {
+        print("[CarHomeScreen] odometer changed");
+        CarController.activeCar = updatedCar;
         selectedCar = CarController.activeCar;
+        odometer = CarController.activeCar.odometerStatus;
       });
-    };
+    });
   }
 
   @override
   void dispose() {
-    CarController.onOdometerChange =
-        null; // Unregister the callback to prevent memory leaks
+    _carStreamSubscription.cancel();
     super.dispose();
   }
 
@@ -211,7 +218,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (CarController.isCorrectRideInput(
+                    if (CarController.isCorrectRideInputAndSave(
                         odometerStatus: odometerStatus,
                         rideType: selectedRideType)) {
                       setState(() {

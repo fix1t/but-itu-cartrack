@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
+import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
 
 class RideEditScreen extends StatefulWidget {
@@ -26,6 +27,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
 
   RideType? _selectedRideType;
   bool updateOdometer = false;
+  int initialDistance = 0;
 
   @override
   void initState() {
@@ -39,6 +41,8 @@ class _RideEditScreenState extends State<RideEditScreen> {
     _selectedFinishDateTime = widget.ride.finishedAt;
 
     _selectedRideType = stringToRideType(widget.ride.rideType);
+
+    initialDistance = widget.ride.distance;
   }
 
   @override
@@ -73,9 +77,9 @@ class _RideEditScreenState extends State<RideEditScreen> {
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
-                      CarController.saveOrUpdateRide(createUpdatedRide());
-                      CarController.updateOdometer(
-                          int.parse(CarController.activeCar.odometerStatus + _distanceController.text));
+                      CarController.saveOrUpdateRide(createUpdatedRide(),
+                          odometerStatusChange: int.parse(_distanceController.text) - initialDistance);
+                      Navigator.pop(context);
                       Navigator.pop(context);
                       showSnackBar(context, 'Ride saved');
                     },
@@ -94,10 +98,17 @@ class _RideEditScreenState extends State<RideEditScreen> {
         });
       } else {
         CarController.saveOrUpdateRide(createUpdatedRide());
+        Navigator.pop(context);
         showSnackBar(context, 'Ride saved');
       }
     } else {
-      CarController.saveOrUpdateRide(createUpdatedRide());
+      if(updateOdometer){
+        CarController.saveOrUpdateRide(createUpdatedRide(),
+            odometerStatusChange: int.parse(_distanceController.text) - initialDistance);
+      } else {
+        CarController.saveOrUpdateRide(createUpdatedRide());
+      }
+      Navigator.pop(context);
       showSnackBar(context, 'Ride saved');
     }
   }
@@ -226,7 +237,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
                   borderSide: BorderSide(color: Colors.red, width: 2.0),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                errorText: (int.parse(_distanceController.text) <= 0)
+                errorText: (_distanceController.text.isNotEmpty ? int.parse(_distanceController.text) <= 0 : true )
                     ? 'New distance should be greater than current'
                     : null,
               ),
@@ -271,7 +282,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
                 SizedBox(width: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    CarController.deleteRide(widget.ride);
+                    CarController.deleteRide(widget.ride, );
                     Navigator.pop(context);
                     //displaySnackBar(context, 'Ride deleted');
                     showSnackBar(context, 'Ride deleted');
@@ -382,6 +393,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
+
               },
               child: Text('OK'),
             ),
