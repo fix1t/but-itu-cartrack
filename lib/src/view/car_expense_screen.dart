@@ -4,6 +4,7 @@ import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/view/car_expense_detail_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 
 class CarExpenseScreen extends StatefulWidget {
@@ -59,7 +60,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                         );
                       }).toList(),
                     ),
-                    TextField(
+                    TextFormField(
                       controller: amountController,
                       decoration: InputDecoration(
                         labelText: 'Amount',
@@ -67,15 +68,22 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                           borderSide: BorderSide(color: Colors.red, width: 2.0),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        //TODO: fix errorText
-                        errorText: (amountController.text.isNotEmpty
-                                ? int.parse(amountController.text) <= 0
-                                : true)
+                        errorText: amountController.text.isNotEmpty &&
+                            (int.tryParse(amountController.text) == null ||
+                                int.parse(amountController.text) <= 0)
                             ? 'Amount must be greater than 0'
                             : null,
                       ),
                       keyboardType: TextInputType.number,
-                    ),
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          // This will trigger a UI update for errorText
+                        });
+                      },
+                    )
                   ],
                 ),
               ),
