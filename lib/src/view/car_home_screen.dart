@@ -82,7 +82,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     }).toList(),
                     onChanged: (value) {
                       setState(() {
-                        selectedRideType = value.toString();
+                        selectedRideType = value.toString().split('.').last;
                       });
                     },
                   ),
