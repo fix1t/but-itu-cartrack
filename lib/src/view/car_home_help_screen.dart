@@ -10,7 +10,7 @@ class HelpCallPage extends StatefulWidget {
 
 class _HelpCallPageState extends State<HelpCallPage> {
   final Car selectedCar = CarController.activeCar;
-  double _slideValue = 0.0;
+  double _slideValue = 0.28;
   final double _sliderHeight = 100;
 
   @override
@@ -85,15 +85,14 @@ class _HelpCallPageState extends State<HelpCallPage> {
 
                     // If the slider reaches the end, make the call
                     if (_slideValue == 1.0) {
-                      _makePhoneCall(
-                          selectedCar.insuranceContact); // Replace with your phone number
+                      _makePhoneCall(selectedCar.insuranceContact); // Replace with your phone number
                     }
                   }
                 },
                 onHorizontalDragEnd: (details) {
                   // Reset the slider when user stops dragging
                   setState(() {
-                    _slideValue = 0.0;
+                    _slideValue = 0.28;
                   });
                 },
                 child: Container(
@@ -106,18 +105,17 @@ class _HelpCallPageState extends State<HelpCallPage> {
                   child: Stack(
                     alignment: Alignment.centerLeft,
                     children: [
-                      Container(
+                      AnimatedContainer(
+                        duration: Duration(milliseconds: 0), // Adjust duration to control the speed of the animation
                         width: _slideValue * _sliderWidth,
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: theme.colorScheme.primary,
                           borderRadius: BorderRadius.circular(80.0),
                         ),
-                      ),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Icon(Icons.arrow_forward_ios),
+                        alignment: Alignment.center, // Center the icon inside the animated container
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.white,
                         ),
                       ),
                       Align(
