@@ -73,6 +73,12 @@ class _CarListScreenState extends State<CarListScreen> {
                 otherCars.add(car);
               }
             }
+            for (var car in favoriteCars) {
+              log('${car.name}, ${car.id}');
+            }
+            for (var car in otherCars) {
+              log('other${car.name}, ${car.id}');
+            }
             // Combine lists so favorites are first
             List<Car> sortedCars = favoriteCars..addAll(otherCars);
 
@@ -90,6 +96,7 @@ class _CarListScreenState extends State<CarListScreen> {
   }
 
   Widget _buildCarTile(Car car, BuildContext context, ThemeData theme) {
+    currentUser = LoginController().getCurrentUser();
     bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, car.id);
     return Container(
       margin: EdgeInsets.all(8.0),
