@@ -15,6 +15,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     // Get the screen width
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
@@ -24,7 +25,9 @@ class _HelpCallPageState extends State<HelpCallPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Emergency Call'),
+        title: Text('Call Assistance Service',
+            style: TextStyle(color: theme.colorScheme.onSecondary)),
+        backgroundColor: theme.colorScheme.secondary,
       ),
       body: Center(
         child: Padding(
@@ -33,7 +36,11 @@ class _HelpCallPageState extends State<HelpCallPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 100.0),
+              SizedBox(height: 40.0),
+              Icon(Icons.record_voice_over,
+                  color: theme.colorScheme.secondary,
+                  size: screenHeight * 0.085),
+              SizedBox(height: 70.0),
               Text(
                 'In the event of an accident\ncall assistance service:',
                 textAlign: TextAlign.center,
@@ -48,14 +55,15 @@ class _HelpCallPageState extends State<HelpCallPage> {
                 'NONSTOP',
                 style: TextStyle(
                   fontSize: 24.0,
-                  color: Colors.red,
+                  color: Theme.of(context).colorScheme.error,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 70.0),
               // Adjust this value as needed for spacing
               Text(
-                'Number: ' + selectedCar.insuranceContact, // Replace with the actual number
+                'Number: ' + selectedCar.insuranceContact,
+                // Replace with the actual number
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w500,
@@ -93,7 +101,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
                   width: _sliderWidth,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(80.0),
                   ),
                   child: Stack(
                     alignment: Alignment.centerLeft,
@@ -102,7 +110,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
                         width: _slideValue * _sliderWidth,
                         decoration: BoxDecoration(
                           color: Colors.blue,
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(80.0),
                         ),
                       ),
                       const Align(
@@ -140,7 +148,6 @@ class _HelpCallPageState extends State<HelpCallPage> {
     } else {
       debugPrint('Could not launch dialer for $launchUri');
       // Show an error if needed
-
     }
   }
 }

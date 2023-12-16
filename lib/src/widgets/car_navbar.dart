@@ -12,7 +12,7 @@ class CarNavigationBase extends StatefulWidget {
 }
 
 class _CarNavigationBaseState extends State<CarNavigationBase> {
-  int _currentIndex = 2;
+  int _currentIndex = 2; //default on the middle item
 
   final List<Widget> _pages = [
     CarDetailScreen(),
