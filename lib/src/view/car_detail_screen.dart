@@ -121,6 +121,11 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                             odometerStatusController.text,
                             descriptionController.text);
                       });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Center(child: Text('Car Successfully Updated')),
+                        ),
+                      );
                     },
                     child: Text('Update Car Info'),
                   ),

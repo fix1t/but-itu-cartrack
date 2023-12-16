@@ -34,8 +34,9 @@ class _CarListScreenState extends State<CarListScreen> {
       } else {
         userController.addFavoriteCar(currentUser!, carId);
       }
-      await userController.updateUserFavorites(currentUser!.id, currentUser!.favoriteCars);
-      setState(() {});  // Trigger a rebuild to update the UI
+      await userController.updateUserFavorites(
+          currentUser!.id, currentUser!.favoriteCars);
+      setState(() {}); // Trigger a rebuild to update the UI
     }
   }
 
@@ -45,10 +46,8 @@ class _CarListScreenState extends State<CarListScreen> {
     currentUser = LoginController().getCurrentUser();
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Car List',
-          style: TextStyle(color: theme.colorScheme.onSecondary)
-        ),
+        title: Text('Car List',
+            style: TextStyle(color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
         actions: <Widget>[
           IconButton(
@@ -72,7 +71,8 @@ class _CarListScreenState extends State<CarListScreen> {
             List<Car> favoriteCars = [];
             List<Car> otherCars = [];
             for (var car in cars) {
-              if (currentUser != null && userController.isFavoriteCar(currentUser!, car.id)) {
+              if (currentUser != null &&
+                  userController.isFavoriteCar(currentUser!, car.id)) {
                 favoriteCars.add(car);
               } else {
                 otherCars.add(car);
@@ -96,7 +96,8 @@ class _CarListScreenState extends State<CarListScreen> {
 
   Widget _buildCarTile(Car car, BuildContext context, ThemeData theme) {
     currentUser = LoginController().getCurrentUser();
-    bool isFavorite = currentUser != null && userController.isFavoriteCar(currentUser!, car.id);
+    bool isFavorite = currentUser != null &&
+        userController.isFavoriteCar(currentUser!, car.id);
     return Container(
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(12.0),
@@ -106,12 +107,19 @@ class _CarListScreenState extends State<CarListScreen> {
         border: Border.all(color: theme.colorScheme.primary),
       ),
       child: ListTile(
-        leading: Icon(Icons.directions_car_filled_rounded, color: theme.colorScheme.secondary, size: 36.0),
+        leading: Icon(carController.getIconFromInt(car.icon), color: theme.colorScheme.secondary, size: 36.0),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(car.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, color: theme.colorScheme.onSecondaryContainer)),
-            Text(car.licensePlate, style: TextStyle(fontSize: 14.0, color: theme.colorScheme.onSecondaryContainer)),
+            Text(car.name,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                    color: theme.colorScheme.onSecondaryContainer)),
+            Text(car.licensePlate,
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: theme.colorScheme.onSecondaryContainer)),
           ],
         ),
         onTap: () {
@@ -119,7 +127,9 @@ class _CarListScreenState extends State<CarListScreen> {
           Navigator.pushNamed(context, '/car-navigation');
         },
         trailing: IconButton(
-          icon: isFavorite ? Icon(Icons.favorite, color: Colors.red) : Icon(Icons.favorite_border),
+          icon: isFavorite
+              ? Icon(Icons.favorite, color: Colors.red)
+              : Icon(Icons.favorite_border),
           onPressed: () => _toggleFavorite(car.id),
         ),
       ),
@@ -163,6 +173,7 @@ class _AddCarButtonState extends State<AddCarButton> {
     final insuranceContactController = TextEditingController();
     final odometerStatusController = TextEditingController();
     final descriptionController = TextEditingController();
+    var selectedCarIcon = 0;
 
     showDialog(
       context: context,
@@ -191,6 +202,44 @@ class _AddCarButtonState extends State<AddCarButton> {
                           selectedFuelType = newValue!;
                         });
                       },
+                    ),
+                    InputDecorator(
+                      decoration:
+                          InputDecoration(labelText: 'Select Car Icon:'),
+                      child: Row(
+                        children: [
+                          Radio(
+                            value: 0,
+                            groupValue: selectedCarIcon,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCarIcon = value as int;
+                              });
+                            },
+                          ),
+                          Icon(Icons.directions_car),
+                          Radio(
+                            value: 1,
+                            groupValue: selectedCarIcon,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCarIcon = value as int;
+                              });
+                            },
+                          ),
+                          Icon(Icons.directions_bus),
+                          Radio(
+                            value: 2,
+                            groupValue: selectedCarIcon,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedCarIcon = value as int;
+                              });
+                            },
+                          ),
+                          Icon(Icons.local_shipping),
+                        ],
+                      ),
                     ),
                     TextField(
                       controller: licensePlateController,
@@ -239,6 +288,7 @@ class _AddCarButtonState extends State<AddCarButton> {
                         insuranceContact,
                         odometerStatus,
                         description,
+                        selectedCarIcon
                       );
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

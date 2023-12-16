@@ -13,6 +13,7 @@ class Car {
   String odometerStatus;
   String responsiblePerson;
   String description;
+  int icon;
 
   Car({
     this.id='',
@@ -25,6 +26,7 @@ class Car {
     this.odometerStatus = '',
     this.responsiblePerson = '',
     this.description = '',
+    this.icon = 0,
   });
 
   factory Car.fromMap(String id, Map<String, dynamic> data) {
@@ -39,6 +41,7 @@ class Car {
       odometerStatus: data['odometer_status'] ?? '',
       responsiblePerson: data['responsible_person'] ?? '',
       description: data['description'] ?? '',
+      icon: data['icon'] ?? 0,
     );
   }
 
@@ -53,6 +56,7 @@ class Car {
       'odometer_status': odometerStatus,
       'responsible_person': responsiblePerson,
       'description': description,
+      'icon': icon,
     };
   }
 }

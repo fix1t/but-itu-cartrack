@@ -1,6 +1,7 @@
 /// CarController is a singleton class that handles all the logic related to the car.
 /// @author: Jakub Mikysek xmikys03
 /// @author: Gabriel Biel  xbielg00
+import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
@@ -33,7 +34,8 @@ class CarController {
       String licensePlate,
       String insuranceContact,
       String odometerStatus,
-      String description) async {
+      String description,
+      int selectedCarIcon) async {
     Car newCar = Car(
         name: name,
         alias: alias,
@@ -41,7 +43,8 @@ class CarController {
         licensePlate: licensePlate,
         insuranceContact: insuranceContact,
         odometerStatus: odometerStatus,
-        description: description);
+        description: description,
+        icon: selectedCarIcon);
     await carModel.addCar(newCar);
   }
 
@@ -123,5 +126,18 @@ class CarController {
   static void saveOrUpdateRide(Ride ride) {
     print(ride);
     ride.save(activeCar.id);
+  }
+
+  IconData getIconFromInt(int value) {
+    switch (value) {
+      case 0:
+        return Icons.directions_car;
+      case 1:
+        return Icons.directions_bus;
+      case 2:
+        return Icons.local_shipping;
+      default:
+        return Icons.directions_car;
+    }
   }
 }
