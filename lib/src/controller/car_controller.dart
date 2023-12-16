@@ -23,6 +23,7 @@ class CarController {
 
   // Shared stream for detail & home screens
   static StreamController<Car> _carStreamController = StreamController<Car>.broadcast();
+
   static Stream<Car> get carStream => _carStreamController.stream;
 
   static updateOdometer(int newOdometer) {
@@ -66,17 +67,16 @@ class CarController {
       String odometerStatus,
       String description,
       int selectedCarIcon) async {
-    Car updatedCar = Car(
-        name: name,
-        alias: alias,
-        fuelType: fuelType,
-        licensePlate: licensePlate,
-        insurance: insurance,
-        insuranceContact: insuranceContact,
-        odometerStatus: odometerStatus,
-        description: description,
-        icon: selectedCarIcon);
-    await carModel.updateCar(carId, updatedCar);
+    activeCar.name = name;
+    activeCar.alias = alias;
+    activeCar.fuelType = fuelType;
+    activeCar.licensePlate = licensePlate;
+    activeCar.insurance = insurance;
+    activeCar.insuranceContact = insuranceContact;
+    activeCar.odometerStatus = odometerStatus;
+    activeCar.description = description;
+    activeCar.icon = selectedCarIcon;
+    await carModel.saveCar(activeCar);
     updateOdometer(int.parse(odometerStatus));
   }
 

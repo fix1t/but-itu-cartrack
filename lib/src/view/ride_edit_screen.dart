@@ -77,7 +77,9 @@ class _RideEditScreenState extends State<RideEditScreen> {
                   TextButton(
                     onPressed: () {
                       CarController.saveOrUpdateRide(createUpdatedRide(),
-                          odometerStatusChange: int.parse(_distanceController.text) - initialDistance);
+                          odometerStatusChange:
+                              int.parse(_distanceController.text) -
+                                  initialDistance);
                       Navigator.pop(context);
                       Navigator.pop(context);
                       showSnackBar(context, 'Ride saved');
@@ -101,9 +103,10 @@ class _RideEditScreenState extends State<RideEditScreen> {
         showSnackBar(context, 'Ride saved');
       }
     } else {
-      if(updateOdometer){
+      if (updateOdometer) {
         CarController.saveOrUpdateRide(createUpdatedRide(),
-            odometerStatusChange: int.parse(_distanceController.text) - initialDistance);
+            odometerStatusChange:
+                int.parse(_distanceController.text) - initialDistance);
       } else {
         CarController.saveOrUpdateRide(createUpdatedRide());
       }
@@ -154,153 +157,159 @@ class _RideEditScreenState extends State<RideEditScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.ride.id.isEmpty ? 'Create Ride' : 'Edit Ride',
-        style: TextStyle(color: theme.colorScheme.onSecondary)
-        ),
+            style: TextStyle(color: theme.colorScheme.onSecondary)),
         backgroundColor: theme.colorScheme.secondary,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Driver: ${widget.ride.userName}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Driver: ${widget.ride.userName}',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
               ),
-            ),
-            SizedBox(height: 16.0),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey, // Choose your border color
-                        width: 1, // Set border width
+              SizedBox(height: 16.0),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey, // Choose your border color
+                          width: 1, // Set border width
+                        ),
+                        borderRadius: BorderRadius.circular(
+                            8), // Adjust border radius as needed
                       ),
-                      borderRadius: BorderRadius.circular(
-                          8), // Adjust border radius as needed
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Started at\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                      child: ListTile(
+                        title: Text(
+                          'Started at\n${_selectedStartDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                        ),
+                        onTap: () => _selectDateTime(context, true),
                       ),
-                      onTap: () => _selectDateTime(context, true),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey, // Choose your border color
-                        width: 1, // Set border width
-                      ),
-                      borderRadius: BorderRadius.circular(
-                          8), // Adjust border radius as needed
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Finished at\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
-                      ),
-                      onTap: () => _selectDateTime(context, false),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16.0),
-            DropdownButtonFormField<RideType>(
-              value: _selectedRideType,
-              // Set the default value or the value from your model
-              decoration: InputDecoration(labelText: 'Ride Type'),
-              items: RideType.values.map((type) {
-                return DropdownMenuItem<RideType>(
-                  value: type,
-                  child: Text(type.toString().split('.').last),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  _selectedRideType = value;
-                  _rideTypeController.text = value.toString().split('.').last;
-                });
-              },
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              controller: _distanceController,
-              decoration: InputDecoration(
-                labelText: 'Distance (km)',
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red, width: 2.0),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                errorText: (_distanceController.text.isNotEmpty ? int.parse(_distanceController.text) <= 0 : true )
-                    ? 'New distance should be greater than current'
-                    : null,
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey, // Choose your border color
+                          width: 1, // Set border width
+                        ),
+                        borderRadius: BorderRadius.circular(
+                            8), // Adjust border radius as needed
+                      ),
+                      child: ListTile(
+                        title: Text(
+                          'Finished at\n${_selectedFinishDateTime != null ? DateFormat('dd.MM - HH:mm').format(_selectedStartDateTime!) : ''}',
+                        ),
+                        onTap: () => _selectDateTime(context, false),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              onChanged: (value) {
-                setState(() {
-                  _distanceController.text = value;
-                });
-              },
-            ),
-            SizedBox(height: 16.0),
-            SwitchListTile(
-              title: Text('Update Odometer'),
-              subtitle: Text('Toggle to update odometer status'),
-              value: updateOdometer,
-              onChanged: (value) {
-                setState(() {
-                  updateOdometer = value;
-                });
-              },
-            ),
-            SizedBox(height: 16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Cancel'),
-                ),
-                SizedBox(width: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    saveOrUpdateRide();
-                  },
-                  child: Text('Save'),
-                ),
-                SizedBox(width: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    CarController.deleteRide(widget.ride, updateOdo: updateOdometer);
-                    Navigator.pop(context);
-                    showSnackBar(context, 'Ride deleted');
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Theme.of(context).colorScheme.error.withOpacity(0.8)),
-                  child: Text(
-                    'Delete',
-                    style:
-                        TextStyle(color: Theme.of(context).colorScheme.onError),
+              SizedBox(height: 16.0),
+              DropdownButtonFormField<RideType>(
+                value: _selectedRideType,
+                // Set the default value or the value from your model
+                decoration: InputDecoration(labelText: 'Ride Type'),
+                items: RideType.values.map((type) {
+                  return DropdownMenuItem<RideType>(
+                    value: type,
+                    child: Text(type.toString().split('.').last),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedRideType = value;
+                    _rideTypeController.text = value.toString().split('.').last;
+                  });
+                },
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: _distanceController,
+                decoration: InputDecoration(
+                  labelText: 'Distance (km)',
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red, width: 2.0),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
+                  errorText: (_distanceController.text.isNotEmpty
+                          ? int.parse(_distanceController.text) <= 0
+                          : true)
+                      ? 'New distance should be greater than current'
+                      : null,
                 ),
-              ],
-            ),
-          ],
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _distanceController.text = value;
+                  });
+                },
+              ),
+              SizedBox(height: 16.0),
+              SwitchListTile(
+                title: Text('Update Odometer'),
+                subtitle: Text('Toggle to update odometer status'),
+                value: updateOdometer,
+                onChanged: (value) {
+                  setState(() {
+                    updateOdometer = value;
+                  });
+                },
+              ),
+              SizedBox(height: 16.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Cancel'),
+                  ),
+                  SizedBox(width: 16.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      saveOrUpdateRide();
+                    },
+                    child: Text('Save'),
+                  ),
+                  SizedBox(width: 16.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      CarController.deleteRide(widget.ride,
+                          updateOdo: updateOdometer);
+                      Navigator.pop(context);
+                      showSnackBar(context, 'Ride deleted');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .error
+                            .withOpacity(0.8)),
+                    child: Text(
+                      'Delete',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.onError),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -395,7 +404,6 @@ class _RideEditScreenState extends State<RideEditScreen> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-
               },
               child: Text('OK'),
             ),

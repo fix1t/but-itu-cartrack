@@ -53,17 +53,28 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                       items: ExpenseType.values
                           .map<DropdownMenuItem<ExpenseType>>(
                               (ExpenseType value) {
-                            return DropdownMenuItem<ExpenseType>(
-                              value: value,
-                              child: Text(expenseTypeToString(value)),
-                            );
-                          }).toList(),
+                        return DropdownMenuItem<ExpenseType>(
+                          value: value,
+                          child: Text(expenseTypeToString(value)),
+                        );
+                      }).toList(),
                     ),
                     TextField(
                       controller: amountController,
-                      decoration: InputDecoration(labelText: 'Amount'),
-                      keyboardType:
-                      TextInputType.numberWithOptions(decimal: true),
+                      decoration: InputDecoration(
+                        labelText: 'Amount',
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red, width: 2.0),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        //TODO: fix errorText
+                        errorText: (amountController.text.isNotEmpty
+                                ? int.parse(amountController.text) <= 0
+                                : true)
+                            ? 'Amount must be greater than 0'
+                            : null,
+                      ),
+                      keyboardType: TextInputType.number,
                     ),
                   ],
                 ),
@@ -98,8 +109,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Expense List',
-        style: TextStyle(color: theme.colorScheme.onPrimary)
-        ),
+            style: TextStyle(color: theme.colorScheme.onPrimary)),
         backgroundColor: theme.colorScheme.primary,
       ),
       body: StreamBuilder<List<Expense>>(
@@ -134,7 +144,8 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                       style: TextStyle(color: Colors.grey),
                     ),
                     leading: Icon(
-                      _expenseTypeIcons[expenses[index].type], // Get the icon based on the expense type
+                      _expenseTypeIcons[expenses[index].type],
+                      // Get the icon based on the expense type
                       color: theme.colorScheme.primary,
                     ),
                     onTap: () {

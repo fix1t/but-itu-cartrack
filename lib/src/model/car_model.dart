@@ -4,6 +4,7 @@
 /// @modified: Jakub Mikysek xmikys03
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 
 class CarModel {

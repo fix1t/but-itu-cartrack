@@ -45,14 +45,23 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
   void showRouteStartedNotification() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('Your route has been started!'),
-        action: SnackBarAction(
-          label: 'Undo',
-          onPressed: () {
-            setState(() {
-              activeRide = false;
-            });
-          },
+        content: Container(
+          padding: EdgeInsets.only(bottom: 3.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: const Text('Your route has been started!'),
+              ),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    activeRide = false;
+                  });
+                },
+                child: const Text('Undo'),
+              ),
+            ],
+          ),
         ),
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.zero,
@@ -101,7 +110,8 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                         borderSide: BorderSide(color: Colors.red, width: 2.0),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      errorText: (int.parse(selectedCar.odometerStatus) >= odometerStatus)
+                      errorText: (int.parse(selectedCar.odometerStatus) >=
+                              odometerStatus)
                           ? 'New distance should be greater than current'
                           : null,
                     ),
@@ -122,7 +132,8 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                     children: [
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.all(3), // Margin of 1px around the button
+                          margin: EdgeInsets.all(3),
+                          // Margin of 1px around the button
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
@@ -141,7 +152,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           ),
                         ),
                       ),
-                          Expanded(
+                      Expanded(
                         child: Container(
                           margin: EdgeInsets.all(3),
                           child: ElevatedButton(
@@ -226,22 +237,27 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                       });
                       CarController.finishRide();
                       Navigator.of(context).pop(); // Close the dialog
-                    } else {
+
+                      // Show a snackbar to notify the user that the ride has been added
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: const Text('Please fill in all fields!'),
-                          action: SnackBarAction(
-                            label: 'Undo',
-                            onPressed: () {
-                              setState(() {
-                                activeRide = false;
-                              });
-                            },
+                          content: Container(
+                            padding: EdgeInsets.only(bottom: 15.0, top: 15),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child:
+                                      const Text('Your ride has been added!'),
+                                ),
+                              ],
+                            ),
                           ),
                           behavior: SnackBarBehavior.floating,
                           margin: EdgeInsets.zero,
                         ),
                       );
+                    } else {
+                      _showCustomSnackBar(context);
                     }
                   },
                   child: Text('Add Ride'),
@@ -360,7 +376,8 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: Theme.of(context).colorScheme.primary,
@@ -410,5 +427,40 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         ],
       ),
     );
+  }
+
+  void _showCustomSnackBar(BuildContext context) {
+    OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).size.height *
+            0.8, // Adjust the position as needed
+        width: MediaQuery.of(context).size.width,
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            alignment: Alignment.center,
+            child: Card(
+              elevation: 10.0, // Adjust the elevation as needed
+              color: Theme.of(context).colorScheme.secondary,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Please fill out all fields',
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    Overlay.of(context).insert(overlayEntry);
+
+    Future.delayed(Duration(seconds: 2), () {
+      overlayEntry.remove();
+    });
   }
 }
