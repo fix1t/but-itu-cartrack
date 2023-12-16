@@ -58,9 +58,13 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Car Detail'),
+        title: Text('Car Detail',
+        style: TextStyle(color: theme.colorScheme.onPrimary)
+        ),
+        backgroundColor: theme.colorScheme.primary,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
