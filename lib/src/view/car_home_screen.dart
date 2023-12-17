@@ -286,151 +286,150 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body:SingleChildScrollView(
-    child:
-      Column(
-        children: [
-          // Car Name + License Plate + Icon
-          Container(
-            height: MediaQuery.of(context).size.height * 0.15,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '${selectedCar.name}',
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        '${selectedCar.licensePlate}',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 30),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        carController.getIconFromInt(selectedCar.icon),
-                        size: 100,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          // Dashboard Image + Odometer Status
-          Container(
-            height: MediaQuery.of(context).size.height * 0.35,
-            // padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // help button
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.error,
-                      width: 2, // Adjust border width as needed
-                    ),
-                  ),
-                  child: IconButton(
-                    icon: Icon(Icons.car_crash_rounded),
-                    color: Theme.of(context).colorScheme.error,
-                    iconSize: 40,
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/car/home/help');
-                    },
-                  ),
-                ),
-                // odometer + odometer status
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  child: Center(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Car Name + License Plate + Icon
+            Container(
+              height: MediaQuery.of(context).size.height * 0.15,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image(
-                          image: AssetImage('assets/images/o2.png'),
-                          fit: BoxFit.contain,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
+                        Text(
+                          '${selectedCar.name}',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
-                          child: Text(
-                            '${selectedCar.odometerStatus}',
-                            style: TextStyle(
-                              decoration: TextDecoration.none,
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.primary,
-                              fontFamily: 'RobotoMono',
-                            ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          '${selectedCar.licensePlate}',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          // Steering Wheel
-          Container(
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: RotatingSteeringWheel(
-                isActive: activeRide,
-                onTap: () {
-                  setState(() {
-                    activeRide = !activeRide;
-                    if (activeRide) {
-                      CarController.startRide();
-                      showRouteStartedNotification();
-                    } else {
-                      showFinishRideDialog();
-                    }
-                  });
-                },
+                  SizedBox(width: 30),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          carController.getIconFromInt(selectedCar.icon),
+                          size: 100,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
-      ),
+            // Dashboard Image + Odometer Status
+            Container(
+              height: MediaQuery.of(context).size.height * 0.35,
+              // padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  // help button
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.07,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.error,
+                        width: 2, // Adjust border width as needed
+                      ),
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.car_crash_rounded),
+                      color: Theme.of(context).colorScheme.error,
+                      iconSize: 40,
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/car/home/help');
+                      },
+                    ),
+                  ),
+                  // odometer + odometer status
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image(
+                            image: AssetImage('assets/images/o2.png'),
+                            fit: BoxFit.contain,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 0),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              '${selectedCar.odometerStatus}',
+                              style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.primary,
+                                fontFamily: 'RobotoMono',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Steering Wheel
+            Container(
+              height: MediaQuery.of(context).size.height * 0.25,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: RotatingSteeringWheel(
+                  isActive: activeRide,
+                  onTap: () {
+                    setState(() {
+                      activeRide = !activeRide;
+                      if (activeRide) {
+                        CarController.startRide();
+                        showRouteStartedNotification();
+                      } else {
+                        showFinishRideDialog();
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
