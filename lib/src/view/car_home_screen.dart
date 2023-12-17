@@ -115,7 +115,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
                       ),
                       errorText: (int.parse(selectedCar.odometerStatus) >=
                               odometerStatus)
-                          ? 'New distance should be greater than current'
+                          ? 'Odometer must show an increase.'
                           : null,
                     ),
                     keyboardType: TextInputType.number,

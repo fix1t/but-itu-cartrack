@@ -249,7 +249,7 @@ class _RideEditScreenState extends State<RideEditScreen> {
                   errorText: (_distanceController.text.isNotEmpty
                           ? int.parse(_distanceController.text) <= 0
                           : true)
-                      ? 'New distance should be greater than current'
+                      ? 'Enter a valid distance'
                       : null,
                 ),
                 keyboardType: TextInputType.number,
