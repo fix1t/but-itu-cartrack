@@ -83,7 +83,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
 
                     // If the slider reaches the end, make the call
                     if (_slideValue == 1.0) {
-                      _makePhoneCall(selectedCar
+                      CarController().makePhoneCall(selectedCar
                           .insuranceContact);
                     }
                   }
@@ -134,18 +134,5 @@ class _HelpCallPageState extends State<HelpCallPage> {
         ),
       ),
     );
-  }
-
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    } else {
-      debugPrint('Could not launch dialer for $launchUri');
-      // Show an error if needed
-    }
   }
 }

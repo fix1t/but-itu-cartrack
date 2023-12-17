@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/car_model.dart';
 import 'package:itu_cartrack/src/model/car.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:itu_cartrack/src/model/ride.dart';
 
 class CarController {
@@ -156,6 +157,20 @@ class CarController {
         return Icons.local_shipping;
       default:
         return Icons.directions_car;
+    }
+  }
+
+  /// @author: Adam Gabrys
+  Future<void> makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    } else {
+      debugPrint('Could not launch dialer for $launchUri');
+      // Show an error if needed
     }
   }
 }
