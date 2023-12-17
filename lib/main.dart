@@ -1,3 +1,7 @@
+/// Main entry point of the application.
+/// This file is responsible for setting up the application and routing to the correct screen.
+/// @Author: Gabriel Biel, xbielg00
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

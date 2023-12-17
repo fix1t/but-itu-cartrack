@@ -1,3 +1,6 @@
+/// contains the help screen for the car home page, which shows the user option to call the assistance service in the event of an accident
+/// @Author: Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 import 'package:itu_cartrack/src/model/car.dart';
@@ -18,7 +21,7 @@ class _HelpCallPageState extends State<HelpCallPage> {
     // Get the screen width
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    // Set the slider width to be 90% of the screen width
+    // Set the slider width to be 85% of the screen width
     final double _sliderWidth = screenWidth * 0.85;
     final double _sliderHeight = screenHeight * 0.12;
 
@@ -49,7 +52,6 @@ class _HelpCallPageState extends State<HelpCallPage> {
                 ),
               ),
               SizedBox(height: 70.0),
-              // Adjust this value as needed for spacing
               Text(
                 'NONSTOP',
                 style: TextStyle(
@@ -59,17 +61,14 @@ class _HelpCallPageState extends State<HelpCallPage> {
                 ),
               ),
               SizedBox(height: 70.0),
-              // Adjust this value as needed for spacing
               Text(
                 'Number: ' + selectedCar.insuranceContact,
-                // Replace with the actual number
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               SizedBox(height: 40.0),
-              // Reduce this value to bring the slider closer to the number
               GestureDetector(
                 onHorizontalDragUpdate: (details) {
                   // Update the slider value only if the drag is to the right
@@ -84,7 +83,8 @@ class _HelpCallPageState extends State<HelpCallPage> {
 
                     // If the slider reaches the end, make the call
                     if (_slideValue == 1.0) {
-                      _makePhoneCall(selectedCar.insuranceContact); // Replace with your phone number
+                      _makePhoneCall(selectedCar
+                          .insuranceContact);
                     }
                   }
                 },
@@ -105,13 +105,14 @@ class _HelpCallPageState extends State<HelpCallPage> {
                     alignment: Alignment.centerLeft,
                     children: [
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 0), // Adjust duration to control the speed of the animation
+                        duration: Duration(milliseconds: 0),
                         width: _slideValue * _sliderWidth,
                         decoration: BoxDecoration(
                           color: theme.colorScheme.primary,
                           borderRadius: BorderRadius.circular(80.0),
                         ),
-                        alignment: Alignment.center, // Center the icon inside the animated container
+                        alignment: Alignment.center,
+                        // Center the icon inside the animated container
                         child: Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,

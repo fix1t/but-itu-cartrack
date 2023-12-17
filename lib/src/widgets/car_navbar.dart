@@ -1,3 +1,6 @@
+/// This file contains the navigation bar for car related screens
+/// @Author:  Adam Gabrys xgabry01
+
 import 'package:itu_cartrack/src/view/car_home_screen.dart';
 import 'package:itu_cartrack/src/view/car_detail_screen.dart';
 import 'package:itu_cartrack/src/view/car_expense_screen.dart';

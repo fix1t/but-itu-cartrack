@@ -1,6 +1,6 @@
 /// This file contains the CarListScreen widget which displays a list of cars
-/// @author: Jakub Mikysek xmikys03
-/// @modified: Adam Gabrys xgabry01
+/// @author: Jakub Mikysek xmikys03 -- added all functionality except: functionality, that is related to setting favorite cars by specific user
+/// @co-author: Adam Gabrys xgabry01 -- added functionality, that is related to setting favorite cars by specific user
 
 import 'package:flutter/material.dart';
 import '../model/user.dart';
@@ -315,14 +315,14 @@ class _AddCarButtonState extends State<AddCarButton> {
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
         top: MediaQuery.of(context).size.height *
-            0.8, // Adjust the position as needed
+            0.8,
         width: MediaQuery.of(context).size.width,
         child: Material(
           color: Colors.transparent,
           child: Container(
             alignment: Alignment.center,
             child: Card(
-              elevation: 10.0, // Adjust the elevation as needed
+              elevation: 10.0,
               color: Theme.of(context).colorScheme.secondary,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

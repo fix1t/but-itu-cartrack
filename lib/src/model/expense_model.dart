@@ -1,3 +1,7 @@
+/// Expense model is a class that handles all the CRUD operations for the Expense handling.
+/// It is a Singleton class that uses Firebase Realtime Database to store the data.
+/// @author: Adam Gabrys xgabry01
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 

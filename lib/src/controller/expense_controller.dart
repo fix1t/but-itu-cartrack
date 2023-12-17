@@ -1,3 +1,6 @@
+/// The controller for the expenses, which is used to add, delete and update expenses.
+/// @Author: Adam Gabrys xgabry01
+
 import 'package:itu_cartrack/src/model/expense_model.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 
@@ -40,13 +43,10 @@ class ExpenseController {
     await expenseModel.deleteExpense(carId, expenseId);
   }
 
-// Update an expense for a specific car (if needed)
-// Uncomment and modify if needed
-
+  // Update an expense for a specific car (if needed)
   Future<void> updateExpense(String carId, String expenseId, Expense expense) async {
     await expenseModel.updateExpense(carId, expenseId, expense);
   }
-
 
   // Set the active expense
   void setActiveExpense(Expense expense) {

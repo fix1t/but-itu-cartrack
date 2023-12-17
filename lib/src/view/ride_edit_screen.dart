@@ -1,3 +1,6 @@
+/// This screen is used to edit a ride, gives the user the option to delete the ride and also to update the odometer status, which will update the odometer status of all rides.
+/// @Author:  Gabriel Biel xbielg00
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';

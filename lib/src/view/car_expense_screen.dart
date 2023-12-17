@@ -1,9 +1,13 @@
+/// Purpose: Screen for displaying the list of expenses for a car, allows adding new expenses and navigating to the expense details screen
+/// @Author:  Adam Gabrys xgabry01
+
 import 'package:flutter/material.dart';
 import 'package:itu_cartrack/src/controller/expense_controller.dart';
 import 'package:itu_cartrack/src/controller/login_controller.dart';
 import 'package:itu_cartrack/src/model/expense.dart';
 import 'package:itu_cartrack/src/model/car.dart';
 import 'package:itu_cartrack/src/view/car_expense_detail_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:itu_cartrack/src/controller/car_controller.dart';
 
 class CarExpenseScreen extends StatefulWidget {
@@ -19,6 +23,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
   final Car selectedCar = CarController.activeCar;
   final String currentUserId = LoginController().getCurrentUserId();
   ExpenseType selectedType = ExpenseType.fuel; // Default type
+  String? amountError; // Local state variable for amount error message
 
   final Map<ExpenseType, IconData> _expenseTypeIcons = {
     ExpenseType.fuel: Icons.local_gas_station,
@@ -35,7 +40,6 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
       context: context,
       builder: (context) {
         return StatefulBuilder(
-          // This is used to set state within the dialog
           builder: (context, setModalState) {
             return AlertDialog(
               title: Text('Add Expense'),
@@ -59,7 +63,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                         );
                       }).toList(),
                     ),
-                    TextField(
+                    TextFormField(
                       controller: amountController,
                       decoration: InputDecoration(
                         labelText: 'Amount',
@@ -67,14 +71,27 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                           borderSide: BorderSide(color: Colors.red, width: 2.0),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        //TODO: fix errorText
-                        errorText: (amountController.text.isNotEmpty
-                                ? int.parse(amountController.text) <= 0
-                                : true)
-                            ? 'Amount must be greater than 0'
-                            : null,
+                        errorText:
+                            amountError, // Using local state variable for error text
                       ),
                       keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      onChanged: (value) {
+                        String? newError;
+                        if (value.isNotEmpty) {
+                          final number = int.tryParse(value);
+                          if (number == null || number <= 0) {
+                            newError = 'Amount must be greater than 0';
+                          }
+                        }
+                        if (newError != amountError) {
+                          setModalState(() {
+                            amountError = newError;
+                          });
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -113,9 +130,11 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
         backgroundColor: theme.colorScheme.primary,
       ),
       body: StreamBuilder<List<Expense>>(
+        // StreamBuilder to get the expenses for the selected car
         stream: ExpenseController().getExpenses(selectedCar.id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
+            // Show a loading indicator while waiting for the data
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
@@ -135,6 +154,7 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                     Navigator.pushNamed(context, '/car/expense/detail');
                   },
                   child: ListTile(
+                    // ListTile to display the expense
                     title: Text(
                       '${expenses[index].amount.toStringAsFixed(2)} CZK - ${expenses[index].type.name.substring(0, 1).toUpperCase() + expenses[index].type.name.substring(1)}',
                       style: TextStyle(fontSize: 18),
@@ -149,7 +169,6 @@ class _CarExpenseScreenState extends State<CarExpenseScreen> {
                       color: theme.colorScheme.primary,
                     ),
                     onTap: () {
-                      // Handle the tap event, for example, navigate to the expense details
                       ExpenseController().setActiveExpense(expenses[index]);
                       Navigator.pushNamed(context, '/car/expense/detail');
                     },

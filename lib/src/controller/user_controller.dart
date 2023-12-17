@@ -1,3 +1,7 @@
+/// Purpose: Controller class for the User model, handles all the business logic for the User model such as adding, deleting and updating users and their favorite cars
+/// @Author: Gabriel Biel xbielg00 -- added addUser, deleteUser methods, constructor, users getter
+/// @Author: Adam Gabrys xgabry01 -- added getUserById method, added car related methods
+
 import 'package:itu_cartrack/src/model/user_model.dart';
 import 'package:itu_cartrack/src/model/user.dart';
 
@@ -51,6 +55,7 @@ class UserController {
       await userModel.updateUserFavorites(user.id, user.favoriteCars);
     }
   }
+
   // Update user's favorite cars in the database
   Future<void> updateUserFavorites(String userId, List<String> favoriteCars) async {
     await userModel.updateUserFavorites(userId, favoriteCars);

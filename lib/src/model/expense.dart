@@ -1,3 +1,6 @@
+/// Expense is a class that represents a single expense.
+/// @autor: Adam Gabrys xgabry01
+
 enum ExpenseType {
   fuel,
   maintenance,
