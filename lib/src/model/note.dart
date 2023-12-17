@@ -1,5 +1,5 @@
 /// Note model
-/// @autor: Jakub Mikysek xmikys03
+/// @author: Jakub Mikysek xmikys03
 
 class Note {
   final String id;
