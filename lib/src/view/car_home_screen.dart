@@ -286,7 +286,9 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: Column(
+      body:SingleChildScrollView(
+    child:
+      Column(
         children: [
           // Car Name + License Plate + Icon
           Container(
@@ -428,6 +430,7 @@ class _CarHomeScreenState extends State<CarHomeScreen> {
             ),
           ),
         ],
+      ),
       ),
     );
   }
